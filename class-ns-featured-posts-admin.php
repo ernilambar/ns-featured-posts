@@ -60,14 +60,8 @@ class NS_Featured_Posts_Admin
         $this->plugin_slug = $plugin->get_plugin_slug();
     		$this->options = $plugin->ns_featured_posts_get_options_array();
 
-
-        // Load admin style sheet and JavaScript.
-        // add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles'));
-        // add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
-
         // Add the options page and menu item.
         add_action('admin_menu', array($this, 'ns_featured_posts_add_plugin_admin_menu'));
-
 
         /*
          * Add an action link pointing to the options page.
@@ -118,50 +112,6 @@ class NS_Featured_Posts_Admin
     }
 
     /**
-     * Register and enqueue admin-specific style sheet.
-     *
-     * @since     1.0.0
-     *
-     * @return    null    Return early if no settings page is registered.
-     */
-    public function enqueue_admin_styles()
-    {
-
-        if (!isset($this->plugin_screen_hook_suffix))
-        {
-            return;
-        }
-
-        $screen = get_current_screen();
-        if ( $this->plugin_screen_hook_suffix == $screen->id )
-        {
-            // wp_enqueue_style('ns-featured-posts-admin-styles', plugins_url('css/admin.css', __FILE__), array(), NS_Featured_Posts::VERSION);
-        }
-    }
-
-    /**
-     * Register and enqueue admin-specific JavaScript.
-     *
-     * @since     1.0.0
-     *
-     * @return    null    Return early if no settings page is registered.
-     */
-    public function enqueue_admin_scripts()
-    {
-
-        if (!isset($this->plugin_screen_hook_suffix))
-        {
-            return;
-        }
-
-        $screen = get_current_screen();
-        if ($this->plugin_screen_hook_suffix == $screen->id)
-        {
-            // wp_enqueue_script( 'ns-featured-posts-admin-script', plugins_url('js/admin.js', __FILE__), array('jquery'), NS_Featured_Posts::VERSION);
-        }
-    }
-
-    /**
      * Register the administration menu for this plugin into the WordPress Dashboard menu.
      *
      * @since    1.0.0
@@ -173,7 +123,7 @@ class NS_Featured_Posts_Admin
          * Add a settings page for this plugin to the Settings menu.
          */
         $this->plugin_screen_hook_suffix = add_options_page(
-                __('NS Featured Posts Settings Page', 'ns-featured-posts'), __('NS Featured Posts', 'ns-featured-posts'), 'manage_options', 'ns-featured-posts', array($this, 'display_plugin_admin_page')
+                __('NS Featured Posts', 'ns-featured-posts'), __('NS Featured Posts', 'ns-featured-posts'), 'manage_options', 'ns-featured-posts', array($this, 'display_plugin_admin_page')
         );
     }
 
@@ -375,7 +325,7 @@ class NS_Featured_Posts_Admin
       <label>
 	      <input type="hidden" name="nsfp_settings[make_this_featured]" value="0" />
 	      <input type="checkbox" name="nsfp_settings[make_this_featured]" value="yes" <?php checked( $is_ns_featured_post, 'yes', true); ?> />
-	      <span class="small"><?php _e( 'Check this to make this post featured.', 'wen-logo-slider' ); ?></span>
+	      <span class="small"><?php _e( 'Check this to make featured.', 'ns-featured-posts' ); ?></span>
       </label>
       </p>
       <?php
@@ -438,7 +388,7 @@ class NS_Featured_Posts_Admin
           $selected_now = esc_attr( $_GET['filter-ns-featured-posts'] );
         }
         echo '<select name="filter-ns-featured-posts" id="filter-ns-featured-posts">';
-        echo '<option value="">'. __( 'Show all', 'ns-featured-posts' ) .'</option>';
+        echo '<option value="">'. __( 'Show All', 'ns-featured-posts' ) .'</option>';
         echo '<option value="yes" '.selected( $selected_now, 'yes', false ) .'>'. __( 'Featured', 'ns-featured-posts' ) .'</option>';
         echo '<option value="no" '.selected( $selected_now, 'no', false ) .'>'. __( 'Not Featured', 'ns-featured-posts' ) .'</option>';
         echo '</select>';
@@ -568,9 +518,9 @@ class NS_Featured_Posts_Admin
     {
       register_setting('nsfp-plugin-options-group', 'nsfp_plugin_options', array( $this, 'ns_featured_posts_plugin_options_validate') );
 
-  		add_settings_section('main_settings', __( 'NS Featured Posts Settings', 'ns-featured-posts' ) , array($this, 'ns_featured_posts_plugin_section_text_callback'), 'ns-featured-posts-main');
+  		add_settings_section('main_settings', __( 'Plugin Settings', 'ns-featured-posts' ) , array($this, 'ns_featured_posts_plugin_section_text_callback'), 'ns-featured-posts-main');
 
-  		add_settings_field('nsfp_posttypes', __( 'Enabled Featured for', 'ns-featured-posts' ), array($this, 'nsfp_posttypes_callback'), 'ns-featured-posts-main', 'main_settings');
+  		add_settings_field('nsfp_posttypes', __( 'Enable Featured for', 'ns-featured-posts' ), array($this, 'nsfp_posttypes_callback'), 'ns-featured-posts-main', 'main_settings');
 
 
     }
@@ -584,7 +534,7 @@ class NS_Featured_Posts_Admin
 	}
 
 	function ns_featured_posts_plugin_section_text_callback() {
-    	//echo '<p>'.__('Change your NS Featured Posts settings.', 'ns-featured-posts' ).'</p>';
+		return;
 	}
 
 	function nsfp_posttypes_callback() {

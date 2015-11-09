@@ -8,6 +8,7 @@
  * @link      http://nilambar.net
  * @copyright 2013 Nilambar Sharma
  */
+
 ?>
 <div class="wrap">
 
@@ -30,11 +31,11 @@
 
 
 				<form action="options.php" method="post">
-				<?php settings_fields('nsfp-plugin-options-group'); ?>
-				<?php do_settings_sections('ns-featured-posts-main'); ?>
+				<?php settings_fields( 'nsfp-plugin-options-group' ); ?>
+				<?php do_settings_sections( 'ns-featured-posts-main' ); ?>
 
 
-				<?php submit_button(__('Save Changes', 'ns-featured-posts')); ?>
+				<?php submit_button( __( 'Save Changes', 'ns-featured-posts' ) ); ?>
 				</form>
 
 
@@ -50,7 +51,7 @@
       <!-- sidebar -->
       <div id="postbox-container-1" class="postbox-container">
 
-        <?php require_once( ( plugin_dir_path(__FILE__) ) . 'admin-right.php'); ?>
+        <?php require_once( ( plugin_dir_path( __FILE__ ) ) . 'admin-right.php' ); ?>
 
       </div> <!-- #postbox-container-1 .postbox-container -->
 
