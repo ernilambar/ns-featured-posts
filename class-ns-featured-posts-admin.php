@@ -1,5 +1,4 @@
 <?php
-require_once(plugin_dir_path( __FILE__ ) . 'widgets/nsfp-featured-post-widget.php');
 /**
  * NS Featured Posts
  *
@@ -9,6 +8,8 @@ require_once(plugin_dir_path( __FILE__ ) . 'widgets/nsfp-featured-post-widget.ph
  * @link      http://nilambar.net
  * @copyright 2013 Nilambar Sharma
  */
+
+require_once(plugin_dir_path( __FILE__ ) . 'widgets/nsfp-featured-post-widget.php');
 
 /**
  * NS Featured Posts Admin class.
@@ -589,12 +590,12 @@ class NS_Featured_Posts_Admin
 	function nsfp_posttypes_callback() {
 		?>
 		<p>
-			<input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][post]" value="1"
-			<?php checked(isset($this -> options['nsfp_posttypes']['post']) && 1 == $this -> options['nsfp_posttypes']['post']); ?> /><?php _e("Post",  'ns-featured-posts' ); ?>
+			<label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][post]" value="1"
+				<?php checked(isset($this -> options['nsfp_posttypes']['post']) && 1 == $this -> options['nsfp_posttypes']['post']); ?> /><?php _e("Post",  'ns-featured-posts' ); ?></label>
 		</p>
 		<p>
-			<input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][page]" value="1"
-			<?php checked(isset($this -> options['nsfp_posttypes']['page']) && 1 == $this -> options['nsfp_posttypes']['page']); ?> /><?php _e("Page",  'ns-featured-posts' ); ?>
+			<label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][page]" value="1"
+			<?php checked(isset($this -> options['nsfp_posttypes']['page']) && 1 == $this -> options['nsfp_posttypes']['page']); ?> /><?php _e("Page",  'ns-featured-posts' ); ?></label>
 		</p>
 		<?php
 		$args = array(
@@ -608,8 +609,8 @@ class NS_Featured_Posts_Admin
                 $name = $ptype->labels->{'name'};
 			?>
             <p>
-                <input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][<?php echo $key; ?>]" value="1"
-                <?php checked( isset($this -> options['nsfp_posttypes'][$key]) && 1 == $this -> options['nsfp_posttypes'][$key]); ?> /><?php echo $name; ?>
+              <label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][<?php echo $key; ?>]" value="1"
+              	<?php checked( isset($this -> options['nsfp_posttypes'][$key]) && 1 == $this -> options['nsfp_posttypes'][$key]); ?> /><?php echo $name; ?></label>
             </p>
 
 			<?php
