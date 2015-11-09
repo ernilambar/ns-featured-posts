@@ -371,9 +371,11 @@ class NS_Featured_Posts_Admin
       wp_nonce_field( plugin_basename( __FILE__ ), 'nsfp_featured_metabox_nonce' );
       ?>
       <p>
-      <input type="hidden" name="nsfp_settings[make_this_featured]" value="0" />
-      <input type="checkbox" name="nsfp_settings[make_this_featured]" value="yes" <?php checked( $is_ns_featured_post, 'yes', true); ?> />
-      <span class="small"><?php _e( 'Check this to make this post featured.', 'wen-logo-slider' ); ?></span>
+      <label>
+	      <input type="hidden" name="nsfp_settings[make_this_featured]" value="0" />
+	      <input type="checkbox" name="nsfp_settings[make_this_featured]" value="yes" <?php checked( $is_ns_featured_post, 'yes', true); ?> />
+	      <span class="small"><?php _e( 'Check this to make this post featured.', 'wen-logo-slider' ); ?></span>
+      </label>
       </p>
       <?php
 
