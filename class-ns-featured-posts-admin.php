@@ -430,10 +430,14 @@ class NS_Featured_Posts_Admin
         if ( ! in_array($typenow,  $allowed )  ) {
             return;
         }
+        $selected_now = '';
+        if ( isset( $_GET['filter-ns-featured-posts'] ) ) {
+          $selected_now = esc_attr( $_GET['filter-ns-featured-posts'] );
+        }
         echo '<select name="filter-ns-featured-posts" id="filter-ns-featured-posts">';
-        echo '<option value="" >'. __( 'Show all', 'ns-featured-posts' ) .'</option>';
-        echo '<option value="yes" '.selected( $_GET['filter-ns-featured-posts'], 'yes', false ) .'>'. __( 'Featured', 'ns-featured-posts' ) .'</option>';
-        echo '<option value="no" '.selected( $_GET['filter-ns-featured-posts'], 'no', false ) .'>'. __( 'Not Featured', 'ns-featured-posts' ) .'</option>';
+        echo '<option value="">'. __( 'Show all', 'ns-featured-posts' ) .'</option>';
+        echo '<option value="yes" '.selected( $selected_now, 'yes', false ) .'>'. __( 'Featured', 'ns-featured-posts' ) .'</option>';
+        echo '<option value="no" '.selected( $selected_now, 'no', false ) .'>'. __( 'Not Featured', 'ns-featured-posts' ) .'</option>';
         echo '</select>';
     }
 
