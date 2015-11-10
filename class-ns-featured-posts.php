@@ -26,7 +26,7 @@ class NS_Featured_Posts
      * @var     string
      */
 
-    const VERSION = '1.1';
+    const VERSION = '1.2';
 
     /**
      * Unique identifier for your plugin.
@@ -78,17 +78,13 @@ class NS_Featured_Posts
         // Activate plugin when new blog is added
         add_action('wpmu_new_blog', array($this, 'activate_new_site'));
 
-        // Load public-facing style sheet and JavaScript.
-        // add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
-        // add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-
         self :: $default_options = array(
-            'nsfp_posttypes' => array('post' => 1),
+            'nsfp_posttypes' => array( 'post' => 1 ),
         );
 
     		$this -> _setDefaultOptions();
 
-    		//get current options
+    		// Get current options.
         $this->_getCurrentOptions();
 
     }
@@ -289,27 +285,6 @@ class NS_Featured_Posts
         load_textdomain($domain, trailingslashit(WP_LANG_DIR) . $domain . '/' . $domain . '-' . $locale . '.mo');
         load_plugin_textdomain($domain, FALSE, basename(dirname(__FILE__)) . '/languages');
     }
-
-    /**
-     * Register and enqueue public-facing style sheet.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_styles()
-    {
-        // wp_enqueue_style($this->plugin_slug . '-plugin-styles', plugins_url('css/public.css', __FILE__), array(), self::VERSION);
-    }
-
-    /**
-     * Register and enqueues public-facing JavaScript files.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_scripts()
-    {
-        // wp_enqueue_script($this->plugin_slug . '-plugin-script', plugins_url('js/public.js', __FILE__), array('jquery'), self::VERSION);
-    }
-
 
 	private function _getCurrentOptions()
     {
