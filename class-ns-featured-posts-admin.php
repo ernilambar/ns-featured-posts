@@ -149,14 +149,14 @@ class NS_Featured_Posts_Admin
      *
      * @since    1.0.0
      */
-    public function ns_featured_posts_add_action_links($links)
-    {
+    public function ns_featured_posts_add_action_links( $links ) {
 
-        return array_merge(
-                array(
-            'settings' => '<a href="' . admin_url('options-general.php?page=' . $this->plugin_slug) . '">' . __('Settings', 'ns-featured-posts' ) . '</a>'
-                ), $links
-        );
+    	return array_merge(
+    		array(
+    			'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-featured-posts' ) . '</a>'
+    			),
+    		$links
+		);
     }
 
     /**

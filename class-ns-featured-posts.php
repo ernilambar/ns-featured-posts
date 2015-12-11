@@ -1,5 +1,4 @@
 <?php
-
 /**
  * NS Featured Posts
  *
@@ -26,7 +25,7 @@ class NS_Featured_Posts
      * @var     string
      */
 
-    const VERSION = '1.2';
+    const VERSION = '1.3';
 
     /**
      * Unique identifier for your plugin.
@@ -82,9 +81,9 @@ class NS_Featured_Posts
             'nsfp_posttypes' => array( 'post' => 1 ),
         );
 
-    		$this -> _setDefaultOptions();
+		$this -> _setDefaultOptions();
 
-    		// Get current options.
+		// Get current options.
         $this->_getCurrentOptions();
 
     }
@@ -288,8 +287,8 @@ class NS_Featured_Posts
 
 	private function _getCurrentOptions()
     {
-		$sa_options = array_merge( self :: $default_options , (array) get_option( 'nsfp_plugin_options', array() ) );
-        $this->options = $sa_options;
+		$nsfp_options = array_merge( self :: $default_options , (array) get_option( 'nsfp_plugin_options', array() ) );
+        $this->options = $nsfp_options;
     }
 	//get default options and saves in options table
     private function _setDefaultOptions()
