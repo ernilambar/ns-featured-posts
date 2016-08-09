@@ -61,6 +61,7 @@ Nice, make a post on the [Support Forum](http://wordpress.org/support/plugin/ns-
 == Changelog ==
 
 = 1.4.0 =
+* Fix: Allow Editor to toggle checkbox
 * Compatibility with WP 4.6
 * Fix: Minor Bug fixes
 

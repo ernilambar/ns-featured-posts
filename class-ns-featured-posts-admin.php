@@ -229,7 +229,7 @@ class NS_Featured_Posts_Admin
             return;
         }
 
-        if (current_user_can("administrator")) {
+        if ( current_user_can( 'unfiltered_html' ) ) {
             ?>
             <script type="text/javascript" language="javascript">
                 jQuery(document).ready(function($){
