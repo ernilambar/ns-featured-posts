@@ -25,7 +25,7 @@ class NS_Featured_Posts
      * @var     string
      */
 
-    const VERSION = '1.3';
+    const VERSION = '1.4.0';
 
     /**
      * Unique identifier for your plugin.
@@ -71,10 +71,10 @@ class NS_Featured_Posts
     private function __construct()
     {
 
-        // Load plugin text domain
+        // Load plugin text domain.
         add_action('init', array($this, 'load_plugin_textdomain'));
 
-        // Activate plugin when new blog is added
+        // Activate plugin when new blog is added.
         add_action('wpmu_new_blog', array($this, 'activate_new_site'));
 
         self :: $default_options = array(
@@ -290,6 +290,7 @@ class NS_Featured_Posts
 		$nsfp_options = array_merge( self :: $default_options , (array) get_option( 'nsfp_plugin_options', array() ) );
         $this->options = $nsfp_options;
     }
+
 	//get default options and saves in options table
     private function _setDefaultOptions()
     {
@@ -297,6 +298,7 @@ class NS_Featured_Posts
             update_option('nsfp_plugin_options', self :: $default_options);
         }
     }
+
 	private function _removePluginOptions()
     {
         delete_option('nsfp_plugin_options');

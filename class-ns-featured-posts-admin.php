@@ -40,9 +40,6 @@ class NS_Featured_Posts_Admin
 
   	protected $options = array();
 
-
-
-
     /**
      * Initialize the plugin by loading admin scripts & styles and adding a
      * settings page and menu.
@@ -86,7 +83,7 @@ class NS_Featured_Posts_Admin
 
         add_action( 'widgets_init', array( $this, 'nsfp_custom_widgets' ) );
 
-        // Metabox stuffs
+        // Metabox stuffs.
         add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
@@ -103,7 +100,7 @@ class NS_Featured_Posts_Admin
     {
 
         // If the single instance hasn't been set, set it now.
-        if (null == self::$instance)
+        if ( null == self::$instance )
         {
             self::$instance = new self;
         }
@@ -493,15 +490,15 @@ class NS_Featured_Posts_Admin
     /**
      * Get total featured count
      */
-    function get_total_featured_count( $post_type ){
+    function get_total_featured_count( $post_type ) {
         $args = array(
-            'post_type'      => $post_type,
-            'posts_per_page' => -1,
-            'meta_key'       => '_is_ns_featured_post',
-            'meta_value'     => 'yes',
+			'post_type'      => $post_type,
+			'posts_per_page' => -1,
+			'meta_key'       => '_is_ns_featured_post',
+			'meta_value'     => 'yes',
         );
         $postlist = get_posts( $args );
-        return count($postlist);
+        return count( $postlist );
     }
 
     /**
@@ -524,7 +521,8 @@ class NS_Featured_Posts_Admin
 
 
     }
-	// validate our options
+
+	// Validate our options.
 	function ns_featured_posts_plugin_options_validate($input) {
 
     if ( ! isset( $input['nsfp_posttypes'] ) ) {
@@ -549,8 +547,8 @@ class NS_Featured_Posts_Admin
 		</p>
 		<?php
 		$args = array(
-			'public' => true,
-			'_builtin' => false
+			'public'   => true,
+			'_builtin' => false,
 		);
 		$post_types_custom = get_post_types( $args, 'objects' );
 
@@ -564,9 +562,9 @@ class NS_Featured_Posts_Admin
             </p>
 
 			<?php
-			} // end foreach
+			}
 		}
 
-	} // end function nsfp_posttypes_callback
+	} // End function nsfp_posttypes_callback.
 
-} // end class
+} // End class.
