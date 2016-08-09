@@ -1,23 +1,18 @@
 <?php
 /**
- * NS Featured Posts Plugin
+ * NS Featured Posts Plugin.
+ *
+ * Plugin Name: NS Featured Posts
+ * Plugin URI: http://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
+ * Description: Plugin to make your posts, pages and custom post types Featured
+ * Version: 1.3
+ * Author: Nilambar Sharma
+ * Author URI: http://nilambar.net
+ * Text Domain: ns-featured-posts
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
  * @package   NS_Featured_Posts
- * @author    Nilambar Sharma <nilambar@outlook.com>
- * @license   GPL-2.0+
- * @link      http://nilambar.net
- * @copyright 2013 Nilambar Sharma
- *
- * @wordpress-plugin
- * Plugin Name:       NS Featured Posts
- * Plugin URI:        http://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
- * Description:       Plugin to make your posts, pages and custom post types Featured
- * Version:           1.3
- * Author:            Nilambar Sharma
- * Author URI:        http://nilambar.net
- * Text Domain:       ns-featured-posts
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
 // If this file is called directly, abort.
@@ -25,9 +20,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/*
- *
- */
 require_once( plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts-admin.php' );
 
@@ -38,8 +30,5 @@ require_once( plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts-admin.php' 
 register_activation_hook( __FILE__, array( 'NS_Featured_Posts', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'NS_Featured_Posts', 'deactivate' ) );
 
-/*
- *
- */
 add_action( 'plugins_loaded', array( 'NS_Featured_Posts', 'get_instance' ) );
 add_action( 'plugins_loaded', array( 'NS_Featured_Posts_Admin', 'get_instance' ) );
