@@ -275,14 +275,9 @@ class NS_Featured_Posts
      *
      * @since    1.0.0
      */
-    public function load_plugin_textdomain()
-    {
+    public function load_plugin_textdomain() {
 
-        $domain = $this->plugin_slug;
-        $locale = apply_filters('plugin_locale', get_locale(), $domain);
-
-        load_textdomain($domain, trailingslashit(WP_LANG_DIR) . $domain . '/' . $domain . '-' . $locale . '.mo');
-        load_plugin_textdomain($domain, FALSE, basename(dirname(__FILE__)) . '/languages');
+        load_plugin_textdomain( $this->plugin_slug );
     }
 
 	private function _getCurrentOptions()
