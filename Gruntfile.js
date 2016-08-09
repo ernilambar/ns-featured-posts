@@ -5,10 +5,12 @@ module.exports = function( grunt ) {
 	 * Deploy files list.
 	 */
 	var deploy_files_list = [
-		'admin/**',
-		'includes/**',
-		'public/**',
+		'images/**',
+		'views/**',
+		'widgets/**',
 		'readme.txt',
+		'class-ns-featured-posts.php',
+		'class-ns-featured-posts-admin.php',
 		'<%= pkg.main_file %>',
 		'uninstall.php'
 	];
@@ -99,7 +101,7 @@ module.exports = function( grunt ) {
 		// Push to SVN.
 		push_svn:{
 			options: {
-				username: 'wenthemes',
+				username: 'rabmalin',
 				password: 'passwordhere',
 				remove: true
 			},
