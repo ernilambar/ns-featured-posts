@@ -23,10 +23,10 @@
         <div class="inside">
             <h4>WordPress Theme</h4>
              <p>
-               <a href="http://www.nilambar.net/2014/03/blue-planet-wordpress-theme-free.html" target="_blank">Blue Planet</a>
+               <a href="http://nilambar.net/2014/03/blue-planet-wordpress-theme-free.html" target="_blank">Blue Planet</a>
              </p>
              <p>
-               <a href="http://www.nilambar.net/2015/03/simple-life-free-wordpress-theme.html" target="_blank">Simple Life</a>
+               <a href="http://nilambar.net/2015/03/simple-life-free-wordpress-theme.html" target="_blank">Simple Life</a>
              </p>
             <h4>WordPress Plugins</h4>
             <p>

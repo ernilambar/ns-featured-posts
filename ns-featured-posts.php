@@ -3,7 +3,7 @@
  * NS Featured Posts Plugin.
  *
  * Plugin Name: NS Featured Posts
- * Plugin URI: http://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
+ * Plugin URI: http://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
  * Description: Plugin to make your posts, pages and custom post types Featured
  * Version: 1.3
  * Author: Nilambar Sharma
