@@ -5,7 +5,7 @@
  * @package   NS_Featured_Posts
  * @author    Nilambar Sharma <nilambar@outlook.com>
  * @license   GPL-2.0+
- * @link      http://nilambar.net
+ * @link      https://nilambar.net
  * @copyright 2013 Nilambar Sharma
  */
 

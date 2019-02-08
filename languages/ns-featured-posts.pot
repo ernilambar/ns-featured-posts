@@ -91,7 +91,7 @@ msgid "Display post date?"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html"
+msgid "https://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -103,5 +103,5 @@ msgid "Nilambar Sharma"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://nilambar.net"
+msgid "https://nilambar.net"
 msgstr ""

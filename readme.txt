@@ -1,6 +1,6 @@
 === NS Featured Posts ===
 Contributors: rabmalin
-Donate link: http://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
+Donate link: https://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
 Tags: post, custom post type, custom, posts, meta, plugin, featured, featured-post, page
 Requires at least: 4.4
 Tested up to: 4.6
@@ -51,7 +51,7 @@ This will fetch the list of post which are checked as Featured.
 
 = There is something cool you could add... =
 
-Nice, make a post on the [Support Forum](http://wordpress.org/support/plugin/ns-featured-posts "NS Featured Posts Support") and let us know. We are always looking for ways to improve our plugins.
+Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns-featured-posts "NS Featured Posts Support") and let us know. We are always looking for ways to improve our plugins.
 
 == Screenshots ==
 
