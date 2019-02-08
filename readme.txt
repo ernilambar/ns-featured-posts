@@ -3,7 +3,8 @@ Contributors: rabmalin
 Donate link: https://nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
 Tags: post, custom post type, custom, posts, meta, plugin, featured, featured-post, page
 Requires at least: 4.4
-Tested up to: 4.6
+Requires PHP: 5.2.4
+Tested up to: 5.1
 Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +60,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 2. Example of featured in Post listing
 
 == Changelog ==
+
+= 1.4.1 =
+* Fix links
 
 = 1.4.0 =
 * Fix: Allow Editor to toggle checkbox
