@@ -25,7 +25,7 @@ class NS_Featured_Posts
      * @var     string
      */
 
-    const VERSION = '1.4.0';
+    const VERSION = '1.4.2';
 
     /**
      * Unique identifier for your plugin.

@@ -1,7 +1,5 @@
 <?php
 /**
- * NS Featured Posts Plugin.
- *
  * Plugin Name: NS Featured Posts
  * Plugin URI: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
  * Description: Plugin to make your posts, pages and custom post types Featured

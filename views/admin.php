@@ -31,14 +31,10 @@
 
 
 				<form action="options.php" method="post">
-				<?php settings_fields( 'nsfp-plugin-options-group' ); ?>
-				<?php do_settings_sections( 'ns-featured-posts-main' ); ?>
-
-
-				<?php submit_button( __( 'Save Changes', 'ns-featured-posts' ) ); ?>
+					<?php settings_fields( 'nsfp-plugin-options-group' ); ?>
+					<?php do_settings_sections( 'ns-featured-posts-main' ); ?>
+					<?php submit_button( __( 'Save Changes', 'ns-featured-posts' ) ); ?>
 				</form>
-
-
 
             </div> <!-- .inside -->
 
