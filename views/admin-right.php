@@ -23,10 +23,10 @@
         <div class="inside">
             <strong>WordPress Themes</strong>
             <ul>
-            	<li><a href="https://nilambar.net/2015/03/simple-life-free-wordpress-theme.html" target="_blank">Simple Life</a></li>
-            	<li><a href="https://nilambar.net/2014/03/blue-planet-wordpress-theme-free.html" target="_blank">Blue Planet</a></li>
-            	<li><a href="https://nilambar.net/2016/02/buntu-free-wordpress-theme.html" target="_blank">Buntu</a></li>
-            	<li><a href="https://nilambar.net/2017/07/steep-free-wordpress-theme.html" target="_blank">Steep</a></li>
+            	<li><a href="https://www.nilambar.net/2015/03/simple-life-free-wordpress-theme.html" target="_blank">Simple Life</a></li>
+            	<li><a href="https://www.nilambar.net/2014/03/blue-planet-wordpress-theme-free.html" target="_blank">Blue Planet</a></li>
+            	<li><a href="https://www.nilambar.net/2016/02/buntu-free-wordpress-theme.html" target="_blank">Buntu</a></li>
+            	<li><a href="https://www.nilambar.net/2017/07/steep-free-wordpress-theme.html" target="_blank">Steep</a></li>
             </ul>
 
             <strong>WordPress Plugins</strong>
