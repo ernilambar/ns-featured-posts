@@ -16,28 +16,35 @@
 
 </div> <!-- .meta-box-sortables -->
 
+
 <div class="meta-box-sortables">
-    <div class="postbox">
+	<div class="postbox">
 
-        <h3><span>My Themes and Plugins</span></h3>
-        <div class="inside">
-            <strong>WordPress Themes</strong>
-            <ul>
-            	<li><a href="https://www.nilambar.net/2015/03/simple-life-free-wordpress-theme.html" target="_blank">Simple Life</a></li>
-            	<li><a href="https://www.nilambar.net/2014/03/blue-planet-wordpress-theme-free.html" target="_blank">Blue Planet</a></li>
-            	<li><a href="https://www.nilambar.net/2016/02/buntu-free-wordpress-theme.html" target="_blank">Buntu</a></li>
-            	<li><a href="https://www.nilambar.net/2017/07/steep-free-wordpress-theme.html" target="_blank">Steep</a></li>
-            </ul>
+		<h3><span>My Blog</span></h3>
+		<div class="inside">
+			<?php
+			$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
 
-            <strong>WordPress Plugins</strong>
-            <ul>
-            	<li><a href="https://wordpress.org/plugins/woocommerce-product-tabs/" target="_blank">Woocommerce Product Tabs</a></li>
-            	<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-            	<li><a href="https://wordpress.org/plugins/really-simple-image-widget/" target="_blank">Really Simple Image Widget</a></li>
-            	<li><a href="https://wordpress.org/plugins/ns-category-widget/" target="_blank">NS Category Widget</a></li>
-            	<li><a href="https://wordpress.org/plugins/source-affix/" target="_blank">Source Affix</a></li>
-            </ul>
-        </div> <!-- .inside -->
+			$maxitems = 0;
 
-    </div> <!-- .postbox -->
+			$rss_items = array();
+
+			if ( ! is_wp_error( $rss ) ) {
+				$maxitems  = $rss->get_item_quantity( 5 );
+				$rss_items = $rss->get_items( 0, $maxitems );
+			}
+			?>
+
+			<?php if ( ! empty( $rss_items ) ) : ?>
+
+				<ul>
+					<?php foreach ( $rss_items as $item ) : ?>
+						<li><a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank"><?php echo esc_html( $item->get_title() ); ?></a></li>
+					<?php endforeach; ?>
+				</ul>
+
+			<?php endif; ?>
+		</div> <!-- .inside -->
+
+	</div> <!-- .postbox -->
 </div> <!-- .meta-box-sortables -->
