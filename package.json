@@ -1,7 +1,7 @@
 {
   "name": "ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "license": "GPL-2.0+",
   "main": "Gruntfile.js",
   "main_file": "ns-featured-posts.php",
