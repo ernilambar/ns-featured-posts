@@ -45,24 +45,24 @@ class NS_Featured_Posts_Admin {
 		$this->options = $plugin->ns_featured_posts_get_options_array();
 
 		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( __FILE__ ) . 'ns-featured-posts.php' );
-		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'ns_featured_posts_add_action_links' ) );
+		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
+		add_filter( 'plugin_action_links_' . $base_file, array( $this, 'add_plugin_action_links' ) );
 
 		// Define custom functionality.
-		add_action( 'admin_init', array( $this, 'ns_featured_posts_add_columns_head' ) );
+		add_action( 'admin_init', array( $this, 'add_custom_columns_head' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_assets' ) );
-		add_action( 'wp_ajax_nsfeatured_posts', array( $this, 'nsfp_ajax_featured_post' ) );
+		add_action( 'wp_ajax_nsfeatured_posts', array( $this, 'ajax_handler_featured_toggle' ) );
 
-		add_action( 'restrict_manage_posts', array( $this, 'nsfp_table_filtering' ) );
-		add_filter( 'parse_query', array( $this, 'nsfp_query_filtering' ) );
+		add_action( 'restrict_manage_posts', array( $this, 'custom_table_filtering' ) );
+		add_filter( 'parse_query', array( $this, 'custom_query_filtering' ) );
 
-		add_filter( 'pre_get_posts', array( $this, 'nsfp_filtering_query_for_listing' ) );
+		add_filter( 'pre_get_posts', array( $this, 'custom_filtering_query_for_listing' ) );
 
-		add_action( 'widgets_init', array( $this, 'nsfp_custom_widgets' ) );
+		add_action( 'widgets_init', array( $this, 'register_custom_widgets' ) );
 
 		// Metabox stuffs.
 		add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
-		add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
+		add_action( 'save_post', array( $this, 'save_featured_meta_box' ) );
 
 		// Setup admin page.
 		add_action( 'init', array( $this, 'setup_admin_page' ) );
@@ -169,7 +169,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param array $links Links.
 	 */
-	public function ns_featured_posts_add_action_links( $links ) {
+	public function add_plugin_action_links( $links ) {
 		return array_merge(
 			array(
 				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . esc_html__( 'Settings', 'ns-featured-posts' ) . '</a>',
@@ -183,7 +183,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function ns_featured_posts_add_columns_head() {
+	public function add_custom_columns_head() {
 		$allowed = $this->get_allowed_post_types();
 
 		if ( ! empty( $allowed ) ) {
@@ -236,7 +236,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function nsfp_ajax_featured_post() {
+	public function ajax_handler_featured_toggle() {
 		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
 
 		$id = 0;
@@ -298,7 +298,7 @@ class NS_Featured_Posts_Admin {
 		$screens = $allowed;
 
 		foreach ( $screens as $screen ) {
-			add_meta_box( 'nsfp_meta_box_featured', esc_html__( 'Featured', 'ns-featured-posts' ), array( $this, 'nsfp_meta_box_featured_callback' ), $screen, 'side' );
+			add_meta_box( 'nsfp_meta_box_featured', esc_html__( 'Featured', 'ns-featured-posts' ), array( $this, 'featured_metabox_callback' ), $screen, 'side' );
 		}
 	}
 
@@ -309,7 +309,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param WP_Post $post Post object.
 	 */
-	public function nsfp_meta_box_featured_callback( $post ) {
+	public function featured_metabox_callback( $post ) {
 		$is_ns_featured_post = get_post_meta( $post->ID, '_is_ns_featured_post', true );
 
 		wp_nonce_field( plugin_basename( __FILE__ ), 'nsfp_featured_metabox_nonce' );
@@ -331,7 +331,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param int $post_id Post ID.
 	 */
-	public function nsfp_save_meta_box( $post_id ) {
+	public function save_featured_meta_box( $post_id ) {
 		$allowed = $this->get_allowed_post_types();
 
 		if ( ! in_array( get_post_type( $post_id ), $allowed, true ) ) {
@@ -371,7 +371,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function nsfp_table_filtering() {
+	public function custom_table_filtering() {
 		global $typenow;
 
 		$allowed = $this->get_allowed_post_types();
@@ -400,7 +400,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param WP_Query $query Instance of WP_Query object.
 	 */
-	public function nsfp_query_filtering( $query ) {
+	public function custom_query_filtering( $query ) {
 		global $pagenow;
 
 		$qv = &$query->query_vars;
@@ -450,7 +450,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param WP_Query $wp_query Instance of WP_Query object.
 	 */
-	public function nsfp_filtering_query_for_listing( $wp_query ) {
+	public function custom_filtering_query_for_listing( $wp_query ) {
 		if ( is_admin() ) {
 			$allowed = $this->get_allowed_post_types();
 
@@ -518,7 +518,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function nsfp_custom_widgets() {
+	public function register_custom_widgets() {
 		register_widget( 'NSFP_Featured_Post_Widget' );
 	}
 
