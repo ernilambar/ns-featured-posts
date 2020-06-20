@@ -26,9 +26,11 @@ define( 'NS_FEATURED_POSTS_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
 require_once NS_FEATURED_POSTS_DIR . '/vendor/autoload.php';
 
 // Load classes.
-require_once NS_FEATURED_POSTS_DIR . '/class-ns-featured-posts.php';
-require_once NS_FEATURED_POSTS_DIR . '/class-ns-featured-posts-admin.php';
-require_once NS_FEATURED_POSTS_DIR . '/widgets/nsfp-featured-post-widget.php';
+require_once NS_FEATURED_POSTS_DIR . '/includes/classes/class-ns-featured-posts.php';
+require_once NS_FEATURED_POSTS_DIR . '/includes/classes/class-ns-featured-posts-admin.php';
+
+// Load widget.
+require_once NS_FEATURED_POSTS_DIR . '/includes/widgets/nsfp-featured-post-widget.php';
 
 // Register hooks that are fired when the plugin is activated or deactivated.
 register_activation_hook( __FILE__, array( 'NS_Featured_Posts', 'activate' ) );

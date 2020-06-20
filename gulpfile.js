@@ -22,13 +22,11 @@ var browserSync = require('browser-sync').create();
 
 // Deploy files list.
 var deploy_files_list = [
-	'images/**',
+	'assets/**',
+	'includes/**',
+	'languages/**',
 	'vendor/**',
-	'views/**',
-	'widgets/**',
 	'readme.txt',
-	'class-ns-featured-posts.php',
-	'class-ns-featured-posts-admin.php',
 	pkg.main_file
 ];
 
