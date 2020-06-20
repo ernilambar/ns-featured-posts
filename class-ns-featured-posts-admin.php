@@ -38,7 +38,7 @@ class NS_Featured_Posts_Admin {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
-		$plugin            = NS_Featured_Posts::get_instance();
+		$plugin = NS_Featured_Posts::get_instance();
 
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
@@ -120,20 +120,26 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     1.0.0
+	 * @since 1.0.0
 	 *
-	 * @return    object    A single instance of this class.
+	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
-
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
 	}
 
+	/**
+	 * Get post types options.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array Options.
+	 */
 	public function get_post_types_options() {
 		$output = array(
 			'post' => esc_html__( 'Post', 'ns-featured-posts' ),
@@ -159,13 +165,14 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Add settings action link to the plugins page.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
+	 *
+	 * @param array $links Links.
 	 */
 	public function ns_featured_posts_add_action_links( $links ) {
-
 		return array_merge(
 			array(
-				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-featured-posts' ) . '</a>',
+				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . esc_html__( 'Settings', 'ns-featured-posts' ) . '</a>',
 			),
 			$links
 		);
@@ -174,9 +181,9 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Add columns to the listing.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	function ns_featured_posts_add_columns_head() {
+	public function ns_featured_posts_add_columns_head() {
 		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
 			add_filter( 'manage_edit-' . $post_type . '_columns', array( $this, 'add_featured_column_heading' ), 2 );
 			add_action( 'manage_' . $post_type . '_posts_custom_column', array( $this, 'add_featured_column_content' ), 10, 2 );
@@ -186,10 +193,12 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Add heading in the featured column.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
+	 *
+	 * @param array $columns Columns.
 	 */
-	function add_featured_column_heading( $columns ) {
-		$columns['ns_featured_posts_col'] = __( 'Featured', 'ns-featured-posts' );
+	public function add_featured_column_heading( $columns ) {
+		$columns['ns_featured_posts_col'] = esc_html__( 'Featured', 'ns-featured-posts' );
 
 		return $columns;
 	}
@@ -197,38 +206,57 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Add column content in the featured column.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
+	 *
+	 * @param string $column Current column.
+	 * @param int    $id Post ID.
 	 */
-	function add_featured_column_content( $column, $id ) {
-		if ( $column == 'ns_featured_posts_col' ) {
-			$class       = '';
+	public function add_featured_column_content( $column, $id ) {
+		if ( 'ns_featured_posts_col' === $column ) {
+			$class = '';
+
+			$classes = array( 'ns_featured_posts_icon' );
+
 			$ns_featured = get_post_meta( $id, '_is_ns_featured_post', true );
-			$classes     = array( 'ns_featured_posts_icon' );
-			if ( 'yes' == $ns_featured ) {
+
+			if ( 'yes' === $ns_featured ) {
 				$classes[] = 'selected';
 			}
-			echo '<a id="btn-post-featured_' . $id . '" class="' . implode( ' ', $classes ) . '"></a>';
+
+			echo '<a id="btn-post-featured_' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '"></a>';
 		}
 	}
 
 	/**
 	 * Function to handle AJAX request.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	function nsfp_ajax_featured_post() {
-		$ns_featured = $_POST['ns_featured'];
-		$id          = (int) $_POST['post'];
-		if ( ! empty( $id ) && $ns_featured !== null ) {
-			if ( $ns_featured == 'no' ) {
+	public function nsfp_ajax_featured_post() {
+		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
+
+		$id = 0;
+
+		if ( isset( $_POST['post'] ) ) {
+			$id = (int) $_POST['post'];
+		}
+
+		if ( ! empty( $id ) && null !== $ns_featured ) {
+			if ( 'no' === $ns_featured ) {
 				delete_post_meta( $id, '_is_ns_featured_post' );
 			} else {
 				update_post_meta( $id, '_is_ns_featured_post', 'yes' );
 			}
 		}
+
 		wp_send_json_success();
 	}
 
+	/**
+	 * Load assets.
+	 *
+	 * @since 1.0.0
+	 */
 	public function load_assets() {
 		global $pagenow;
 
@@ -249,7 +277,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 1.1.0
 	 */
-	function add_featured_meta_boxes() {
+	public function add_featured_meta_boxes() {
 		global $typenow;
 
 		$allowed = array();
@@ -258,14 +286,14 @@ class NS_Featured_Posts_Admin {
 			$allowed[] = $post_type;
 		}
 
-		if ( ! in_array( $typenow, $allowed ) ) {
+		if ( ! in_array( $typenow, $allowed, true ) ) {
 			return;
 		}
 
 		$screens = $allowed;
 
 		foreach ( $screens as $screen ) {
-			add_meta_box( 'nsfp_meta_box_featured', __( 'Featured', 'ns-featured-posts' ), array( $this, 'nsfp_meta_box_featured_callback' ), $screen, 'side' );
+			add_meta_box( 'nsfp_meta_box_featured', esc_html__( 'Featured', 'ns-featured-posts' ), array( $this, 'nsfp_meta_box_featured_callback' ), $screen, 'side' );
 		}
 	}
 
@@ -273,76 +301,85 @@ class NS_Featured_Posts_Admin {
 	 * Featured meta box callback.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post Post object.
 	 */
-	function nsfp_meta_box_featured_callback( $post ) {
-
+	public function nsfp_meta_box_featured_callback( $post ) {
 		$is_ns_featured_post = get_post_meta( $post->ID, '_is_ns_featured_post', true );
 
 		wp_nonce_field( plugin_basename( __FILE__ ), 'nsfp_featured_metabox_nonce' );
 		?>
-	  <p>
-	  <label>
-		  <input type="hidden" name="nsfp_settings[make_this_featured]" value="0" />
-		  <input type="checkbox" name="nsfp_settings[make_this_featured]" value="yes" <?php checked( $is_ns_featured_post, 'yes', true ); ?> />
-		  <span class="small"><?php _e( 'Check this to make featured.', 'ns-featured-posts' ); ?></span>
-	  </label>
-	  </p>
+		<p>
+			<label>
+				<input type="hidden" name="nsfp_settings[make_this_featured]" value="0" />
+				<input type="checkbox" name="nsfp_settings[make_this_featured]" value="yes" <?php checked( $is_ns_featured_post, 'yes', true ); ?> />
+				<span class="small"><?php esc_html_e( 'Check this to make featured.', 'ns-featured-posts' ); ?></span>
+			</label>
+		</p>
 		<?php
-
 	}
 
-	function nsfp_save_meta_box( $post_id ) {
-
+	/**
+	 * Save meta box.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $post_id Post ID.
+	 */
+	public function nsfp_save_meta_box( $post_id ) {
 		$allowed = array();
+
 		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
 			$allowed[] = $post_type;
 		}
-		if ( ! in_array( get_post_type( $post_id ), $allowed ) ) {
+
+		if ( ! in_array( get_post_type( $post_id ), $allowed, true ) ) {
 			return $post_id;
 		}
 
-		// Bail if we're doing an auto save
+		// Bail if we're doing an auto save.
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
 
-		// if our nonce isn't there, or we can't verify it, bail
+		// If our nonce isn't there, or we can't verify it, bail.
 		if ( ! isset( $_POST['nsfp_featured_metabox_nonce'] ) || ! wp_verify_nonce( $_POST['nsfp_featured_metabox_nonce'], plugin_basename( __FILE__ ) ) ) {
 			return $post_id;
 		}
 
-		// if our current user can't edit this post, bail
+		// If our current user can't edit this post, bail.
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}
 
 		$featured_value = '';
-		if ( isset( $_POST['nsfp_settings']['make_this_featured'] ) && 'yes' == $_POST['nsfp_settings']['make_this_featured'] ) {
+
+		if ( isset( $_POST['nsfp_settings']['make_this_featured'] ) && 'yes' === $_POST['nsfp_settings']['make_this_featured'] ) {
 			$featured_value = 'yes';
 		}
-		if ( 'yes' == $featured_value ) {
+
+		if ( 'yes' === $featured_value ) {
 			update_post_meta( $post_id, '_is_ns_featured_post', $featured_value );
 		} else {
 			delete_post_meta( $post_id, '_is_ns_featured_post' );
 		}
-		return $post_id;
-
 	}
-
-
 
 	/**
 	 * Filtering dropdown in the post listing.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	function nsfp_table_filtering() {
-		global $wpdb, $typenow;
+	public function nsfp_table_filtering() {
+		global $typenow;
+
 		$allowed = array();
+
 		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
 			$allowed[] = $post_type;
 		}
-		if ( ! in_array( $typenow, $allowed ) ) {
+
+		if ( ! in_array( $typenow, $allowed, true ) ) {
 			return;
 		}
 
@@ -353,23 +390,25 @@ class NS_Featured_Posts_Admin {
 		}
 
 		echo '<select name="filter-ns-featured-posts" id="filter-ns-featured-posts">';
-		echo '<option value="">' . __( 'Show All', 'ns-featured-posts' ) . '</option>';
-		echo '<option value="yes" ' . selected( $selected_now, 'yes', false ) . '>' . __( 'Featured', 'ns-featured-posts' ) . '</option>';
-		echo '<option value="no" ' . selected( $selected_now, 'no', false ) . '>' . __( 'Not Featured', 'ns-featured-posts' ) . '</option>';
+		echo '<option value="">' . esc_html__( 'Show All', 'ns-featured-posts' ) . '</option>';
+		echo '<option value="yes" ' . selected( $selected_now, 'yes', false ) . '>' . esc_html__( 'Featured', 'ns-featured-posts' ) . '</option>';
+		echo '<option value="no" ' . selected( $selected_now, 'no', false ) . '>' . esc_html__( 'Not Featured', 'ns-featured-posts' ) . '</option>';
 		echo '</select>';
 	}
 
 	/**
 	 * Query filtering in the post listing.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
+	 *
+	 * @param WP_Query $query Instance of WP_Query object.
 	 */
-	function nsfp_query_filtering( $query ) {
+	public function nsfp_query_filtering( $query ) {
 		global $pagenow;
 
 		$qv = &$query->query_vars;
 
-		if ( is_admin() && $pagenow == 'edit.php' ) {
+		if ( is_admin() && 'edit.php' === $pagenow ) {
 
 			if ( ! isset( $qv['meta_query'] ) ) {
 				$qv['meta_query'] = array();
@@ -377,57 +416,30 @@ class NS_Featured_Posts_Admin {
 
 			if ( ! empty( $_GET['filter-ns-featured-posts'] ) ) {
 
-				if ( 'yes' == $_GET['filter-ns-featured-posts'] ) {
+				if ( 'yes' === $_GET['filter-ns-featured-posts'] ) {
 					$qv['meta_query'][] = array(
 						'key'     => '_is_ns_featured_post',
 						'compare' => '=',
 						'value'   => 'yes',
 					);
-				} // end if yes
+				}
 
-				if ( 'no' == $_GET['filter-ns-featured-posts'] ) {
+				if ( 'no' === $_GET['filter-ns-featured-posts'] ) {
 					$qv['meta_query'][] = array(
 						'key'     => '_is_ns_featured_post',
 						'compare' => 'NOT EXISTS',
 						'value'   => '',
 					);
-				} // end if no
-			} // end if not empty
+				}
+			}
 
-			// for filter link
-			if ( isset( $_GET['post_status'] ) && 'nsfp' == $_GET['post_status'] ) {
-				if ( isset( $_GET['featured'] ) && 'yes' == $_GET['featured'] ) {
-
+			// For filter link.
+			if ( isset( $_GET['post_status'] ) && 'nsfp' === $_GET['post_status'] ) {
+				if ( isset( $_GET['featured'] ) && 'yes' === $_GET['featured'] ) {
 					$qv['meta_query'][] = array(
 						'key'     => '_is_ns_featured_post',
 						'compare' => '=',
 						'value'   => 'yes',
-					);
-
-				}
-			}
-		} // end if
-
-	}
-
-	/**
-	 * Adding filtering link
-	 */
-	function nsfp_filtering_query_for_listing( $wp_query ) {
-
-		if ( is_admin() ) {
-			$allowed_posttypes = array();
-			foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-				$allowed_posttypes[] = $post_type;
-			}
-			if ( ! empty( $allowed_posttypes ) ) {
-				foreach ( $allowed_posttypes as $val ) {
-					add_filter(
-						'views_edit-' . $val,
-						array(
-							$this,
-							'nsfp_add_views_link',
-						)
 					);
 				}
 			}
@@ -435,21 +447,51 @@ class NS_Featured_Posts_Admin {
 	}
 
 	/**
-	 * Adding views link
+	 * Adding filtering link.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Query $wp_query Instance of WP_Query object.
 	 */
-	function nsfp_add_views_link( $views ) {
+	public function nsfp_filtering_query_for_listing( $wp_query ) {
+		if ( is_admin() ) {
+			$allowed_posttypes = array();
 
-		$post_type         = ( ( isset( $_GET['post_type'] ) && $_GET['post_type'] != '' ) ? $_GET['post_type'] : 'post' );
-		$count             = $this->get_total_featured_count( $post_type );
-		$class             = ( isset( $_GET['featured'] ) && $_GET['featured'] == 'yes' ) ? 'current' : '';
-		$args              = array(
+			foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
+				$allowed_posttypes[] = $post_type;
+			}
+
+			if ( ! empty( $allowed_posttypes ) ) {
+				foreach ( $allowed_posttypes as $val ) {
+					add_filter( 'views_edit-' . $val, array( $this, 'nsfp_add_views_link' ) );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Adding views link.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $views Views.
+	 */
+	public function nsfp_add_views_link( $views ) {
+		$post_type = ( ( isset( $_GET['post_type'] ) && '' !== $_GET['post_type'] ) ? $_GET['post_type'] : 'post' );
+
+		$count = $this->get_total_featured_count( $post_type );
+		$class = ( isset( $_GET['featured'] ) && 'yes' === $_GET['featured'] ) ? 'current' : '';
+
+		$args = array(
 			'post_type'   => $post_type,
 			'post_status' => 'nsfp',
 			'featured'    => 'yes',
 		);
-		$url               = esc_url( add_query_arg( $args, admin_url( 'edit.php' ) ) );
-		$views['featured'] = '<a href="' . $url . '" class="' . $class . '" >'
-			. __( 'Featured', 'ns-featured-posts' )
+
+		$url = add_query_arg( $args, admin_url( 'edit.php' ) );
+
+		$views['featured'] = '<a href="' . esc_url( $url ) . '" class="' . esc_attr( $class ) . '" >'
+			. esc_html__( 'Featured', 'ns-featured-posts' )
 			. '<span class="count">'
 			. ' (' . $count . ') '
 			. '</span>'
@@ -459,9 +501,13 @@ class NS_Featured_Posts_Admin {
 	}
 
 	/**
-	 * Get total featured count
+	 * Get total featured count.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $post_type Post type.
 	 */
-	function get_total_featured_count( $post_type ) {
+	public function get_total_featured_count( $post_type ) {
 		$args = array(
 			'post_type'      => $post_type,
 			'posts_per_page' => -1,
@@ -475,9 +521,11 @@ class NS_Featured_Posts_Admin {
 	}
 
 	/**
-	 * NSFP Widgets
+	 * Register widget.
+	 *
+	 * @since 1.0.0
 	 */
-	function nsfp_custom_widgets() {
+	public function nsfp_custom_widgets() {
 		register_widget( 'NSFP_Featured_Post_Widget' );
 	}
 
