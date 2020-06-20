@@ -11,8 +11,6 @@
 
 use Nilambar\Optioner\Optioner;
 
-require_once(plugin_dir_path( __FILE__ ) . 'widgets/nsfp-featured-post-widget.php');
-
 /**
  * NS Featured Posts Admin class.
  *
@@ -30,15 +28,6 @@ class NS_Featured_Posts_Admin
      * @var      object
      */
     protected static $instance = null;
-
-    /**
-     * Slug of the plugin screen.
-     *
-     * @since    1.0.0
-     *
-     * @var      string
-     */
-    protected $plugin_screen_hook_suffix = null;
 
   	protected $options = array();
 

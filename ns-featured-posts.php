@@ -18,16 +18,19 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+define( 'NS_FEATURED_POSTS_BASENAME', basename( dirname( __FILE__ ) ) );
+define( 'NS_FEATURED_POSTS_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
+define( 'NS_FEATURED_POSTS_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
+
 // Init autoload.
-require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+require_once NS_FEATURED_POSTS_DIR . '/vendor/autoload.php';
 
-require_once plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts.php';
-require_once plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts-admin.php';
+// Load classes.
+require_once NS_FEATURED_POSTS_DIR . '/class-ns-featured-posts.php';
+require_once NS_FEATURED_POSTS_DIR . '/class-ns-featured-posts-admin.php';
+require_once NS_FEATURED_POSTS_DIR . '/widgets/nsfp-featured-post-widget.php';
 
-/*
- * Register hooks that are fired when the plugin is activated or deactivated.
- * When the plugin is deleted, the uninstall.php file is loaded.
- */
+// Register hooks that are fired when the plugin is activated or deactivated.
 register_activation_hook( __FILE__, array( 'NS_Featured_Posts', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'NS_Featured_Posts', 'deactivate' ) );
 
