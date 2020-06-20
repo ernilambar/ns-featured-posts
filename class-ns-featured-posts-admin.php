@@ -112,7 +112,7 @@ class NS_Featured_Posts_Admin
         	array(
         		'id'        => 'nsfp_posttypes',
         		'type'      => 'multicheck',
-        		'title'     => esc_html__( 'Enable Tree Style', 'ns-featured-posts' ),
+        		'title'     => esc_html__( 'Enable Featured for', 'ns-featured-posts' ),
         		'choices' => array(
         			'post' => esc_html__( 'Post', 'ns-featured-posts' ),
         			'page' => esc_html__( 'Page', 'ns-featured-posts' ),
