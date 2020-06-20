@@ -59,8 +59,9 @@ class NS_Featured_Posts_Admin
          */
 
         add_action( 'admin_init', array($this, 'ns_featured_posts_add_columns_head'));
-        add_action( 'admin_head', array( $this,'add_script_to_admin_head') );
-        add_action( 'admin_head', array( $this,'add_style_to_admin_head') );
+        add_action( 'admin_enqueue_scripts', array($this, 'load_assets'));
+        // add_action( 'admin_head', array( $this,'add_script_to_admin_head') );
+        // add_action( 'admin_head', array( $this,'add_style_to_admin_head') );
         add_action( 'wp_ajax_nsfeatured_posts', array( $this, 'nsfp_ajax_featured_post' ) );
 
         add_action( 'restrict_manage_posts', array( $this, 'nsfp_table_filtering' ) );
@@ -236,107 +237,54 @@ class NS_Featured_Posts_Admin
         wp_send_json_success();
     }
 
-    /**
-     * Add scripts in the admin head.
-     *
-     * @since    1.0.0
-     */
-    function add_script_to_admin_head(){
-        global $pagenow;
+    public function load_assets() {
+    	global $pagenow;
 
-        if ( 'edit.php' !== $pagenow ) {
-            return;
-        }
+    	if ( 'edit.php' !== $pagenow ) {
+    	    return;
+    	}
 
-        if ( current_user_can( 'unfiltered_html' ) ) {
-            ?>
-            <script type="text/javascript" language="javascript">
-                jQuery(document).ready(function($){
-                        jQuery('.ns_featured_posts_icon').click(function() {
-                            var selected = 'yes';
-                            if ( jQuery(this).hasClass( 'selected' ) ){
-                                jQuery(this).removeClass( 'selected' );
-                                selected = 'no';
-                            } else { jQuery(this).addClass( 'selected' ); }
-                            // get id
-                            var tempID = jQuery(this).attr( 'id' );
-                                tempID = tempID.split( '_' );
-                            jQuery.post( ajaxurl, 'action=nsfeatured_posts&post='+tempID[1]+'&ns_featured='+selected );
+    	if ( ! current_user_can( 'unfiltered_html' ) ) {
+    	    return;
+    	}
 
-                        });
-                    });
-
-            </script>
-            <?php
-        }
-    }
-
-    /**
-     * Add styles in the admin head.
-     *
-     * @since    1.0.0
-     */
-    function add_style_to_admin_head(){
-
-        global $pagenow;
-
-        if ( 'edit.php' !== $pagenow ) {
-            return;
-        }
-
-        $img_url = plugins_url( 'images/featured.png' , __FILE__ );
-        ?>
-        <style>
-            #ns_featured_posts_col, .column-ns_featured_posts_col{
-                width:100px; text-align: center !important;
-            }
-            .ns_featured_posts_icon{
-                display:block; height:24px; width:24px; margin:8px auto 0 auto; border:none;
-                background: transparent url(<?php echo esc_url( $img_url ); ?>) 0 0 no-repeat; cursor:pointer;
-            }
-            .ns_featured_posts_icon.selected, .ns_featured_posts_icon:active{
-                background-position:0 -24px;
-            }
-        </style>
-        <?php
+    	wp_enqueue_style( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/css/admin.css' , array(), '1.0.0' );
+    	wp_enqueue_script( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/js/admin.js' , array( 'jquery' ), '1.0.0', true );
     }
 
     /**
      * Add meta box in posts.
      *
-     * @since    1.1
+     * @since 1.1.0
      */
     function add_featured_meta_boxes() {
-
       global $typenow;
+
       $allowed = array();
+
       foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
           $allowed[] = $post_type;
       }
+
       if ( ! in_array($typenow,  $allowed )  ) {
           return;
       }
-      $screens = $allowed;
-      foreach ( $screens as $screen ) {
-        add_meta_box(
-          'nsfp_meta_box_featured',
-          __( 'Featured', 'ns-featured-posts' ),
-          array( $this, 'nsfp_meta_box_featured_callback' ),
-          $screen,
-          'side'
-        );
-      }
 
+      $screens = $allowed;
+
+      foreach ( $screens as $screen ) {
+        add_meta_box( 'nsfp_meta_box_featured', __( 'Featured', 'ns-featured-posts' ), array( $this, 'nsfp_meta_box_featured_callback' ), $screen, 'side' );
+      }
     }
 
     /**
      * Featured meta box callback.
      *
-     * @since    1.0.0
+     * @since 1.0.0
      */
     function nsfp_meta_box_featured_callback( $post ){
 
-      $is_ns_featured_post = get_post_meta( $post->ID, '_is_ns_featured_post', true );
+		$is_ns_featured_post = get_post_meta( $post->ID, '_is_ns_featured_post', true );
 
       wp_nonce_field( plugin_basename( __FILE__ ), 'nsfp_featured_metabox_nonce' );
       ?>
