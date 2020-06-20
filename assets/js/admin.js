@@ -7,11 +7,15 @@
 
             var $post_id = $this.data('postid');
 
-            var target_status = ( $this.hasClass( 'selected' ) ) ? 'no' : 'yes';
+            var $target_status = ( $this.hasClass( 'selected' ) ) ? 'no' : 'yes';
 
             $.post(
-            	ajaxurl,
-            	'action=nsfeatured_posts&post=' + $post_id + '&ns_featured=' + target_status,
+            	NSFP_OBJ.ajaxurl,
+            	{
+            		"action": "nsfeatured_posts",
+            		"post": $post_id,
+            		"ns_featured": $target_status,
+            	},
             	function(data, status) {
             		if ( 'success' == status) {
 	            		$this.toggleClass('selected');

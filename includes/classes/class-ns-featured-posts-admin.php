@@ -279,6 +279,13 @@ class NS_Featured_Posts_Admin {
 
 		wp_enqueue_style( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/css/admin.css', array(), '1.0.0' );
 		wp_enqueue_script( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/js/admin.js', array( 'jquery' ), '1.0.0', true );
+
+		$localize_args = array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+		);
+
+		wp_localize_script( 'nspf-admin', 'NSFP_OBJ', $localize_args );
+
 	}
 
 	/**
