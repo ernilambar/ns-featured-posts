@@ -223,7 +223,7 @@ class NS_Featured_Posts_Admin {
 				$classes[] = 'selected';
 			}
 
-			echo '<a id="btn-post-featured_' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '"></a>';
+			echo '<a id="btn-post-featured_' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '"><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
 		}
 	}
 
