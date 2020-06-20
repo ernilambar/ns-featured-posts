@@ -90,14 +90,43 @@ class NS_Featured_Posts_Admin
 
         $obj->set_page(
         	array(
-        		'page_title'  => esc_html__( 'NS Category Widget', 'ns-featured-posts' ),
-        		'menu_title'  => esc_html__( 'NS Category Widget', 'ns-featured-posts' ),
+        		'page_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
+        		'menu_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
         		'capability'  => 'manage_options',
-        		'menu_slug'   => 'ns-category-widget',
-        		'option_slug' => 'nscw_plugin_options',
+        		'menu_slug'   => 'ns-featured-posts',
+        		'option_slug' => 'nsfp_plugin_options',
         	)
         );
 
+        // Tab: nsfp_settings_tab.
+        $obj->add_tab(
+        	array(
+        		'id'    => 'nsfp_settings_tab',
+        		'title' => esc_html__( 'Settings', 'ns-featured-posts' ),
+        	)
+        );
+
+        // Field: nsfp_posttypes.
+        $obj->add_field(
+        	'nsfp_settings_tab',
+        	array(
+        		'id'        => 'nsfp_posttypes',
+        		'type'      => 'multicheck',
+        		'title'     => esc_html__( 'Enable Tree Style', 'ns-featured-posts' ),
+        		'choices' => array(
+        			'post' => esc_html__( 'Post', 'ns-featured-posts' ),
+        			'page' => esc_html__( 'Page', 'ns-featured-posts' ),
+        		),
+        	)
+        );
+
+        // Sidebar.
+        $obj->set_sidebar(
+        	array(
+        		'render_callback' => array( $this, 'render_sidebar' ),
+        		'width'           => 30,
+        	)
+        );
 
         // Run now.
         $obj->run();
@@ -547,5 +576,54 @@ class NS_Featured_Posts_Admin
 		}
 
 	} // End function nsfp_posttypes_callback.
+
+	/**
+	 * Render sidebar.
+	 *
+	 * @since 3.1.1
+	 */
+	public function render_sidebar() {
+		?>
+		<div class="sidebox">
+			<h3 class="box-heading">Help &amp; Support</h3>
+			<div class="box-content">
+				<ul>
+					<li><strong>Questions, bugs or great ideas?</strong></li>
+					<li><a href="http://wordpress.org/support/plugin/ns-featured-posts" target="_blank">Visit our plugin support page</a></li>
+					<li><strong>Wanna help make this plugin better?</strong></li>
+					<li><a href="http://wordpress.org/support/view/plugin-reviews/ns-featured-posts" target="_blank">Review and rate this plugin on WordPress.org</a></li>
+				</ul>
+			</div>
+		</div><!-- .sidebox -->
+		<div class="sidebox">
+			<h3 class="box-heading">My Blog</h3>
+			<div class="box-content">
+				<?php
+				$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
+
+				$maxitems = 0;
+
+				$rss_items = array();
+
+				if ( ! is_wp_error( $rss ) ) {
+					$maxitems  = $rss->get_item_quantity( 5 );
+					$rss_items = $rss->get_items( 0, $maxitems );
+				}
+				?>
+
+				<?php if ( ! empty( $rss_items ) ) : ?>
+
+					<ul>
+						<?php foreach ( $rss_items as $item ) : ?>
+							<li><a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank"><?php echo esc_html( $item->get_title() ); ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+
+				<?php endif; ?>
+			</div>
+		</div><!-- .sidebox -->
+		<?php
+	}
+
 
 } // End class.

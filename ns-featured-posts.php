@@ -18,8 +18,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once( plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts-admin.php' );
+// Init autoload.
+require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
+require_once plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-ns-featured-posts-admin.php';
 
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
