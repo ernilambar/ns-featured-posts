@@ -70,7 +70,6 @@ class NS_Featured_Posts_Admin
          */
 
         add_action( 'admin_init', array($this, 'ns_featured_posts_add_columns_head'));
-        add_action( 'admin_init', array($this, 'plugin_register_settings'));
         add_action( 'admin_head', array( $this,'add_script_to_admin_head') );
         add_action( 'admin_head', array( $this,'add_style_to_admin_head') );
         add_action( 'wp_ajax_nsfeatured_posts', array( $this, 'nsfp_ajax_featured_post' ) );
@@ -194,8 +193,8 @@ class NS_Featured_Posts_Admin
      *
      * @since    1.0.0
      */
-    function ns_featured_posts_add_columns_head(){
-        foreach ( $this->options['nsfp_posttypes'] as $post_type => $val ) {
+    function ns_featured_posts_add_columns_head() {
+        foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
             add_filter('manage_edit-'.$post_type.'_columns', array( $this,'add_featured_column_heading'), 2);
             add_action('manage_'.$post_type.'_posts_custom_column', array( $this,'add_featured_column_content'), 10, 2);
         }
@@ -206,8 +205,9 @@ class NS_Featured_Posts_Admin
      *
      * @since    1.0.0
      */
-    function add_featured_column_heading( $columns ){
+    function add_featured_column_heading( $columns ) {
         $columns['ns_featured_posts_col'] = __( 'Featured', 'ns-featured-posts' );
+
         return $columns;
     }
 
@@ -255,7 +255,7 @@ class NS_Featured_Posts_Admin
     function add_script_to_admin_head(){
         global $pagenow;
 
-        if ( 'edit.php' != $pagenow ) {
+        if ( 'edit.php' !== $pagenow ) {
             return;
         }
 
@@ -291,7 +291,7 @@ class NS_Featured_Posts_Admin
 
         global $pagenow;
 
-        if ( 'edit.php' != $pagenow ) {
+        if ( 'edit.php' !== $pagenow ) {
             return;
         }
 
@@ -317,11 +317,11 @@ class NS_Featured_Posts_Admin
      *
      * @since    1.1
      */
-    function add_featured_meta_boxes(){
+    function add_featured_meta_boxes() {
 
       global $typenow;
       $allowed = array();
-      foreach ( $this->options['nsfp_posttypes'] as $post_type => $val ) {
+      foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
           $allowed[] = $post_type;
       }
       if ( ! in_array($typenow,  $allowed )  ) {
@@ -365,7 +365,7 @@ class NS_Featured_Posts_Admin
     function nsfp_save_meta_box( $post_id ){
 
       $allowed = array();
-      foreach ( $this->options['nsfp_posttypes'] as $post_type => $val ) {
+      foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
         $allowed[] = $post_type;
       }
       if ( ! in_array( get_post_type( $post_id ),  $allowed )  ) {
@@ -407,16 +407,19 @@ class NS_Featured_Posts_Admin
     function nsfp_table_filtering(){
         global $wpdb, $typenow ;
         $allowed = array();
-        foreach ( $this->options['nsfp_posttypes'] as $post_type => $val ) {
+        foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
             $allowed[]= $post_type;
         }
         if ( ! in_array($typenow,  $allowed )  ) {
             return;
         }
+
         $selected_now = '';
+
         if ( isset( $_GET['filter-ns-featured-posts'] ) ) {
           $selected_now = esc_attr( $_GET['filter-ns-featured-posts'] );
         }
+
         echo '<select name="filter-ns-featured-posts" id="filter-ns-featured-posts">';
         echo '<option value="">'. __( 'Show All', 'ns-featured-posts' ) .'</option>';
         echo '<option value="yes" '.selected( $selected_now, 'yes', false ) .'>'. __( 'Featured', 'ns-featured-posts' ) .'</option>';
@@ -430,9 +433,10 @@ class NS_Featured_Posts_Admin
      * @since    1.0.0
      */
     function nsfp_query_filtering($query){
-
         global $pagenow;
+
         $qv = &$query->query_vars;
+
         if ( is_admin() && $pagenow == 'edit.php'){
 
             if ( ! isset( $qv['meta_query'] ) ) {
@@ -483,7 +487,7 @@ class NS_Featured_Posts_Admin
 
         if( is_admin()) {
             $allowed_posttypes = array();
-            foreach ( $this->options['nsfp_posttypes'] as $post_type => $val ) {
+            foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
                 $allowed_posttypes[]= $post_type;
             }
             if ( ! empty( $allowed_posttypes ) ) {
@@ -530,7 +534,9 @@ class NS_Featured_Posts_Admin
 			'meta_key'       => '_is_ns_featured_post',
 			'meta_value'     => 'yes',
         );
+
         $postlist = get_posts( $args );
+
         return count( $postlist );
     }
 
@@ -540,65 +546,6 @@ class NS_Featured_Posts_Admin
     function nsfp_custom_widgets(){
         register_widget( 'NSFP_Featured_Post_Widget' );
     }
-
-    /**
-     * Register plugin settings
-     */
-    public function plugin_register_settings()
-    {
-      register_setting('nsfp-plugin-options-group', 'nsfp_plugin_options', array( $this, 'ns_featured_posts_plugin_options_validate') );
-
-  		add_settings_section('main_settings', __( 'Plugin Settings', 'ns-featured-posts' ) , array($this, 'ns_featured_posts_plugin_section_text_callback'), 'ns-featured-posts-main');
-
-  		add_settings_field('nsfp_posttypes', __( 'Enable Featured for', 'ns-featured-posts' ), array($this, 'nsfp_posttypes_callback'), 'ns-featured-posts-main', 'main_settings');
-
-
-    }
-
-	// Validate our options.
-	function ns_featured_posts_plugin_options_validate($input) {
-
-    if ( ! isset( $input['nsfp_posttypes'] ) ) {
-      $input['nsfp_posttypes'] = array();
-    }
-		return $input;
-	}
-
-	function ns_featured_posts_plugin_section_text_callback() {
-		return;
-	}
-
-	function nsfp_posttypes_callback() {
-		?>
-		<p>
-			<label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][post]" value="1"
-				<?php checked(isset($this -> options['nsfp_posttypes']['post']) && 1 == $this -> options['nsfp_posttypes']['post']); ?> /><?php _e("Post",  'ns-featured-posts' ); ?></label>
-		</p>
-		<p>
-			<label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][page]" value="1"
-			<?php checked(isset($this -> options['nsfp_posttypes']['page']) && 1 == $this -> options['nsfp_posttypes']['page']); ?> /><?php _e("Page",  'ns-featured-posts' ); ?></label>
-		</p>
-		<?php
-		$args = array(
-			'public'   => true,
-			'_builtin' => false,
-		);
-		$post_types_custom = get_post_types( $args, 'objects' );
-
-		if (!empty($post_types_custom)){
-			foreach ($post_types_custom as $key => $ptype){
-                $name = $ptype->labels->{'name'};
-			?>
-            <p>
-              <label><input type="checkbox" name="nsfp_plugin_options[nsfp_posttypes][<?php echo $key; ?>]" value="1"
-              	<?php checked( isset($this -> options['nsfp_posttypes'][$key]) && 1 == $this -> options['nsfp_posttypes'][$key]); ?> /><?php echo $name; ?></label>
-            </p>
-
-			<?php
-			}
-		}
-
-	} // End function nsfp_posttypes_callback.
 
 	/**
 	 * Render sidebar.
