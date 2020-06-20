@@ -320,9 +320,9 @@ class NS_Featured_Posts
 	    		$opt['nsfp_posttypes'] = $values;
 
 	    		update_option( 'nsfp_plugin_options', $opt );
-
-	    		update_option( 'nsfp_option_migration_complete', 'yes' );
     		}
     	}
+
+    	update_option( 'nsfp_option_migration_complete', 'yes' );
     }
 }
