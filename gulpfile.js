@@ -23,6 +23,7 @@ var browserSync = require('browser-sync').create();
 // Deploy files list.
 var deploy_files_list = [
 	'images/**',
+	'vendor/**',
 	'views/**',
 	'widgets/**',
 	'readme.txt',
