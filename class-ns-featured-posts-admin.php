@@ -86,9 +86,6 @@ class NS_Featured_Posts_Admin
         add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
-        // Migrate options.
-        add_action( 'init', array( $this, 'migrate_options' ) );
-
         $obj = new Optioner();
 
         $obj->set_page(
@@ -152,27 +149,6 @@ class NS_Featured_Posts_Admin
         }
 
         return self::$instance;
-    }
-
-    function migrate_options() {
-    	if ( 'yes' === get_option( 'nsfp_option_migration_complete' ) ) {
-    		return;
-    	}
-
-    	$opt = get_option( 'nsfp_plugin_options' );
-
-    	if ( $opt ) {
-    		if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
-
-	    		$values = array_keys( $opt['nsfp_posttypes'] );
-
-	    		$opt['nsfp_posttypes'] = $values;
-
-	    		update_option( 'nsfp_plugin_options', $opt );
-
-	    		update_option( 'nsfp_option_migration_complete', 'yes' );
-    		}
-    	}
     }
 
     /**

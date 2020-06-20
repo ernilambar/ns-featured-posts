@@ -86,6 +86,8 @@ class NS_Featured_Posts
 		// Get current options.
         $this->_getCurrentOptions();
 
+        // Migrate options.
+        add_action( 'init', array( $this, 'migrate_options' ) );
     }
 
     /**
@@ -303,4 +305,24 @@ class NS_Featured_Posts
 		return $this->options;
 	}
 
+    public function migrate_options() {
+    	if ( 'yes' === get_option( 'nsfp_option_migration_complete' ) ) {
+    		return;
+    	}
+
+    	$opt = get_option( 'nsfp_plugin_options' );
+
+    	if ( $opt ) {
+    		if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
+
+	    		$values = array_keys( $opt['nsfp_posttypes'] );
+
+	    		$opt['nsfp_posttypes'] = $values;
+
+	    		update_option( 'nsfp_plugin_options', $opt );
+
+	    		update_option( 'nsfp_option_migration_complete', 'yes' );
+    		}
+    	}
+    }
 }
