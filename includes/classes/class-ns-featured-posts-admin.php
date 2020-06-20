@@ -184,9 +184,13 @@ class NS_Featured_Posts_Admin {
 	 * @since 1.0.0
 	 */
 	public function ns_featured_posts_add_columns_head() {
-		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-			add_filter( 'manage_edit-' . $post_type . '_columns', array( $this, 'add_featured_column_heading' ), 2 );
-			add_action( 'manage_' . $post_type . '_posts_custom_column', array( $this, 'add_featured_column_content' ), 10, 2 );
+		$allowed = $this->get_allowed_post_types();
+
+		if ( ! empty( $allowed ) ) {
+			foreach ( $allowed as $post_type ) {
+				add_filter( 'manage_edit-' . $post_type . '_columns', array( $this, 'add_featured_column_heading' ), 2 );
+				add_action( 'manage_' . $post_type . '_posts_custom_column', array( $this, 'add_featured_column_content' ), 10, 2 );
+			}
 		}
 	}
 
@@ -280,11 +284,7 @@ class NS_Featured_Posts_Admin {
 	public function add_featured_meta_boxes() {
 		global $typenow;
 
-		$allowed = array();
-
-		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-			$allowed[] = $post_type;
-		}
+		$allowed = $this->get_allowed_post_types();
 
 		if ( ! in_array( $typenow, $allowed, true ) ) {
 			return;
@@ -327,11 +327,7 @@ class NS_Featured_Posts_Admin {
 	 * @param int $post_id Post ID.
 	 */
 	public function nsfp_save_meta_box( $post_id ) {
-		$allowed = array();
-
-		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-			$allowed[] = $post_type;
-		}
+		$allowed = $this->get_allowed_post_types();
 
 		if ( ! in_array( get_post_type( $post_id ), $allowed, true ) ) {
 			return $post_id;
@@ -373,11 +369,7 @@ class NS_Featured_Posts_Admin {
 	public function nsfp_table_filtering() {
 		global $typenow;
 
-		$allowed = array();
-
-		foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-			$allowed[] = $post_type;
-		}
+		$allowed = $this->get_allowed_post_types();
 
 		if ( ! in_array( $typenow, $allowed, true ) ) {
 			return;
@@ -455,14 +447,10 @@ class NS_Featured_Posts_Admin {
 	 */
 	public function nsfp_filtering_query_for_listing( $wp_query ) {
 		if ( is_admin() ) {
-			$allowed_posttypes = array();
+			$allowed = $this->get_allowed_post_types();
 
-			foreach ( $this->options['nsfp_posttypes'] as $post_type ) {
-				$allowed_posttypes[] = $post_type;
-			}
-
-			if ( ! empty( $allowed_posttypes ) ) {
-				foreach ( $allowed_posttypes as $val ) {
+			if ( ! empty( $allowed ) ) {
+				foreach ( $allowed as $val ) {
 					add_filter( 'views_edit-' . $val, array( $this, 'nsfp_add_views_link' ) );
 				}
 			}
@@ -577,5 +565,22 @@ class NS_Featured_Posts_Admin {
 		<?php
 	}
 
+	/**
+	 * Return allowed post types.
+	 *
+	 * @since 1.4.2
+	 *
+	 * @return array Allowed post types array.
+	 */
+	public function get_allowed_post_types() {
+		$output = array();
 
+		$posttypes_values = $this->options['nsfp_posttypes'];
+
+		if ( ! empty( $posttypes_values ) ) {
+			$output = $posttypes_values;
+		}
+
+		return $output;
+	}
 } // End class.
