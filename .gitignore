@@ -11,6 +11,7 @@ project.properties
 /node_modules/
 /deploy/
 /build/
+/vendor/
 
 # Docs
 /docs/
