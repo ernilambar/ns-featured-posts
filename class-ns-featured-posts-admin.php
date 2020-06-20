@@ -86,6 +86,11 @@ class NS_Featured_Posts_Admin
         add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
+        // Migrate options.
+        if ( 'yes' !== get_option( 'nsfp_option_migration_complete' ) ) {
+	        add_action( 'init', array( $this, 'migrate_options' ) );
+        }
+
         $obj = new Optioner();
 
         $obj->set_page(
@@ -110,10 +115,10 @@ class NS_Featured_Posts_Admin
         $obj->add_field(
         	'nsfp_settings_tab',
         	array(
-        		'id'        => 'nsfp_posttypes',
-        		'type'      => 'multicheck',
-        		'title'     => esc_html__( 'Enable Featured for', 'ns-featured-posts' ),
-        		'choices' => array(
+				'id'      => 'nsfp_posttypes',
+				'type'    => 'multicheck',
+				'title'   => esc_html__( 'Enable Featured for', 'ns-featured-posts' ),
+				'choices' => array(
         			'post' => esc_html__( 'Post', 'ns-featured-posts' ),
         			'page' => esc_html__( 'Page', 'ns-featured-posts' ),
         		),
@@ -149,6 +154,23 @@ class NS_Featured_Posts_Admin
         }
 
         return self::$instance;
+    }
+
+    function migrate_options() {
+    	$opt = get_option( 'nsfp_plugin_options' );
+
+    	if ( $opt ) {
+    		if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
+
+	    		$values = array_keys( $opt['nsfp_posttypes'] );
+
+	    		$opt['nsfp_posttypes'] = $values;
+
+	    		update_option( 'nsfp_plugin_options', $opt );
+
+	    		update_option( 'nsfp_option_migration_complete', 'yes' );
+    		}
+    	}
     }
 
     /**
