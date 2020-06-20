@@ -87,9 +87,7 @@ class NS_Featured_Posts_Admin
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
         // Migrate options.
-        if ( 'yes' !== get_option( 'nsfp_option_migration_complete' ) ) {
-	        add_action( 'init', array( $this, 'migrate_options' ) );
-        }
+        add_action( 'init', array( $this, 'migrate_options' ) );
 
         $obj = new Optioner();
 
@@ -157,6 +155,10 @@ class NS_Featured_Posts_Admin
     }
 
     function migrate_options() {
+    	if ( 'yes' === get_option( 'nsfp_option_migration_complete' ) ) {
+    		return;
+    	}
+
     	$opt = get_option( 'nsfp_plugin_options' );
 
     	if ( $opt ) {
