@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "bd058d2bd4cd57dc2f47c76bc72148a1",
+    "packages": [
+        {
+            "name": "ernilambar/optioner",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ernilambar/optioner.git",
+                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
+                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nilambar\\Optioner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nilambar Sharma",
+                    "email": "nilambar@outlook.com",
+                    "homepage": "https://www.nilambar.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minimal option framework for WordPress plugins",
+            "homepage": "https://github.com/ernilambar/optioner",
+            "keywords": [
+                "option",
+                "wordpress"
+            ],
+            "time": "2020-06-19T14:41:23+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}
