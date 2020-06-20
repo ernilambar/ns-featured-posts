@@ -40,6 +40,8 @@ class NS_Featured_Posts_Admin {
 	private function __construct() {
 		$plugin = NS_Featured_Posts::get_instance();
 
+		$this->version = $plugin::VERSION;
+
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
 		$this->options = $plugin->ns_featured_posts_get_options_array();
@@ -244,9 +246,9 @@ class NS_Featured_Posts_Admin {
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
 
-	    if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
-	        wp_send_json( $output );
-	    }
+		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
+			wp_send_json( $output );
+		}
 
 		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
 
@@ -263,7 +265,7 @@ class NS_Featured_Posts_Admin {
 				update_post_meta( $id, '_is_ns_featured_post', 'yes' );
 			}
 
-			$output['status'] = true;
+			$output['status']  = true;
 			$output['post_id'] = $id;
 		}
 
@@ -286,8 +288,8 @@ class NS_Featured_Posts_Admin {
 			return;
 		}
 
-		wp_enqueue_style( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/css/admin.css', array(), '1.0.0' );
-		wp_enqueue_script( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/js/admin.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_style( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/css/admin.css', array(), $this->version );
+		wp_enqueue_script( 'nspf-admin', NS_FEATURED_POSTS_URL . '/assets/js/admin.js', array( 'jquery' ), $this->version, true );
 
 		$localize_args = array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
