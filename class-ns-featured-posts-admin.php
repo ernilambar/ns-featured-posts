@@ -86,6 +86,10 @@ class NS_Featured_Posts_Admin
         add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
+        add_action( 'init', array( $this, 'setup_admin_page' ) );
+    }
+
+    public function setup_admin_page() {
         $obj = new Optioner();
 
         $obj->set_page(
@@ -113,10 +117,7 @@ class NS_Featured_Posts_Admin
 				'id'      => 'nsfp_posttypes',
 				'type'    => 'multicheck',
 				'title'   => esc_html__( 'Enable Featured for', 'ns-featured-posts' ),
-				'choices' => array(
-        			'post' => esc_html__( 'Post', 'ns-featured-posts' ),
-        			'page' => esc_html__( 'Page', 'ns-featured-posts' ),
-        		),
+				'choices' => $this->get_post_types_options(),
         	)
         );
 
@@ -149,6 +150,28 @@ class NS_Featured_Posts_Admin
         }
 
         return self::$instance;
+    }
+
+    public function get_post_types_options() {
+    	$output = array(
+    		'post' => esc_html__( 'Post', 'ns-featured-posts' ),
+    		'page' => esc_html__( 'Page', 'ns-featured-posts' ),
+    	);
+
+    	$args = array(
+    		'public'   => true,
+    		'_builtin' => false,
+    	);
+
+    	$custom_types = get_post_types( $args, 'objects' );
+
+    	if ( ! empty( $custom_types ) ) {
+    		foreach ( $custom_types as $item ) {
+    			$output[ $item->name ] = $item->labels->{'singular_name'};
+    		}
+    	}
+
+    	return $output;
     }
 
     /**
