@@ -44,7 +44,7 @@ class NS_Featured_Posts_Admin {
 
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
-		$this->options = $plugin->ns_featured_posts_get_options_array();
+		$this->options = $plugin->get_options();
 
 		// Add an action link pointing to the options page.
 		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
@@ -475,7 +475,7 @@ class NS_Featured_Posts_Admin {
 
 			if ( ! empty( $allowed ) ) {
 				foreach ( $allowed as $val ) {
-					add_filter( 'views_edit-' . $val, array( $this, 'nsfp_add_views_link' ) );
+					add_filter( 'views_edit-' . $val, array( $this, 'add_views_link' ) );
 				}
 			}
 		}
@@ -488,7 +488,7 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @param array $views Views.
 	 */
-	public function nsfp_add_views_link( $views ) {
+	public function add_views_link( $views ) {
 		$post_type = ( ( isset( $_GET['post_type'] ) && '' !== $_GET['post_type'] ) ? $_GET['post_type'] : 'post' );
 
 		$count = $this->get_total_featured_count( $post_type );
@@ -562,31 +562,53 @@ class NS_Featured_Posts_Admin {
 		<div class="sidebox">
 			<h3 class="box-heading">My Blog</h3>
 			<div class="box-content">
-				<?php
-				$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
-
-				$maxitems = 0;
-
-				$rss_items = array();
-
-				if ( ! is_wp_error( $rss ) ) {
-					$maxitems  = $rss->get_item_quantity( 5 );
-					$rss_items = $rss->get_items( 0, $maxitems );
-				}
-				?>
+				<?php $rss_items = $this->get_feed_items(); ?>
 
 				<?php if ( ! empty( $rss_items ) ) : ?>
-
 					<ul>
 						<?php foreach ( $rss_items as $item ) : ?>
-							<li><a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank"><?php echo esc_html( $item->get_title() ); ?></a></li>
+							<li><a href="<?php echo esc_url( $item['url'] ); ?>" target="_blank"><?php echo esc_html( $item['title'] ); ?></a></li>
 						<?php endforeach; ?>
 					</ul>
-
 				<?php endif; ?>
 			</div>
 		</div><!-- .sidebox -->
 		<?php
+	}
+
+	/**
+	 * Get feed items.
+	 *
+	 * @since 1.4.2
+	 *
+	 * @return array Feed items array.
+	 */
+	private function get_feed_items() {
+		$output = array();
+
+		$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
+
+		$maxitems = 0;
+
+		$rss_items = array();
+
+		if ( ! is_wp_error( $rss ) ) {
+			$maxitems  = $rss->get_item_quantity( 5 );
+			$rss_items = $rss->get_items( 0, $maxitems );
+		}
+
+		if ( ! empty( $rss_items ) ) {
+			foreach ( $rss_items as $item ) {
+				$feed_item = array();
+
+				$feed_item['title'] = $item->get_title();
+				$feed_item['url']   = $item->get_permalink();
+
+				$output[] = $feed_item;
+			}
+		}
+
+		return $output;
 	}
 
 	/**

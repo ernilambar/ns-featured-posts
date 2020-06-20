@@ -264,7 +264,7 @@ class NS_Featured_Posts {
 	 *
 	 * @return array Options array.
 	 */
-	public function ns_featured_posts_get_options_array() {
+	public function get_options() {
 		return $this->options;
 	}
 
