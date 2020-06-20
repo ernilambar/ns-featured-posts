@@ -15,6 +15,7 @@
             		"action": "nsfeatured_posts",
             		"post": $post_id,
             		"ns_featured": $target_status,
+            		"nonce": NSFP_OBJ.nonce,
             	},
             	function(data, status) {
             		if ( 'success' == status) {

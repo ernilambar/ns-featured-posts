@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Featured Posts 1.4.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-featured-posts\n"
-"POT-Creation-Date: 2020-06-20 15:45:11+00:00\n"
+"POT-Creation-Date: 2020-06-20 18:26:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,39 +28,39 @@ msgid "Enable Featured for"
 msgstr ""
 
 #: includes/classes/class-ns-featured-posts-admin.php:145
-#: includes/widgets/nsfp-featured-post-widget.php:138
+#: includes/widgets/nsfp-featured-post-widget.php:137
 msgid "Post"
 msgstr ""
 
 #: includes/classes/class-ns-featured-posts-admin.php:146
-#: includes/widgets/nsfp-featured-post-widget.php:139
+#: includes/widgets/nsfp-featured-post-widget.php:138
 msgid "Page"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:201
-#: includes/classes/class-ns-featured-posts-admin.php:296
-#: includes/classes/class-ns-featured-posts-admin.php:394
-#: includes/classes/class-ns-featured-posts-admin.php:494
+#: includes/classes/class-ns-featured-posts-admin.php:205
+#: includes/classes/class-ns-featured-posts-admin.php:318
+#: includes/classes/class-ns-featured-posts-admin.php:408
+#: includes/classes/class-ns-featured-posts-admin.php:504
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:316
+#: includes/classes/class-ns-featured-posts-admin.php:338
 msgid "Check this to make featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:393
+#: includes/classes/class-ns-featured-posts-admin.php:407
 msgid "Show All"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:395
+#: includes/classes/class-ns-featured-posts-admin.php:409
 msgid "Not Featured"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:24
+#: includes/widgets/nsfp-featured-post-widget.php:23
 msgid "NS Featured Posts Widget"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:41
+#: includes/widgets/nsfp-featured-post-widget.php:38
 msgid "Featured Posts"
 msgstr ""
 
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Number of posts to show:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:136
+#: includes/widgets/nsfp-featured-post-widget.php:135
 msgid "Post Type:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:161
+#: includes/widgets/nsfp-featured-post-widget.php:157
 msgid "Display post date?"
 msgstr ""
 
