@@ -1,19 +1,23 @@
 (function ( $ ) {
 	"use strict";
 
-    jQuery(document).ready(function($){
-            jQuery('.ns_featured_posts_icon').click(function() {
-                var selected = 'yes';
-                if ( jQuery(this).hasClass( 'selected' ) ){
-                    jQuery(this).removeClass( 'selected' );
-                    selected = 'no';
-                } else { jQuery(this).addClass( 'selected' ); }
-                // get id
-                var tempID = jQuery(this).attr( 'id' );
-                    tempID = tempID.split( '_' );
-                jQuery.post( ajaxurl, 'action=nsfeatured_posts&post='+tempID[1]+'&ns_featured='+selected );
+    $(document).ready(function($) {
+        $('.ns_featured_posts_icon').on('click', function() {
+            var $this = $(this);
 
-            });
+            var $post_id = $this.data('postid');
+
+            var target_status = ( $this.hasClass( 'selected' ) ) ? 'no' : 'yes';
+
+            $.post(
+            	ajaxurl,
+            	'action=nsfeatured_posts&post=' + $post_id + '&ns_featured=' + target_status,
+            	function(data, status) {
+            		if ( 'success' == status) {
+	            		$this.toggleClass('selected');
+            		}
+            	} );
         });
+    });
 
 }(jQuery));
