@@ -4,7 +4,10 @@
     text-align: center !important;
 }
 
-.ns_featured_posts_icon:hover {
+.ns_featured_posts_icon:hover,
+.ns_featured_posts_icon:focus,
+.ns_featured_posts_icon:active {
+	outline: 1px #888 solid;
 	color: #0073aa;
 }
 
