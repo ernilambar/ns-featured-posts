@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Featured Posts 1.4.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-featured-posts\n"
-"POT-Creation-Date: 2020-05-25 09:19:09+00:00\n"
+"POT-Creation-Date: 2020-06-20 06:44:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,55 +14,55 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: node-wp-i18n 1.2.3\n"
 
-#. Plugin Name of the plugin/theme
-msgid "NS Featured Posts"
+#: class-ns-featured-posts-admin.php:93 class-ns-featured-posts-admin.php:94
+msgid "NS Category Widget"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:153
+#: class-ns-featured-posts-admin.php:134
 msgid "Settings"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:177 class-ns-featured-posts-admin.php:301
-#: class-ns-featured-posts-admin.php:389 class-ns-featured-posts-admin.php:481
+#: class-ns-featured-posts-admin.php:158 class-ns-featured-posts-admin.php:282
+#: class-ns-featured-posts-admin.php:370 class-ns-featured-posts-admin.php:462
 msgid "Featured"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:325
+#: class-ns-featured-posts-admin.php:306
 msgid "Check this to make featured."
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:388
+#: class-ns-featured-posts-admin.php:369
 msgid "Show All"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:390
+#: class-ns-featured-posts-admin.php:371
 msgid "Not Featured"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:518
+#: class-ns-featured-posts-admin.php:499
 msgid "Plugin Settings"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:520
+#: class-ns-featured-posts-admin.php:501
 msgid "Enable Featured for"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:542
+#: class-ns-featured-posts-admin.php:523
 #: widgets/nsfp-featured-post-widget.php:138
 msgid "Post"
 msgstr ""
 
-#: class-ns-featured-posts-admin.php:546
+#: class-ns-featured-posts-admin.php:527
 #: widgets/nsfp-featured-post-widget.php:139
 msgid "Page"
 msgstr ""
 
-#: views/admin.php:36
-msgid "Save Changes"
-msgstr ""
-
 #: widgets/nsfp-featured-post-widget.php:24
 msgid "NS Featured Posts Widget"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "NS Featured Posts"
 msgstr ""
 
 #: widgets/nsfp-featured-post-widget.php:41

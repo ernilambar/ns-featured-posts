@@ -9,6 +9,8 @@
  * @copyright 2013 Nilambar Sharma
  */
 
+use Nilambar\Optioner\Optioner;
+
 require_once(plugin_dir_path( __FILE__ ) . 'widgets/nsfp-featured-post-widget.php');
 
 /**
@@ -57,9 +59,6 @@ class NS_Featured_Posts_Admin
         $this->plugin_slug = $plugin->get_plugin_slug();
     		$this->options = $plugin->ns_featured_posts_get_options_array();
 
-        // Add the options page and menu item.
-        add_action('admin_menu', array($this, 'ns_featured_posts_add_plugin_admin_menu'));
-
         /*
          * Add an action link pointing to the options page.
          */
@@ -87,6 +86,21 @@ class NS_Featured_Posts_Admin
         add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
         add_action( 'save_post', array( $this, 'nsfp_save_meta_box' ) );
 
+        $obj = new Optioner();
+
+        $obj->set_page(
+        	array(
+        		'page_title'  => esc_html__( 'NS Category Widget', 'ns-featured-posts' ),
+        		'menu_title'  => esc_html__( 'NS Category Widget', 'ns-featured-posts' ),
+        		'capability'  => 'manage_options',
+        		'menu_slug'   => 'ns-category-widget',
+        		'option_slug' => 'nscw_plugin_options',
+        	)
+        );
+
+
+        // Run now.
+        $obj->run();
     }
 
     /**
@@ -106,39 +120,6 @@ class NS_Featured_Posts_Admin
         }
 
         return self::$instance;
-    }
-
-    /**
-     * Register the administration menu for this plugin into the WordPress Dashboard menu.
-     *
-     * @since    1.0.0
-     */
-    public function ns_featured_posts_add_plugin_admin_menu()
-    {
-
-        /*
-         * Add a settings page for this plugin to the Settings menu.
-         */
-        $this->plugin_screen_hook_suffix = add_options_page(
-                __('NS Featured Posts', 'ns-featured-posts'), __('NS Featured Posts', 'ns-featured-posts'), 'manage_options', 'ns-featured-posts', array($this, 'display_plugin_admin_page')
-        );
-    }
-
-    /**
-     * Render the settings page for this plugin.
-     *
-     * @since    1.0.0
-     */
-    public function display_plugin_admin_page()
-    {
-        // Check that the user is allowed to update options
-        if (!current_user_can('manage_options'))
-        {
-            wp_die('You do not have sufficient permissions to access this page.');
-        }
-
-        include_once( 'views/admin.php' );
-
     }
 
     /**
