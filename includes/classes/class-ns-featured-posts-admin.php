@@ -73,6 +73,8 @@ class NS_Featured_Posts_Admin {
 
 		add_action( 'widgets_init', array( $this, 'register_custom_widgets' ) );
 
+		add_action( 'admin_notices', array( $this, 'show_admin_message' ) );
+
 		// Metabox stuffs.
 		add_action( 'add_meta_boxes', array( $this, 'add_featured_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_featured_meta_box' ) );
@@ -561,7 +563,7 @@ class NS_Featured_Posts_Admin {
 					update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
 				} else {
 					// Max limit reached.
-					// nspd( 'Max reached.' );
+					set_transient( 'nsfp_message', esc_html__( 'Post could not be set as featured. Maximum posts limit reached.' ) );
 				}
 			} else {
 				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
@@ -815,6 +817,23 @@ class NS_Featured_Posts_Admin {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Show message.
+	 *
+	 * @since 2.0.0
+	 */
+	function show_admin_message() {
+	    // Check if the transient is set, and display the error message
+		$message = get_transient( 'nsfp_message' );
+
+	    if ( ! empty( $message ) ) {
+	        echo '<div id="message" class="error">';
+	        echo wp_kses_post( wpautop( $message ) );
+	        echo '</div>';
+	        delete_transient( 'nsfp_message' );
+	    }
 	}
 
 	/**
