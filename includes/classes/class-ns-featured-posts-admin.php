@@ -291,12 +291,12 @@ class NS_Featured_Posts_Admin {
 			$max_posts = absint( $this->options['nsfp_max_posts'] );
 			$max_types = (array) $this->options['nsfp_max_types'];
 
-			if ( in_array( get_post_type( $id ), $max_types, true ) ) {
+			if ( in_array( get_post_type( $id ), $max_types, true ) && ! isset( $attributes['data-uno'] ) ) {
 				$attributes['data-max_posts']  = $max_posts;
 				$attributes['data-max_status'] = '';
 			}
 
-			echo '<a ' . $this->render_attr( $attributes, false ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
+			echo '<a ' . $this->render_attr( $attributes, false ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 
@@ -309,8 +309,6 @@ class NS_Featured_Posts_Admin {
 		$output = array(
 			'status' => false,
 		);
-
-		// nspc( $_POST );
 
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
@@ -353,7 +351,8 @@ class NS_Featured_Posts_Admin {
 				}
 
 				if ( true === $max_reached ) {
-					$output['message'] = sprintf( esc_html__( 'Maximum %d posts can be set as featured.', 'ns-featured-posts' ), $max_posts );
+					/* translators: %s: max posts number */
+					$output['message'] = sprintf( esc_html__( 'Maximum %s posts can be set as featured.', 'ns-featured-posts' ), $max_posts );
 					wp_send_json( $output );
 				} else {
 					$this->toggle_status( $post_id, $ns_featured );
