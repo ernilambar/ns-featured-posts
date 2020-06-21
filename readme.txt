@@ -63,6 +63,7 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 = 2.0.0 =
 * Major code refactoring
 * Add radio mode
+* Add max posts option
 * Minor bug fixes
 
 = 1.4.1 =
