@@ -73,7 +73,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Setup admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function setup_admin_page() {
 		$obj = new Optioner();
@@ -138,7 +138,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Get post types options.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @return array Options.
 	 */
@@ -232,7 +232,7 @@ class NS_Featured_Posts_Admin {
 			$uno_enabled = true;
 
 			$attributes = array(
-				'class'         => $classes,
+				'class'          => $classes,
 				'data-post_id'   => $id,
 				'data-post_type' => get_post_type( $id ),
 			);
@@ -322,7 +322,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Load assets.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function load_assets() {
 		global $pagenow;
@@ -626,7 +626,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Get feed items.
 	 *
-	 * @since 1.4.2
+	 * @since 2.0.0
 	 *
 	 * @return array Feed items array.
 	 */
@@ -661,7 +661,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Return allowed post types.
 	 *
-	 * @since 1.4.2
+	 * @since 2.0.0
 	 *
 	 * @return array Allowed post types array.
 	 */

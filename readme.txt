@@ -5,7 +5,7 @@ Tags: post, custom post type, custom, posts, meta, plugin, featured, featured-po
 Requires at least: 5.0
 Requires PHP: 5.6.20
 Tested up to: 5.4
-Stable tag: 1.4.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 
 == Changelog ==
 
-= 1.4.2 =
+= 2.0.0 =
+* Major code refactoring
+* Add radio mode
 * Minor bug fixes
 
 = 1.4.1 =

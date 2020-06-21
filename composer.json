@@ -1,7 +1,6 @@
 {
   "name": "ernilambar/ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "1.4.2",
   "license": "GPL-2.0-or-later",
   "minimum-stability" : "stable",
   "authors": [
