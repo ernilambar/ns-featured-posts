@@ -229,7 +229,10 @@ class NS_Featured_Posts_Admin {
 				$classes[] = 'selected';
 			}
 
-			echo '<a id="btn-post-featured_' . esc_attr( $id ) . '" data-postid="' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '"><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
+			$uno_enabled = true;
+			// $uno_enabled = false;
+
+			echo '<a data-postid="' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '" ' . ( $uno_enabled ? ' data-uno ' : '' ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
 		}
 	}
 
@@ -243,8 +246,13 @@ class NS_Featured_Posts_Admin {
 			'status' => false,
 		);
 
+		// nsdump( $_POST );
+
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
+		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
+
+		nsdc( $uno );
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
 			wp_send_json( $output );
