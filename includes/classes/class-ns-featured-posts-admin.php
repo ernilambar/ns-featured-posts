@@ -310,6 +310,8 @@ class NS_Featured_Posts_Admin {
 			'status' => false,
 		);
 
+		// nspc( $_POST );
+
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
 
@@ -318,6 +320,9 @@ class NS_Featured_Posts_Admin {
 		}
 
 		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
+
+		$max_posts  = isset( $_POST['max_posts'] ) ? absint( $_POST['max_posts'] ) : 0;
+		$max_status = isset( $_POST['max_status'] ) ? rest_sanitize_boolean( $_POST['max_status'] ) : false;
 
 		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
 
@@ -334,6 +339,7 @@ class NS_Featured_Posts_Admin {
 		}
 
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
+			// Good.
 			if ( 'no' === $ns_featured ) {
 				delete_post_meta( $post_id, '_is_ns_featured_post' );
 			} else {
@@ -342,22 +348,7 @@ class NS_Featured_Posts_Admin {
 
 			// Process uno mode.
 			if ( true === $uno ) {
-				$all_ids = array();
-
-				$qargs = array(
-					'posts_per_page' => -1,
-					'post__not_in'   => array( $post_id ),
-					'meta_key'       => '_is_ns_featured_post',
-					'meta_value'     => 'yes',
-					'post_type'      => $post_type,
-					'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
-				);
-
-				$all_posts = get_posts( $qargs );
-
-				if ( $all_posts ) {
-					$all_ids = wp_list_pluck( $all_posts, 'ID' );
-				}
+				$all_ids = $this->get_other_posts( $post_id, $post_type );
 
 				if ( ! empty( $all_ids ) ) {
 					foreach ( $all_ids as $item ) {
@@ -372,6 +363,36 @@ class NS_Featured_Posts_Admin {
 		}
 
 		wp_send_json( $output );
+	}
+
+	/**
+	 * Get other posts IDs.
+	 *
+	 * @since 2.0.0.
+	 *
+	 * @param  int    $post_id   Post ID.
+	 * @param  string $post_type Post type.
+	 * @return array IDs.
+	 */
+	private function get_other_posts( $post_id, $post_type ) {
+		$output = array();
+
+		$qargs = array(
+			'posts_per_page' => -1,
+			'post__not_in'   => array( $post_id ),
+			'meta_key'       => '_is_ns_featured_post',
+			'meta_value'     => 'yes',
+			'post_type'      => $post_type,
+			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
+		);
+
+		$all_posts = get_posts( $qargs );
+
+		if ( $all_posts ) {
+			$output = wp_list_pluck( $all_posts, 'ID' );
+		}
+
+		return $output;
 	}
 
 	/**
