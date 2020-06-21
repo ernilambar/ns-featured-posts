@@ -280,10 +280,20 @@ class NS_Featured_Posts_Admin {
 				'data-post_type' => get_post_type( $id ),
 			);
 
+			// Radio Mode.
 			$uno_post_types = (array) $this->options['nsfp_radio_mode'];
 
 			if ( in_array( get_post_type( $id ), $uno_post_types, true ) ) {
 				$attributes['data-uno'] = '';
+			}
+
+			// Max posts.
+			$max_posts = absint( $this->options['nsfp_max_posts'] );
+			$max_types = (array) $this->options['nsfp_max_types'];
+
+			if ( in_array( get_post_type( $id ), $max_types, true ) ) {
+				$attributes['data-max_posts']  = $max_posts;
+				$attributes['data-max_status'] = '';
 			}
 
 			echo '<a ' . $this->render_attr( $attributes, false ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
