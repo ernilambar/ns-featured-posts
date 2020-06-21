@@ -559,7 +559,7 @@ class NS_Featured_Posts_Admin {
 				// Max mode enabled.
 				$total_posts_count = $this->get_total_featured_count( $post_type );
 
-				if ( $max_posts < $total_posts_count ) {
+				if ( $total_posts_count < $max_posts ) {
 					update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
 				} else {
 					// Max limit reached.
@@ -824,16 +824,15 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 2.0.0
 	 */
-	function show_admin_message() {
-	    // Check if the transient is set, and display the error message
+	public function show_admin_message() {
 		$message = get_transient( 'nsfp_message' );
 
-	    if ( ! empty( $message ) ) {
-	        echo '<div id="message" class="error">';
-	        echo wp_kses_post( wpautop( $message ) );
-	        echo '</div>';
-	        delete_transient( 'nsfp_message' );
-	    }
+		if ( ! empty( $message ) ) {
+			echo '<div id="message" class="error">';
+			echo wp_kses_post( wpautop( $message ) );
+			echo '</div>';
+			delete_transient( 'nsfp_message' );
+		}
 	}
 
 	/**
