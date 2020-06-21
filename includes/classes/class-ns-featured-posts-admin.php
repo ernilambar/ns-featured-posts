@@ -316,6 +316,8 @@ class NS_Featured_Posts_Admin {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
+			$output['message'] = esc_html__( 'Nonce verrification error.' );
+
 			wp_send_json( $output );
 		}
 
@@ -340,10 +342,17 @@ class NS_Featured_Posts_Admin {
 
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
 			// Good.
-			if ( 'no' === $ns_featured ) {
-				delete_post_meta( $post_id, '_is_ns_featured_post' );
+
+			$max_reached = false;
+
+			if ( true === $max_reached ) {
+				// Max reached.
 			} else {
-				update_post_meta( $post_id, '_is_ns_featured_post', 'yes' );
+				if ( 'no' === $ns_featured ) {
+					delete_post_meta( $post_id, '_is_ns_featured_post' );
+				} else {
+					update_post_meta( $post_id, '_is_ns_featured_post', 'yes' );
+				}
 			}
 
 			// Process uno mode.
