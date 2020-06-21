@@ -230,7 +230,6 @@ class NS_Featured_Posts_Admin {
 			}
 
 			$uno_enabled = true;
-			// $uno_enabled = false;
 
 			$attributes = array(
 				'class'         => $classes,

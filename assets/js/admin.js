@@ -4,6 +4,7 @@
     $(document).ready(function($) {
         $('.ns_featured_posts_icon').on('click', function() {
             var $this = $(this);
+            var $table = $('#posts-filter');
 
 			var $post_id    = $this.data('post_id');
 			var $post_type  = $this.data('post_type');
@@ -24,6 +25,14 @@
             	function(data, status) {
             		if ( 'success' == status) {
 	            		$this.toggleClass('selected');
+
+	            		if ( true ) {
+	            			$table.find('.ns_featured_posts_icon.selected').not('[data-post_id="' + $post_id + '"]').each(function(i, el){
+	            				$(el).removeClass('selected');
+	            			});
+	            		}
+
+	            		console.log(data);
             		}
             	} );
         });
