@@ -128,6 +128,30 @@ class NS_Featured_Posts_Admin {
 			)
 		);
 
+		// Field: nsfp_max_posts.
+		$this->optioner->add_field(
+			'nsfp_settings_tab',
+			array(
+				'id'          => 'nsfp_max_posts',
+				'type'        => 'number',
+				'title'       => esc_html__( 'Max Posts Number', 'ns-featured-posts' ),
+				'description' => esc_html__( 'Maximum posts for the post type.', 'ns-featured-posts' ),
+				'class'       => 'small-text',
+				'default'     => 3,
+			)
+		);
+
+		// Field: nsfp_max_types.
+		$this->optioner->add_field(
+			'nsfp_settings_tab',
+			array(
+				'id'      => 'nsfp_max_types',
+				'type'    => 'multicheck',
+				'title'   => esc_html__( 'Enable Max Posts for', 'ns-featured-posts' ),
+				'choices' => $this->get_post_types_options(),
+			)
+		);
+
 		// Sidebar.
 		$this->optioner->set_sidebar(
 			array(

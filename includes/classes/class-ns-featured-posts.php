@@ -72,6 +72,8 @@ class NS_Featured_Posts {
 		self::$default_options = array(
 			'nsfp_posttypes'  => array( 'post' ),
 			'nsfp_radio_mode' => array(),
+			'nsfp_max_posts'  => 3,
+			'nsfp_max_types'  => array(),
 		);
 
 		$this->set_default_options();
