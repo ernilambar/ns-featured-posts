@@ -107,6 +107,18 @@ class NS_Featured_Posts_Admin {
 			)
 		);
 
+		// Field: nsfp_radio_mode.
+		$obj->add_field(
+			'nsfp_settings_tab',
+			array(
+				'id'          => 'nsfp_radio_mode',
+				'type'        => 'multicheck',
+				'title'       => esc_html__( 'Enable Radio Mode for', 'ns-featured-posts' ),
+				'description' => esc_html__( 'If checked, only one post can be made featured.', 'ns-featured-posts' ),
+				'choices'     => $this->get_post_types_options(),
+			)
+		);
+
 		// Sidebar.
 		$obj->set_sidebar(
 			array(

@@ -70,7 +70,8 @@ class NS_Featured_Posts {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		self::$default_options = array(
-			'nsfp_posttypes' => array( 'post' ),
+			'nsfp_posttypes'  => array( 'post' ),
+			'nsfp_radio_mode' => array(),
 		);
 
 		$this->set_default_options();

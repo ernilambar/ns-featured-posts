@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Featured Posts 2.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-featured-posts\n"
-"POT-Creation-Date: 2020-06-21 05:15:48+00:00\n"
+"POT-Creation-Date: 2020-06-21 05:18:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgid "NS Featured Posts"
 msgstr ""
 
 #: includes/classes/class-ns-featured-posts-admin.php:95
-#: includes/classes/class-ns-featured-posts-admin.php:177
+#: includes/classes/class-ns-featured-posts-admin.php:189
 msgid "Settings"
 msgstr ""
 
@@ -27,32 +27,40 @@ msgstr ""
 msgid "Enable Featured for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:147
+#: includes/classes/class-ns-featured-posts-admin.php:116
+msgid "Enable Radio Mode for"
+msgstr ""
+
+#: includes/classes/class-ns-featured-posts-admin.php:117
+msgid "If checked, only one post can be made featured."
+msgstr ""
+
+#: includes/classes/class-ns-featured-posts-admin.php:159
 #: includes/widgets/nsfp-featured-post-widget.php:137
 msgid "Post"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:148
+#: includes/classes/class-ns-featured-posts-admin.php:160
 #: includes/widgets/nsfp-featured-post-widget.php:138
 msgid "Page"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:207
-#: includes/classes/class-ns-featured-posts-admin.php:367
-#: includes/classes/class-ns-featured-posts-admin.php:457
-#: includes/classes/class-ns-featured-posts-admin.php:553
+#: includes/classes/class-ns-featured-posts-admin.php:219
+#: includes/classes/class-ns-featured-posts-admin.php:379
+#: includes/classes/class-ns-featured-posts-admin.php:469
+#: includes/classes/class-ns-featured-posts-admin.php:565
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:387
+#: includes/classes/class-ns-featured-posts-admin.php:399
 msgid "Check this to make featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:456
+#: includes/classes/class-ns-featured-posts-admin.php:468
 msgid "Show All"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:458
+#: includes/classes/class-ns-featured-posts-admin.php:470
 msgid "Not Featured"
 msgstr ""
 
