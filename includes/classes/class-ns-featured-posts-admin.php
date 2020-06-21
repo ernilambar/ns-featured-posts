@@ -258,13 +258,12 @@ class NS_Featured_Posts_Admin {
 
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
-		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
-
-		// nsdc( $uno );
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
 			wp_send_json( $output );
 		}
+
+		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
 
 		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
 
@@ -315,6 +314,7 @@ class NS_Featured_Posts_Admin {
 
 			$output['status']  = true;
 			$output['post_id'] = $post_id;
+			$output['uno']     = $uno;
 		}
 
 		wp_send_json( $output );
