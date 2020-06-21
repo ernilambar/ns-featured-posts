@@ -316,7 +316,7 @@ class NS_Featured_Posts_Admin {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
-			$output['message'] = esc_html__( 'Nonce verrification error.' );
+			$output['message'] = esc_html__( 'Nonce verrification error.', 'ns-featured-posts' );
 
 			wp_send_json( $output );
 		}
@@ -342,11 +342,22 @@ class NS_Featured_Posts_Admin {
 
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
 			// Good.
+			if ( true === $max_status ) {
+				// Max mode enabled.
+				$max_reached = false;
 
-			$max_reached = false;
+				$post_total = $this->get_total_featured_count( $post_type );
 
-			if ( true === $max_reached ) {
-				// Max reached.
+				if ( $post_total >= $max_posts ) {
+					$max_reached = true;
+				}
+
+				if ( true === $max_reached ) {
+					$output['message'] = sprintf( esc_html__( 'Maximum %d posts can be set as featured.', 'ns-featured-posts' ), $max_posts );
+					wp_send_json( $output );
+				} else {
+					$this->toggle_status( $post_id, $ns_featured );
+				}
 			} else {
 				$this->toggle_status( $post_id, $ns_featured );
 			}
