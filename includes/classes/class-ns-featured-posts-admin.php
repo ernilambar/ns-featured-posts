@@ -249,7 +249,9 @@ class NS_Featured_Posts_Admin {
 				'data-post_type' => get_post_type( $id ),
 			);
 
-			if ( true === $uno_enabled ) {
+			$uno_post_types = (array) $this->options['nsfp_radio_mode'];
+
+			if ( in_array( get_post_type( $id ), $uno_post_types, true ) ) {
 				$attributes['data-uno'] = '';
 			}
 
@@ -304,10 +306,10 @@ class NS_Featured_Posts_Admin {
 				$qargs = array(
 					'posts_per_page' => -1,
 					'post__not_in'   => array( $post_id ),
-					'post_status'    => 'publish',
 					'meta_key'       => '_is_ns_featured_post',
 					'meta_value'     => 'yes',
 					'post_type'      => $post_type,
+					'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
 				);
 
 				$all_posts = get_posts( $qargs );

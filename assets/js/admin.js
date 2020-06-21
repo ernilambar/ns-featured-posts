@@ -26,7 +26,7 @@
             		if ( 'success' == status) {
 	            		$this.toggleClass('selected');
 
-	            		if ( true ) {
+	            		if ( true == data.uno ) {
 	            			$table.find('.ns_featured_posts_icon.selected').not('[data-post_id="' + $post_id + '"]').each(function(i, el){
 	            				$(el).removeClass('selected');
 	            			});
