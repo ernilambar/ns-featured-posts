@@ -230,7 +230,7 @@ class NS_Featured_Posts_Admin {
 			}
 
 			$uno_enabled = true;
-			$uno_enabled = false;
+			// $uno_enabled = false;
 
 			$attributes = array(
 				'class'         => $classes,
@@ -255,8 +255,6 @@ class NS_Featured_Posts_Admin {
 		$output = array(
 			'status' => false,
 		);
-
-		// nsdump( $_POST );
 
 		// Nonce check.
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
@@ -291,6 +289,28 @@ class NS_Featured_Posts_Admin {
 
 			// Process uno mode.
 			if ( true === $uno ) {
+				$all_ids = array();
+
+				$qargs = array(
+					'posts_per_page' => -1,
+					'post__not_in'   => array( $post_id ),
+					'post_status'    => 'publish',
+					'meta_key'       => '_is_ns_featured_post',
+					'meta_value'     => 'yes',
+					'post_type'      => $post_type,
+				);
+
+				$all_posts = get_posts( $qargs );
+
+				if ( $all_posts ) {
+					$all_ids = wp_list_pluck( $all_posts, 'ID' );
+				}
+
+				if ( ! empty( $all_ids ) ) {
+					foreach ( $all_ids as $item ) {
+						delete_post_meta( $item, '_is_ns_featured_post' );
+					}
+				}
 			}
 
 			$output['status']  = true;
