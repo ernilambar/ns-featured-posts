@@ -342,7 +342,7 @@ class NS_Featured_Posts_Admin {
 
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
 			// Good.
-			if ( true === $max_status ) {
+			if ( true === $max_status && 'yes' === $ns_featured ) {
 				// Max mode enabled.
 				$max_reached = false;
 
