@@ -505,9 +505,11 @@ class NS_Featured_Posts_Admin {
 	 * @param int $post_id Post ID.
 	 */
 	public function save_featured_meta_box( $post_id ) {
+		$post_type = get_post_type( $post_id );
+
 		$allowed = $this->get_allowed_post_types();
 
-		if ( ! in_array( get_post_type( $post_id ), $allowed, true ) ) {
+		if ( ! in_array( $post_type, $allowed, true ) ) {
 			return $post_id;
 		}
 
@@ -526,15 +528,35 @@ class NS_Featured_Posts_Admin {
 			return $post_id;
 		}
 
-		$featured_value = '';
+		$target_status = '';
 
 		if ( isset( $_POST['nsfp_settings']['make_this_featured'] ) && 'yes' === $_POST['nsfp_settings']['make_this_featured'] ) {
-			$featured_value = 'yes';
+			$target_status = 'yes';
 		}
 
-		if ( 'yes' === $featured_value ) {
-			update_post_meta( $post_id, '_is_ns_featured_post', $featured_value );
+		$radio_posts_types = $this->options['nsfp_radio_mode'];
+		// nspd( $radio_posts, 'radio' );
+
+		if ( 'yes' === $target_status ) {
+			// Extra check needed.
+			if ( in_array( $post_type, $radio_posts_types ) ) {
+				// Radio mode enabled.
+				// Set featured current post.
+				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
+
+				// Disable other posts.
+				$other_posts = $this->get_other_posts( $post_id, $post_type );
+
+				if ( ! empty( $other_posts ) ) {
+					foreach ( $other_posts as $opid ) {
+						delete_post_meta( $opid, '_is_ns_featured_post' );
+					}
+				}
+			} else {
+				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
+			}
 		} else {
+			// No need to check anything.
 			delete_post_meta( $post_id, '_is_ns_featured_post' );
 		}
 	}
