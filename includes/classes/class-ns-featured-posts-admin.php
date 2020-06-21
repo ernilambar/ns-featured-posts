@@ -241,8 +241,6 @@ class NS_Featured_Posts_Admin {
 				$classes[] = 'selected';
 			}
 
-			$uno_enabled = true;
-
 			$attributes = array(
 				'class'          => $classes,
 				'data-post_id'   => $id,

@@ -31,8 +31,6 @@
 	            				$(el).removeClass('selected');
 	            			});
 	            		}
-
-	            		console.log(data);
             		}
             	} );
         });
