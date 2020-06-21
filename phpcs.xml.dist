@@ -43,6 +43,9 @@
 
 		<!-- Allow WP global modification -->
 		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited"/>
+
+		<!-- Nonce -->
+		<exclude name="WordPress.Security.NonceVerification.Recommended"/>
 	</rule>
 
 	<!-- Sets the minimum supported WP version to 5.0, which is over a year old. -->
