@@ -282,13 +282,22 @@ class NS_Featured_Posts {
 		}
 
 		$opt = get_option( 'nsfp_plugin_options' );
+		nsdump( $opt );
 
 		if ( $opt ) {
 			if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
 
 				$values = array_keys( $opt['nsfp_posttypes'] );
 
-				$opt['nsfp_posttypes'] = $values;
+				nspre( $values );
+
+				$values = array_filter( $values );
+
+				nspre( $values );
+
+				if ( ! empty( $values ) ) {
+					$opt['nsfp_posttypes'] = $values;
+				}
 
 				update_option( 'nsfp_plugin_options', $opt );
 			}
