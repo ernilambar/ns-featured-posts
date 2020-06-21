@@ -534,12 +534,13 @@ class NS_Featured_Posts_Admin {
 			$target_status = 'yes';
 		}
 
-		$radio_posts_types = $this->options['nsfp_radio_mode'];
-		// nspd( $radio_posts, 'radio' );
+		$radio_posts_types = (array) $this->options['nsfp_radio_mode'];
+		$max_posts         = absint( $this->options['nsfp_max_posts'] );
+		$max_posts_types   = (array) $this->options['nsfp_max_types'];
 
 		if ( 'yes' === $target_status ) {
 			// Extra check needed.
-			if ( in_array( $post_type, $radio_posts_types ) ) {
+			if ( in_array( $post_type, $radio_posts_types, true ) ) {
 				// Radio mode enabled.
 				// Set featured current post.
 				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
@@ -551,6 +552,16 @@ class NS_Featured_Posts_Admin {
 					foreach ( $other_posts as $opid ) {
 						delete_post_meta( $opid, '_is_ns_featured_post' );
 					}
+				}
+			} elseif ( in_array( $post_type, $max_posts_types, true ) ) {
+				// Max mode enabled.
+				$total_posts_count = $this->get_total_featured_count( $post_type );
+
+				if ( $max_posts < $total_posts_count ) {
+					update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
+				} else {
+					// Max limit reached.
+					// nspd( 'Max reached.' );
 				}
 			} else {
 				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
