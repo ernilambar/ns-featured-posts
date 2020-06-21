@@ -348,11 +348,7 @@ class NS_Featured_Posts_Admin {
 			if ( true === $max_reached ) {
 				// Max reached.
 			} else {
-				if ( 'no' === $ns_featured ) {
-					delete_post_meta( $post_id, '_is_ns_featured_post' );
-				} else {
-					update_post_meta( $post_id, '_is_ns_featured_post', 'yes' );
-				}
+				$this->toggle_status( $post_id, $ns_featured );
 			}
 
 			// Process uno mode.
@@ -372,6 +368,22 @@ class NS_Featured_Posts_Admin {
 		}
 
 		wp_send_json( $output );
+	}
+
+	/**
+	 * Toggle status.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int    $post_id Post ID.
+	 * @param string $target_status Target status.
+	 */
+	private function toggle_status( $post_id, $target_status ) {
+		if ( 'no' === $target_status ) {
+			delete_post_meta( $post_id, '_is_ns_featured_post' );
+		} else {
+			update_post_meta( $post_id, '_is_ns_featured_post', 'yes' );
+		}
 	}
 
 	/**
