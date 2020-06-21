@@ -230,9 +230,19 @@ class NS_Featured_Posts_Admin {
 			}
 
 			$uno_enabled = true;
-			// $uno_enabled = false;
+			$uno_enabled = false;
 
-			echo '<a data-postid="' . esc_attr( $id ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '" ' . ( $uno_enabled ? ' data-uno ' : '' ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
+			$attributes = array(
+				'class'         => $classes,
+				'data-post_id'   => $id,
+				'data-post_type' => get_post_type( $id ),
+			);
+
+			if ( true === $uno_enabled ) {
+				$attributes['data-uno'] = '';
+			}
+
+			echo '<a ' . $this->render_attr( $attributes, false ) . '><span class="ticked dashicons dashicons-yes-alt"></span><span class="not-ticked dashicons dashicons-marker"></span></a>';
 		}
 	}
 
@@ -252,7 +262,7 @@ class NS_Featured_Posts_Admin {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null;
 		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
 
-		nsdc( $uno );
+		// nsdc( $uno );
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
 			wp_send_json( $output );
@@ -260,21 +270,31 @@ class NS_Featured_Posts_Admin {
 
 		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
 
-		$id = 0;
+		$post_id = 0;
 
-		if ( isset( $_POST['post'] ) ) {
-			$id = (int) $_POST['post'];
+		if ( isset( $_POST['post_id'] ) ) {
+			$post_id = (int) $_POST['post_id'];
 		}
 
-		if ( ! empty( $id ) && null !== $ns_featured ) {
+		$post_type = null;
+
+		if ( isset( $_POST['post_type'] ) ) {
+			$post_type = (string) $_POST['post_type'];
+		}
+
+		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
 			if ( 'no' === $ns_featured ) {
-				delete_post_meta( $id, '_is_ns_featured_post' );
+				delete_post_meta( $post_id, '_is_ns_featured_post' );
 			} else {
-				update_post_meta( $id, '_is_ns_featured_post', 'yes' );
+				update_post_meta( $post_id, '_is_ns_featured_post', 'yes' );
+			}
+
+			// Process uno mode.
+			if ( true === $uno ) {
 			}
 
 			$output['status']  = true;
-			$output['post_id'] = $id;
+			$output['post_id'] = $post_id;
 		}
 
 		wp_send_json( $output );
@@ -637,4 +657,45 @@ class NS_Featured_Posts_Admin {
 
 		return $output;
 	}
+
+	/**
+	 * Render attributes.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $attributes Attributes.
+	 * @param bool  $echo Whether to echo or not.
+	 */
+	public function render_attr( $attributes, $echo = true ) {
+		if ( empty( $attributes ) ) {
+			return;
+		}
+
+		$html = '';
+
+		foreach ( $attributes as $name => $value ) {
+
+			$esc_value = '';
+
+			if ( 'class' === $name && is_array( $value ) ) {
+				$value = join( ' ', array_unique( $value ) );
+			}
+
+			if ( false !== $value && 'href' === $name ) {
+				$esc_value = esc_url( $value );
+
+			} elseif ( false !== $value ) {
+				$esc_value = esc_attr( $value );
+			}
+
+			$html .= false !== $value ? sprintf( ' %s="%s"', esc_html( $name ), $esc_value ) : esc_html( " {$name}" );
+		}
+
+		if ( ! empty( $html ) && true === $echo ) {
+			echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			return $html;
+		}
+	}
+
 } // End class.
