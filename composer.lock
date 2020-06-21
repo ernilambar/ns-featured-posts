@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cf5da304880be0c5d42c77b309ce061",
+    "content-hash": "23d31aa7e0714b8af9ed35f1c5e40842",
     "packages": [
         {
             "name": "ernilambar/optioner",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/optioner.git",
-                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9"
+                "reference": "ca16e3a391b92ca57bf36b30f858b5ba538b3e54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
-                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
+                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/ca16e3a391b92ca57bf36b30f858b5ba538b3e54",
+                "reference": "ca16e3a391b92ca57bf36b30f858b5ba538b3e54",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 "option",
                 "wordpress"
             ],
-            "time": "2020-06-19T14:41:23+00:00"
+            "time": "2020-06-21T06:48:49+00:00"
         }
     ],
     "packages-dev": [
