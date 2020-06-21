@@ -714,6 +714,7 @@ class NS_Featured_Posts_Admin {
 			'posts_per_page' => -1,
 			'meta_key'       => '_is_ns_featured_post',
 			'meta_value'     => 'yes',
+			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
 		);
 
 		$postlist = get_posts( $args );
