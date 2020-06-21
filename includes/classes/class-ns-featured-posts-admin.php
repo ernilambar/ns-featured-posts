@@ -33,6 +33,15 @@ class NS_Featured_Posts_Admin {
 	protected $options = array();
 
 	/**
+	 * Optioner instance.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var Optioner
+	 */
+	protected $optioner;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -45,6 +54,8 @@ class NS_Featured_Posts_Admin {
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
 		$this->options = $plugin->get_options();
+
+		$this->optioner = new Optioner();
 
 		// Add an action link pointing to the options page.
 		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
@@ -76,9 +87,7 @@ class NS_Featured_Posts_Admin {
 	 * @since 2.0.0
 	 */
 	public function setup_admin_page() {
-		$obj = new Optioner();
-
-		$obj->set_page(
+		$this->optioner->set_page(
 			array(
 				'page_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
 				'menu_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
@@ -89,7 +98,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Tab: nsfp_settings_tab.
-		$obj->add_tab(
+		$this->optioner->add_tab(
 			array(
 				'id'    => 'nsfp_settings_tab',
 				'title' => esc_html__( 'Settings', 'ns-featured-posts' ),
@@ -97,7 +106,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Field: nsfp_posttypes.
-		$obj->add_field(
+		$this->optioner->add_field(
 			'nsfp_settings_tab',
 			array(
 				'id'      => 'nsfp_posttypes',
@@ -108,7 +117,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Field: nsfp_radio_mode.
-		$obj->add_field(
+		$this->optioner->add_field(
 			'nsfp_settings_tab',
 			array(
 				'id'          => 'nsfp_radio_mode',
@@ -120,7 +129,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Sidebar.
-		$obj->set_sidebar(
+		$this->optioner->set_sidebar(
 			array(
 				'render_callback' => array( $this, 'render_sidebar' ),
 				'width'           => 30,
@@ -128,7 +137,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Run now.
-		$obj->run();
+		$this->optioner->run();
 	}
 
 	/**
