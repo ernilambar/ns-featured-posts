@@ -19,7 +19,7 @@ class NS_Featured_Posts {
 	 *
 	 * @var string
 	 */
-	const VERSION = '2.0.0';
+	const VERSION = '2.0.1';
 
 	/**
 	 * Plugin slug.
