@@ -80,7 +80,7 @@ class NS_Featured_Posts_Admin {
 		add_action( 'save_post', array( $this, 'save_featured_meta_box' ) );
 
 		// Setup admin page.
-		add_action( 'init', array( $this, 'setup_admin_page' ) );
+		add_action( 'init', array( $this, 'setup_admin_page' ), 11 );
 	}
 
 	/**
