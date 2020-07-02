@@ -122,6 +122,14 @@ class NSFP_Featured_Post_Widget extends WP_Widget {
 	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
+		$defaults = array(
+			'title'     => esc_html__( 'Featured Posts', 'ns-featured-posts' ),
+			'number'    => 5,
+			'show_date' => false,
+			'post_type' => 'post',
+		);
+
+		$instance = wp_parse_args( $instance, $defaults );
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'ns-featured-posts' ); ?></label>
