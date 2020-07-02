@@ -563,7 +563,7 @@ class NS_Featured_Posts_Admin {
 					update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
 				} else {
 					// Max limit reached.
-					set_transient( 'nsfp_message', esc_html__( 'Post could not be set as featured. Maximum posts limit reached.' ) );
+					set_transient( 'nsfp_message', esc_html__( 'Post could not be set as featured. Maximum posts limit reached.', 'ns-featured-posts' ) );
 				}
 			} else {
 				update_post_meta( $post_id, '_is_ns_featured_post', $target_status );
