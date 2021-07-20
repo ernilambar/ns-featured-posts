@@ -1,6 +1,8 @@
+// Env.
+require('dotenv').config()
+
 // Config.
-var rootPath   = './';
-var projectURL = 'http://staging.local/';
+var rootPath = './';
 
 // Gulp.
 var gulp = require( 'gulp' );
@@ -33,7 +35,7 @@ var deploy_files_list = [
 // Watch.
 gulp.task( 'watch', function() {
     browserSync.init({
-        proxy: projectURL,
+        proxy: process.env.DEV_SERVER_URL,
         open: true
     });
 
@@ -43,18 +45,6 @@ gulp.task( 'watch', function() {
     // Watch PHP files.
     gulp.watch( rootPath + '**/**/*.php' ).on('change',browserSync.reload);
 });
-
-// Make pot file.
-gulp.task('pot', function() {
-	const { run } = gulpPlugins;
-	return run('wpi18n makepot --domain-path=languages --exclude=vendor,deploy').exec();
-})
-
-// Add text domain.
-gulp.task('language', function() {
-	const { run } = gulpPlugins;
-	return run('wpi18n addtextdomain').exec();
-})
 
 // Clean deploy folder.
 gulp.task('clean:deploy', function() {
@@ -72,9 +62,5 @@ gulp.task('copy:deploy', function() {
 
 // Tasks.
 gulp.task( 'default', gulp.series('watch'));
-
-gulp.task( 'textdomain', gulp.series('language', 'pot'));
-
-gulp.task( 'build', gulp.series('textdomain'));
 
 gulp.task( 'deploy', gulp.series('clean:deploy', 'copy:deploy'));
