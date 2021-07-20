@@ -1,6 +1,0 @@
-{
-  "plugin_slug": "ns-featured-posts",
-  "deployment_folder": "deploy/ns-featured-posts",
-  "deploy_assets": true,
-  "assets_folder": "plugin-assets"
-}

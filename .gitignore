@@ -24,3 +24,6 @@ project.properties
 
 # Windows junk
 Thumbs.db
+
+# Environment
+.env
