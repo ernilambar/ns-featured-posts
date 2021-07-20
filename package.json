@@ -1,7 +1,7 @@
 {
   "name": "ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "GPL-2.0+",
   "main_file": "ns-featured-posts.php",
   "scripts": {
