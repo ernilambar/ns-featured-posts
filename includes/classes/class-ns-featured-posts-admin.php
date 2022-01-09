@@ -379,6 +379,16 @@ class NS_Featured_Posts_Admin {
 			$output['uno']     = $uno;
 		}
 
+		/**
+		 * Fires after the status change.
+		 *
+		 * @since 2.0.4
+		 *
+		 * @param int    $post_id     Post ID.
+		 * @param string $ns_featured Featured status.
+		 */
+		do_action( 'ns_featured_post_status_changed', $post_id, $ns_featured );
+
 		wp_send_json( $output );
 	}
 
