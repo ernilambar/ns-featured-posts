@@ -12,7 +12,7 @@
     "prewpdeploy": "npm install && composer install --no-dev --no-scripts -o && npm run deploy",
     "pot": "npm run textdomain && npm run language",
     "language": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
-    "textdomain": "wpi18n addtextdomain",
+    "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
     "wpdeploy": "grunt wp_deploy"
   },
   "repository": "github:ernilambar/ns-featured-posts",
