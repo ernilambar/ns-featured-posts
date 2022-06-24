@@ -17,4 +17,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-wp-deploy');
+
+	grunt.registerTask('wpdeploy', ['wp_deploy']);
 };
