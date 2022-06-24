@@ -15,10 +15,6 @@ class ComposerStaticInitb9d49ca32c0498ac78c6f2274079f63d
         array (
             'Kirki\\' => 6,
         ),
-        'D' => 
-        array (
-            'DuckDev\\Reviews\\' => 16,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -29,10 +25,6 @@ class ComposerStaticInitb9d49ca32c0498ac78c6f2274079f63d
         'Kirki\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
-        ),
-        'DuckDev\\Reviews\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/duckdev/wp-review-notice/src',
         ),
     );
 

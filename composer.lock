@@ -4,54 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e404705bf64b26ee0f681d5f2f7333a",
+    "content-hash": "7ff90ffad4bfe61e981c0c85719cc427",
     "packages": [
-        {
-            "name": "duckdev/wp-review-notice",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/duckdev/wp-review-notice.git",
-                "reference": "569ef315f269abcabf9df2cf1afd60b2a56f3169"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/duckdev/wp-review-notice/zipball/569ef315f269abcabf9df2cf1afd60b2a56f3169",
-                "reference": "569ef315f269abcabf9df2cf1afd60b2a56f3169",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DuckDev\\Reviews\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Joel James",
-                    "email": "me@joelsays.com",
-                    "homepage": "https://duckdev.com"
-                }
-            ],
-            "description": "Simple library class to gently ask for a wp.org plugin review after a few days of plugin usage.",
-            "keywords": [
-                "notices",
-                "reviews",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/duckdev/wp-review-notice/issues/",
-                "source": "https://github.com/duckdev/wp-review-notice/tree/v1.0.2"
-            },
-            "time": "2022-01-29T06:59:27+00:00"
-        },
         {
             "name": "ernilambar/optioner",
             "version": "1.0.9",

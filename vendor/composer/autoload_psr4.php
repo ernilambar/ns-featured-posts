@@ -8,5 +8,4 @@ $baseDir = dirname($vendorDir);
 return array(
     'Nilambar\\Optioner\\' => array($vendorDir . '/ernilambar/optioner/src'),
     'Kirki\\' => array($vendorDir . '/kirki-framework/url-getter/src'),
-    'DuckDev\\Reviews\\' => array($vendorDir . '/duckdev/wp-review-notice/src'),
 );
