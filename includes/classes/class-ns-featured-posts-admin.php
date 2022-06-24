@@ -81,6 +81,22 @@ class NS_Featured_Posts_Admin {
 
 		// Setup admin page.
 		add_action( 'init', array( $this, 'setup_admin_page' ), 11 );
+
+		add_action( 'init', array( $this, 'setup_review_notice' ) );
+	}
+
+	public function setup_review_notice() {
+		// Setup notice.
+		$notice = \DuckDev\Reviews\Notice::get(
+			$this->plugin_slug,
+			esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
+			array(
+				'prefix' => $this->plugin_slug,
+			)
+		);
+
+		// Render notice.
+		$notice->render();
 	}
 
 	/**
