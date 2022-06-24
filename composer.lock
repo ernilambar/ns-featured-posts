@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ff90ffad4bfe61e981c0c85719cc427",
+    "content-hash": "735c1f3619d566eece598842db00f325",
     "packages": [
         {
             "name": "ernilambar/optioner",
@@ -55,6 +55,48 @@
             "time": "2020-07-01T02:03:06+00:00"
         },
         {
+            "name": "ernilambar/wp-admin-notice",
+            "version": "dev-feature/setup",
+            "dist": {
+                "type": "path",
+                "url": "/Users/nilambarsharma/Work/wp-git/wp-admin-notice",
+                "reference": "2903d54db314614f2fbb5dec5f2240a176afe024"
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nilambar\\AdminNotice\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nilambar Sharma",
+                    "email": "nilambar@outlook.com",
+                    "homepage": "https://www.nilambar.net/"
+                }
+            ],
+            "description": "WordPress Helper for showing admin notice",
+            "homepage": "https://github.com/ernilambar/wp-admin-notice",
+            "keywords": [
+                "admin",
+                "notice",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            }
+        },
+        {
             "name": "kirki-framework/url-getter",
             "version": "v1.0.5",
             "source": {
@@ -102,7 +144,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ernilambar/wp-admin-notice": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

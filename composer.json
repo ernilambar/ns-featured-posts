@@ -12,6 +12,16 @@
     }
   ],
   "require": {
-    "ernilambar/optioner": "^1.0"
-  }
+    "ernilambar/optioner": "^1.0",
+    "ernilambar/wp-admin-notice": "@dev"
+  },
+	"repositories": [
+		{
+			"type": "path",
+			"url": "/Users/nilambarsharma/Work/wp-git/wp-admin-notice",
+			"options": {
+				"symlink": true
+			}
+		}
+	]
 }

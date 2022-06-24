@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '14c1bbb9a60cb84fd926eac13a49c31b4dce0e7c',
+        'reference' => 'ab26eed8b3da6ec163b3df4e8f5e7a4d14fddea4',
         'name' => 'ernilambar/ns-featured-posts',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '14c1bbb9a60cb84fd926eac13a49c31b4dce0e7c',
+            'reference' => 'ab26eed8b3da6ec163b3df4e8f5e7a4d14fddea4',
             'dev_requirement' => false,
         ),
         'ernilambar/optioner' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../ernilambar/optioner',
             'aliases' => array(),
             'reference' => 'c6959a2b5338e2744dc9b1d3c503f905eabc2be9',
+            'dev_requirement' => false,
+        ),
+        'ernilambar/wp-admin-notice' => array(
+            'pretty_version' => 'dev-feature/setup',
+            'version' => 'dev-feature/setup',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ernilambar/wp-admin-notice',
+            'aliases' => array(),
+            'reference' => '2903d54db314614f2fbb5dec5f2240a176afe024',
             'dev_requirement' => false,
         ),
         'kirki-framework/url-getter' => array(

@@ -10,6 +10,7 @@ class ComposerStaticInitb9d49ca32c0498ac78c6f2274079f63d
         'N' => 
         array (
             'Nilambar\\Optioner\\' => 18,
+            'Nilambar\\AdminNotice\\' => 21,
         ),
         'K' => 
         array (
@@ -21,6 +22,10 @@ class ComposerStaticInitb9d49ca32c0498ac78c6f2274079f63d
         'Nilambar\\Optioner\\' => 
         array (
             0 => __DIR__ . '/..' . '/ernilambar/optioner/src',
+        ),
+        'Nilambar\\AdminNotice\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ernilambar/wp-admin-notice/src',
         ),
         'Kirki\\' => 
         array (

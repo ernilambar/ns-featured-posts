@@ -52,6 +52,51 @@
             "install-path": "../ernilambar/optioner"
         },
         {
+            "name": "ernilambar/wp-admin-notice",
+            "version": "dev-feature/setup",
+            "version_normalized": "dev-feature/setup",
+            "dist": {
+                "type": "path",
+                "url": "/Users/nilambarsharma/Work/wp-git/wp-admin-notice",
+                "reference": "2903d54db314614f2fbb5dec5f2240a176afe024"
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Nilambar\\AdminNotice\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nilambar Sharma",
+                    "email": "nilambar@outlook.com",
+                    "homepage": "https://www.nilambar.net/"
+                }
+            ],
+            "description": "WordPress Helper for showing admin notice",
+            "homepage": "https://github.com/ernilambar/wp-admin-notice",
+            "keywords": [
+                "admin",
+                "notice",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            },
+            "install-path": "../ernilambar/wp-admin-notice"
+        },
+        {
             "name": "kirki-framework/url-getter",
             "version": "v1.0.5",
             "version_normalized": "1.0.5.0",
