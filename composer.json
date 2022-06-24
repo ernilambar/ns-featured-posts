@@ -12,6 +12,7 @@
     }
   ],
   "require": {
-    "ernilambar/optioner": "^1.0"
+    "ernilambar/optioner": "^1.0",
+    "duckdev/wp-review-notice": "^1.0"
   }
 }
