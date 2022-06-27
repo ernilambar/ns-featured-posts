@@ -53,16 +53,23 @@
         },
         {
             "name": "ernilambar/wp-admin-notice",
-            "version": "dev-feature/setup",
-            "version_normalized": "dev-feature/setup",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ernilambar/wp-admin-notice.git",
+                "reference": "1fd14ff6d79994750d25b4f529284a6942e117eb"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/nilambarsharma/Work/wp-git/wp-admin-notice",
-                "reference": "2903d54db314614f2fbb5dec5f2240a176afe024"
+                "type": "zip",
+                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/1fd14ff6d79994750d25b4f529284a6942e117eb",
+                "reference": "1fd14ff6d79994750d25b4f529284a6942e117eb",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
+            "time": "2022-06-27T07:08:52+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -70,6 +77,7 @@
                     "Nilambar\\AdminNotice\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -88,11 +96,8 @@
                 "wordpress"
             ],
             "support": {
-                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/"
-            },
-            "transport-options": {
-                "symlink": true,
-                "relative": false
+                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/",
+                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.0"
             },
             "install-path": "../ernilambar/wp-admin-notice"
         },
