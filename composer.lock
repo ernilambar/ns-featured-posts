@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "735c1f3619d566eece598842db00f325",
+    "content-hash": "38473dabc36165a6823864aa34e8ed6f",
     "packages": [
         {
             "name": "ernilambar/optioner",
@@ -56,11 +56,17 @@
         },
         {
             "name": "ernilambar/wp-admin-notice",
-            "version": "dev-feature/setup",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ernilambar/wp-admin-notice.git",
+                "reference": "1fd14ff6d79994750d25b4f529284a6942e117eb"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/nilambarsharma/Work/wp-git/wp-admin-notice",
-                "reference": "2903d54db314614f2fbb5dec5f2240a176afe024"
+                "type": "zip",
+                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/1fd14ff6d79994750d25b4f529284a6942e117eb",
+                "reference": "1fd14ff6d79994750d25b4f529284a6942e117eb",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
@@ -71,6 +77,7 @@
                     "Nilambar\\AdminNotice\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -89,12 +96,10 @@
                 "wordpress"
             ],
             "support": {
-                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/"
+                "issues": "https://github.com/ernilambar/wp-admin-notice/issues/",
+                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.0"
             },
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "time": "2022-06-27T07:08:52+00:00"
         },
         {
             "name": "kirki-framework/url-getter",
@@ -144,9 +149,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ernilambar/wp-admin-notice": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

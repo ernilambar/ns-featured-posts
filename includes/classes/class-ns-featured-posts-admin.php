@@ -82,28 +82,17 @@ class NS_Featured_Posts_Admin {
 		// Setup admin page.
 		add_action( 'init', array( $this, 'setup_admin_page' ), 11 );
 
-		add_action( 'init', array( $this, 'setup_custom_notice' ) );
+		add_action( 'admin_init', array( $this, 'setup_custom_notice' ) );
 	}
 
 	public function setup_custom_notice() {
 		// Setup notice.
-		$notice = \Nilambar\AdminNotice\Notice::get(
-			$this->plugin_slug,
-			'NS Featured Posts', // Plugin name (eg: Hello Dolly).
+		\Nilambar\AdminNotice\Notice::init(
 			array(
-				'days'          => 7, // default: 7 days.
-				// 'message'       => 'My custom message asking for review', // If you want to use different review notice message.
-				// 'action_labels' => array(
-				// 	'review'  => 'Please review me', // Change review link label.
-				// 	'later'   => 'I will review later', // Change review extension link.
-				// 	'dismiss' => 'Nope', // No review label :(.
-				// ),
+				'slug' => $this->plugin_slug,
+				'name' => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
 			)
 		);
-
-		// Render notice.
-		$notice->render();
-
 	}
 
 	/**

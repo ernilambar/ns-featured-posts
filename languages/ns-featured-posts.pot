@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Featured Posts 2.0.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-featured-posts\n"
-"POT-Creation-Date: 2022-06-24 06:35:32+00:00\n"
+"POT-Creation-Date: 2022-06-27 06:53:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,74 +18,74 @@ msgstr ""
 msgid "NS Featured Posts"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:106
-#: includes/classes/class-ns-featured-posts-admin.php:224
+#: includes/classes/class-ns-featured-posts-admin.php:118
+#: includes/classes/class-ns-featured-posts-admin.php:236
 msgid "Settings"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:116
+#: includes/classes/class-ns-featured-posts-admin.php:128
 msgid "Enable Featured for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:127
+#: includes/classes/class-ns-featured-posts-admin.php:139
 msgid "Enable Radio Mode for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:128
+#: includes/classes/class-ns-featured-posts-admin.php:140
 msgid "If checked, only one post can be made featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:139
+#: includes/classes/class-ns-featured-posts-admin.php:151
 msgid "Max Posts Number"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:140
+#: includes/classes/class-ns-featured-posts-admin.php:152
 msgid "Maximum posts for the post type."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:152
+#: includes/classes/class-ns-featured-posts-admin.php:164
 msgid "Enable Max Posts for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:194
+#: includes/classes/class-ns-featured-posts-admin.php:206
 #: includes/widgets/nsfp-featured-post-widget.php:155
 msgid "Post"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:195
+#: includes/classes/class-ns-featured-posts-admin.php:207
 #: includes/widgets/nsfp-featured-post-widget.php:156
 msgid "Page"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:254
-#: includes/classes/class-ns-featured-posts-admin.php:486
-#: includes/classes/class-ns-featured-posts-admin.php:609
-#: includes/classes/class-ns-featured-posts-admin.php:705
+#: includes/classes/class-ns-featured-posts-admin.php:266
+#: includes/classes/class-ns-featured-posts-admin.php:498
+#: includes/classes/class-ns-featured-posts-admin.php:621
+#: includes/classes/class-ns-featured-posts-admin.php:717
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:319
+#: includes/classes/class-ns-featured-posts-admin.php:331
 msgid "Nonce verrification error."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:357
+#: includes/classes/class-ns-featured-posts-admin.php:369
 #. translators: %s: max posts number
 msgid "Maximum %s posts can be set as featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:506
+#: includes/classes/class-ns-featured-posts-admin.php:518
 msgid "Check this to make featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:576
+#: includes/classes/class-ns-featured-posts-admin.php:588
 msgid "Post could not be set as featured. Maximum posts limit reached."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:608
+#: includes/classes/class-ns-featured-posts-admin.php:620
 msgid "Show All"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:610
+#: includes/classes/class-ns-featured-posts-admin.php:622
 msgid "Not Featured"
 msgstr ""
 
