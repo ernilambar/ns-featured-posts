@@ -771,6 +771,20 @@ class NS_Featured_Posts_Admin {
 				</ul>
 			</div>
 		</div><!-- .sidebox -->
+
+		<div class="sidebox">
+			<h3 class="box-heading">Recommended Plugins</h3>
+			<div class="box-content">
+				<ol>
+				<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
+				<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
+				<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
+				<li><a href="https://wordpress.org/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
+				<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+				<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></
+				</ol>
+			</div> <!-- .box-content -->
+		</div><!-- .sidebox -->
 		<div class="sidebox">
 			<h3 class="box-heading">My Blog</h3>
 			<div class="box-content">
