@@ -13,13 +13,13 @@
 class NS_Featured_Posts {
 
 	/**
-	 * Plugin version
+	 * Plugin version.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
-	const VERSION = '2.0.5';
+	const VERSION = NS_FEATURED_POSTS_VERSION;
 
 	/**
 	 * Plugin slug.

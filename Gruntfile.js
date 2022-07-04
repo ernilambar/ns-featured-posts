@@ -53,14 +53,14 @@ module.exports = function(grunt) {
 				options: {
 					patterns: [
 						{
-							match: /const VERSION = \'(.+)\'/gm,
-							replacement: "const VERSION = '<%= pkg.version %>'"
+							match: /define\( \'NS_FEATURED_POSTS_VERSION\'\, \'(.+)\'/gm,
+							replacement: "define( 'NS_FEATURED_POSTS_VERSION', '<%= pkg.version %>'"
 						}
 					]
 				},
 				files: [
 					{
-						expand: true, flatten: true, src: ['includes/classes/class-ns-featured-posts.php'], dest: 'includes/classes/'
+						expand: true, flatten: true, src: ['<%= pkg.main_file %>'], dest: './'
 					}
 				]
 			}

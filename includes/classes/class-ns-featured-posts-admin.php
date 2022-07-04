@@ -328,7 +328,7 @@ class NS_Featured_Posts_Admin {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null; // phpcs:ignore WordPress.Security.NonceVerification
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
-			$output['message'] = esc_html__( 'Nonce verrification error.', 'ns-featured-posts' );
+			$output['message'] = esc_html__( 'Nonce verification failed.', 'ns-featured-posts' );
 
 			wp_send_json( $output );
 		}
