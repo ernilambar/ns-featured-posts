@@ -1,7 +1,7 @@
 {
   "name": "ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "license": "GPL-2.0+",
   "main_file": "ns-featured-posts.php",
   "scripts": {
@@ -23,7 +23,6 @@
     "grunt-replace": "^2.0.2",
     "grunt-wp-deploy": "^2.1.2",
     "gulp": "^4.0.2",
-    "gulp-load-plugins": "^1.6.0",
     "gulp-zip": "^5.1.0",
     "node-wp-i18n": "^1.2.6"
   }
