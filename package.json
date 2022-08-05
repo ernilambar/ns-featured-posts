@@ -6,24 +6,27 @@
   "main_file": "ns-featured-posts.php",
   "scripts": {
     "dev": "gulp",
-    "deploy": "gulp deploy",
     "version": "grunt version",
-    "prewpdeploy": "npm run deploy",
-    "pot": "npm run textdomain && npm run language",
-    "language": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
+    "preinstall": "npx only-allow pnpm",
+    "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
-    "wpdeploy": "grunt wpdeploy"
+    "prewpdeploy": "npm run deploy",
+    "wpdeploy": "grunt wpdeploy",
+    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+    "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
   },
   "repository": "github:ernilambar/ns-featured-posts",
   "devDependencies": {
+    "bestzip": "^2.2.1",
     "browser-sync": "^2.27.10",
-    "del": "^6.1.1",
+    "copy-files-from-to": "^3.2.2",
+    "cross-var": "^1.1.0",
     "dotenv": "^16.0.1",
     "grunt": "^1.5.3",
     "grunt-replace": "^2.0.2",
     "grunt-wp-deploy": "^2.1.2",
     "gulp": "^4.0.2",
-    "gulp-zip": "^5.1.0",
-    "node-wp-i18n": "^1.2.6"
+    "node-wp-i18n": "^1.2.6",
+    "shx": "^0.3.4"
   }
 }
