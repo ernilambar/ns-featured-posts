@@ -4,9 +4,13 @@
   "version": "2.0.6",
   "license": "GPL-2.0+",
   "main_file": "ns-featured-posts.php",
+  "repository": "github:ernilambar/ns-featured-posts",
   "scripts": {
     "dev": "gulp",
     "version": "grunt version",
+    "format": "prettier --write \"assets/**/*.css\"",
+    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js Gruntfile.js",
+    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js Gruntfile.js",
     "preinstall": "npx only-allow pnpm",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
@@ -15,18 +19,21 @@
     "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
     "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
   },
-  "repository": "github:ernilambar/ns-featured-posts",
+  "browserslist": "> 0.25%, not dead",
   "devDependencies": {
+    "@wordpress/eslint-plugin": "^12.8.0",
     "bestzip": "^2.2.1",
     "browser-sync": "^2.27.10",
     "copy-files-from-to": "^3.2.2",
     "cross-var": "^1.1.0",
     "dotenv": "^16.0.1",
+    "eslint": "^8.21.0",
     "grunt": "^1.5.3",
     "grunt-replace": "^2.0.2",
     "grunt-wp-deploy": "^2.1.2",
     "gulp": "^4.0.2",
     "node-wp-i18n": "^1.2.6",
+    "prettier": "^2.7.1",
     "shx": "^0.3.4"
   }
 }
