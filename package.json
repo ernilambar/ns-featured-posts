@@ -1,39 +1,44 @@
 {
   "name": "ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "license": "GPL-2.0+",
   "main_file": "ns-featured-posts.php",
-  "repository": "github:ernilambar/ns-featured-posts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ernilambar/ns-featured-posts"
+  },
   "scripts": {
-    "dev": "gulp",
-    "version": "grunt version",
+    "version": "easy-replace-in-files",
     "format": "prettier --write \"assets/**/*.css\"",
-    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js Gruntfile.js",
-    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js Gruntfile.js",
+    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js",
+    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js",
     "preinstall": "npx only-allow pnpm",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
-    "prewpdeploy": "npm run deploy",
-    "wpdeploy": "grunt wpdeploy",
+    "prewpdeploy": "pnpm run deploy",
+    "wpdeploy": "wp-deployer",
     "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
     "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
   },
-  "browserslist": "> 0.25%, not dead",
+	"wpDeployer": {
+		"repoType": "plugin",
+		"username": "rabmalin",
+		"buildDir": "deploy/ns-featured-posts",
+		"deployAssets": false
+	},
+  "browserslist": "> 1%, not dead",
   "devDependencies": {
-    "@wordpress/eslint-plugin": "^12.8.0",
+    "@wordpress/eslint-plugin": "^12.9.0",
     "bestzip": "^2.2.1",
-    "browser-sync": "^2.27.10",
     "copy-files-from-to": "^3.2.2",
     "cross-var": "^1.1.0",
-    "dotenv": "^16.0.1",
-    "eslint": "^8.21.0",
-    "grunt": "^1.5.3",
-    "grunt-replace": "^2.0.2",
-    "grunt-wp-deploy": "^2.1.2",
-    "gulp": "^4.0.2",
+    "dotenv": "^16.0.2",
+    "easy-replace-in-files": "^1.0.3",
+    "eslint": "^8.23.1",
     "node-wp-i18n": "^1.2.6",
     "prettier": "^2.7.1",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "wp-deployer": "^1.0.3"
   }
 }
