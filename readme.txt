@@ -6,7 +6,7 @@ Tags: post, custom post type, custom, posts, meta, plugin, featured, featured-po
 Requires at least: 4.9
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Yes. It supports custom post types also. From Settings page( Settings -> NS Feat
 2. Example of featured in Post listing
 
 == Changelog ==
+
+= 2.0.7 - 18 Sep 2022 =
+* Minor bug fixes
 
 = 2.0.6 - 4 Jul 2022 =
 * Minor bug fixes

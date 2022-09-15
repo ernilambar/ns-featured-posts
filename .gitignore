@@ -46,8 +46,8 @@ npm-debug.log
 .sass-cache/
 
 # Project folders
-docs/
 build/
 deploy/
-vendor/
+docs/
 node_modules/
+vendor/
