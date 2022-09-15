@@ -25,6 +25,7 @@ define( 'NS_FEATURED_POSTS_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
 
 // Init autoload.
 require_once NS_FEATURED_POSTS_DIR . '/vendor/autoload.php';
+require_once NS_FEATURED_POSTS_DIR . '/vendor/ernilambar/optioner/optioner.php';
 
 // Load classes.
 require_once NS_FEATURED_POSTS_DIR . '/includes/classes/class-ns-featured-posts.php';

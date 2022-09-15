@@ -55,7 +55,7 @@ class NS_Featured_Posts_Admin {
 
 		$this->options = $plugin->get_options();
 
-		$this->optioner = new Optioner();
+
 
 		// Add an action link pointing to the options page.
 		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
@@ -80,7 +80,7 @@ class NS_Featured_Posts_Admin {
 		add_action( 'save_post', array( $this, 'save_featured_meta_box' ) );
 
 		// Setup admin page.
-		add_action( 'init', array( $this, 'setup_admin_page' ), 11 );
+		add_action( 'optioner_admin_init', array( $this, 'setup_admin_page' ), 11 );
 
 		add_action( 'admin_init', array( $this, 'setup_custom_notice' ) );
 	}
@@ -101,6 +101,8 @@ class NS_Featured_Posts_Admin {
 	 * @since 2.0.0
 	 */
 	public function setup_admin_page() {
+		$this->optioner = new Optioner();
+
 		$this->optioner->set_page(
 			array(
 				'page_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
