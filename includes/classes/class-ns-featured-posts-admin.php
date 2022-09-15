@@ -64,6 +64,7 @@ class NS_Featured_Posts_Admin {
 		// Define custom functionality.
 		add_action( 'admin_init', array( $this, 'add_custom_columns_head' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_assets' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_settings_assets' ) );
 		add_action( 'wp_ajax_nsfeatured_posts', array( $this, 'ajax_handler_featured_toggle' ) );
 
 		add_action( 'restrict_manage_posts', array( $this, 'custom_table_filtering' ) );
@@ -83,6 +84,9 @@ class NS_Featured_Posts_Admin {
 		add_action( 'optioner_admin_init', array( $this, 'setup_admin_page' ), 11 );
 
 		add_action( 'admin_init', array( $this, 'setup_custom_notice' ) );
+
+		add_action( 'wp_ajax_nopriv_nsfp_nsbl_get_posts', array( $this, 'get_posts_ajax_callback' ) );
+		add_action( 'wp_ajax_nsfp_nsbl_get_posts', array( $this, 'get_posts_ajax_callback' ) );
 	}
 
 	public function setup_custom_notice() {
@@ -452,6 +456,14 @@ class NS_Featured_Posts_Admin {
 		return $output;
 	}
 
+	public function load_settings_assets( $hook ) {
+		if ( 'settings_page_ns-featured-posts' !== $hook ) {
+			return;
+		}
+
+		wp_enqueue_script( 'ns-featured-posts-settings', NS_FEATURED_POSTS_URL . '/assets/js/settings.js', array( 'jquery' ), NS_FEATURED_POSTS_VERSION, true );
+	}
+
 	/**
 	 * Load assets.
 	 *
@@ -758,85 +770,41 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Render sidebar.
 	 *
-	 * @since 3.1.1
+	 * @since 2.0.0
 	 */
 	public function render_sidebar() {
 		?>
 		<div class="sidebox">
-			<h3 class="box-heading">Help &amp; Support</h3>
-			<div class="box-content">
-				<ul>
-					<li><strong>Questions, bugs or great ideas?</strong></li>
-					<li><a href="http://wordpress.org/support/plugin/ns-featured-posts" target="_blank">Visit our plugin support page</a></li>
-					<li><strong>Wanna help make this plugin better?</strong></li>
-					<li><a href="http://wordpress.org/support/view/plugin-reviews/ns-featured-posts" target="_blank">Review and rate this plugin on WordPress.org</a></li>
-				</ul>
+			<h3 class="sidebox-heading">Help &amp; Support</h3>
+			<div class="sidebox-content">
+					<p><strong>Questions, bugs or great ideas?</strong></p>
+					<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/#new-post" target="_blank">Visit our plugin support page</a></p>
+					<p><strong>Wanna help make this plugin better?</strong></p>
+					<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>
 			</div>
 		</div><!-- .sidebox -->
 
 		<div class="sidebox">
-			<h3 class="box-heading">Recommended Plugins</h3>
-			<div class="box-content">
+			<h3 class="sidebox-heading">Recommended Plugins</h3>
+			<div class="sidebox-content">
 				<ol>
-				<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
-				<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
-				<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
-				<li><a href="https://wordpress.org/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
-				<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-				<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></
+					<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
+					<li><a href="https://wpconcern.com/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
+					<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
+					<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
+					<li><a href="https://wpconcern.com/plugins/majestic-before-after-image/" target="_blank">Majestic Before After Image</a></li>
+					<li><a href="https://wpconcern.com/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+					<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
 				</ol>
-			</div> <!-- .box-content -->
+			</div> <!-- .sidebox-content -->
 		</div><!-- .sidebox -->
 		<div class="sidebox">
-			<h3 class="box-heading">My Blog</h3>
-			<div class="box-content">
-				<?php $rss_items = $this->get_feed_items(); ?>
-
-				<?php if ( ! empty( $rss_items ) ) : ?>
-					<ul>
-						<?php foreach ( $rss_items as $item ) : ?>
-							<li><a href="<?php echo esc_url( $item['url'] ); ?>" target="_blank"><?php echo esc_html( $item['title'] ); ?></a></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
+			<h3 class="sidebox-heading">Recent Blog Posts</h3>
+			<div class="sidebox-content">
+				<div class="ns-blog-list"></div>
 			</div>
 		</div><!-- .sidebox -->
 		<?php
-	}
-
-	/**
-	 * Get feed items.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @return array Feed items array.
-	 */
-	private function get_feed_items() {
-		$output = array();
-
-		$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
-
-		$maxitems = 0;
-
-		$rss_items = array();
-
-		if ( ! is_wp_error( $rss ) ) {
-			$maxitems  = $rss->get_item_quantity( 5 );
-			$rss_items = $rss->get_items( 0, $maxitems );
-		}
-
-		if ( ! empty( $rss_items ) ) {
-			foreach ( $rss_items as $item ) {
-				$feed_item = array();
-
-				$feed_item['title'] = $item->get_title();
-				$feed_item['url']   = $item->get_permalink();
-
-				$output[] = $feed_item;
-			}
-		}
-
-		return $output;
 	}
 
 	/**
@@ -912,6 +880,50 @@ class NS_Featured_Posts_Admin {
 		} else {
 			return $html;
 		}
+	}
+
+	public function get_posts_ajax_callback() {
+		$output = array();
+
+		$posts = $this->get_blog_feed_items();
+
+		if ( ! empty( $posts ) ) {
+			$output = $posts;
+		}
+
+		if ( ! empty( $output ) ) {
+			wp_send_json_success( $output, 200 );
+		} else {
+			wp_send_json_error( $output, 404 );
+		}
+	}
+
+	public function get_blog_feed_items() {
+		$output = array();
+
+		$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
+
+		$maxitems = 0;
+
+		$rss_items = array();
+
+		if ( ! is_wp_error( $rss ) ) {
+			$maxitems  = $rss->get_item_quantity( 5 );
+			$rss_items = $rss->get_items( 0, $maxitems );
+		}
+
+		if ( ! empty( $rss_items ) ) {
+			foreach ( $rss_items as $item ) {
+				$feed_item = array();
+
+				$feed_item['title'] = $item->get_title();
+				$feed_item['url']   = $item->get_permalink();
+
+				$output[] = $feed_item;
+			}
+		}
+
+		return $output;
 	}
 
 } // End class.
