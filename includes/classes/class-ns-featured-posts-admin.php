@@ -772,39 +772,33 @@ class NS_Featured_Posts_Admin {
 	 *
 	 * @since 2.0.0
 	 */
-	public function render_sidebar() {
-		?>
-		<div class="sidebox">
-			<h3 class="sidebox-heading">Help &amp; Support</h3>
-			<div class="sidebox-content">
-					<p><strong>Questions, bugs or great ideas?</strong></p>
-					<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/#new-post" target="_blank">Visit our plugin support page</a></p>
-					<p><strong>Wanna help make this plugin better?</strong></p>
-					<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>
-			</div>
-		</div><!-- .sidebox -->
+	public function render_sidebar( $object ) {
+		$object->render_sidebar_box(
+			array(
+				'title'   => 'Help &amp; Support',
+				'content' => '<p><strong>Questions, bugs or great ideas?</strong></p>
+				<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/#new-post" target="_blank">Visit our plugin support page</a></p>
+				<p><strong>Wanna help make this plugin better?</strong></p>
+				<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>',
+			),
+			$object
+		);
 
-		<div class="sidebox">
-			<h3 class="sidebox-heading">Recommended Plugins</h3>
-			<div class="sidebox-content">
-				<ol>
-					<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
-					<li><a href="https://wpconcern.com/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
-					<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
-					<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
-					<li><a href="https://wpconcern.com/plugins/majestic-before-after-image/" target="_blank">Majestic Before After Image</a></li>
-					<li><a href="https://wpconcern.com/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-					<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
-				</ol>
-			</div> <!-- .sidebox-content -->
-		</div><!-- .sidebox -->
-		<div class="sidebox">
-			<h3 class="sidebox-heading">Recent Blog Posts</h3>
-			<div class="sidebox-content">
-				<div class="ns-blog-list"></div>
-			</div>
-		</div><!-- .sidebox -->
-		<?php
+		$object->render_sidebar_box(
+			array(
+				'title'   => 'Recommended Plugins',
+				'content' => $this->get_recommended_plugins_content(),
+			),
+			$object
+		);
+
+		$object->render_sidebar_box(
+			array(
+				'title'   => 'Recent Blog Posts',
+				'content' => '<div class = "ns-blog-list"></div>',
+			),
+			$object
+		);
 	}
 
 	/**
@@ -924,6 +918,18 @@ class NS_Featured_Posts_Admin {
 		}
 
 		return $output;
+	}
+
+	public function get_recommended_plugins_content() {
+		return '<ol>
+		<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
+		<li><a href="https://wpconcern.com/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
+		<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
+		<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
+		<li><a href="https://wpconcern.com/plugins/majestic-before-after-image/" target="_blank">Majestic Before After Image</a></li>
+		<li><a href="https://wpconcern.com/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+		<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
+	</ol>';
 	}
 
 } // End class.
