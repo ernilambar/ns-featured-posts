@@ -776,9 +776,10 @@ class NS_Featured_Posts_Admin {
 		$object->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
-				'content' => '<p><strong>Questions, bugs or great ideas?</strong></p>
+				'icon'    => 'dashicons-editor-help',
+				'content' => '<h4>Questions, bugs or great ideas?</h4>
 				<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/#new-post" target="_blank">Visit our plugin support page</a></p>
-				<p><strong>Wanna help make this plugin better?</strong></p>
+				<h4>Wanna help make this plugin better?</h4>
 				<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>',
 			),
 			$object
