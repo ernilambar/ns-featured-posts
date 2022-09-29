@@ -109,11 +109,27 @@ class NS_Featured_Posts_Admin {
 
 		$this->optioner->set_page(
 			array(
-				'page_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
-				'menu_title'  => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'ns-featured-posts',
-				'option_slug' => 'nsfp_plugin_options',
+				'page_title'    => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
+				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'ns-featured-posts' ), NS_FEATURED_POSTS_VERSION ),
+				'menu_title'    => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
+				'capability'    => 'manage_options',
+				'menu_slug'     => 'ns-featured-posts',
+				'option_slug'   => 'nsfp_plugin_options',
+			)
+		);
+
+		$this->optioner->set_quick_links(
+			array(
+				array(
+					'text' => 'Plugin Page',
+					'url'  => 'https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html',
+					'type' => 'primary',
+				),
+				array(
+					'text' => 'Get Support',
+					'url'  => 'https://wordpress.org/support/plugin/ns-featured-posts/#new-post',
+					'type' => 'secondary',
+				),
 			)
 		);
 
