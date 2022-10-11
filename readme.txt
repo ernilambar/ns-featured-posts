@@ -61,7 +61,7 @@ Yes. It supports custom post types also. From Settings page( Settings -> NS Feat
 
 == Changelog ==
 
-= 2.0.7 - 26 Sep 2022 =
+= 2.0.7 - 11 Oct 2022 =
 * Minor bug fixes
 
 = 2.0.6 - 4 Jul 2022 =
