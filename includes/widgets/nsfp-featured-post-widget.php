@@ -217,14 +217,15 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param string $choices   Choices array.
-		 * @param array  $main_args Main arguments.
+		 * @param array $choices   Choices array.
+		 * @param array $main_args Main arguments.
 		 * @return string Rendered markup.
 		 */
 		protected function render_select_dropdown( $choices, $main_args ) {
-			if ( empty( $choices ) ) {
+			if ( empty( $choices ) || ! is_array( $choices ) ) {
 				return;
 			}
+
 
 			$defaults = array(
 				'id'       => '',

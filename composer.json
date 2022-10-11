@@ -12,6 +12,7 @@
     }
   ],
   "require": {
+		"php": ">=5.6",
     "ernilambar/optioner": "^2.0",
     "ernilambar/wp-admin-notice": "^1.0"
   }
