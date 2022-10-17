@@ -255,7 +255,7 @@ class NS_Featured_Posts_Admin {
 	public function add_plugin_action_links( $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . esc_url( $this->optioner->get_page_url() ) . '">' . esc_html__( 'Settings', 'ns-featured-posts' ) . '</a>',
+				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=ns-featured-posts' ) ) . '">' . esc_html__( 'Settings', 'ns-featured-posts' ) . '</a>',
 			),
 			$links
 		);
