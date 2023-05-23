@@ -61,8 +61,8 @@ Yes. It supports custom post types also. From Settings page( Settings -> NS Feat
 
 == Changelog ==
 
-= 2.0.10 - 20 Feb 2023 =
-* WP 6.2 compatibility
+= 2.0.10 - 23 May 2023 =
+* Update packages
 
 = 2.0.9 - 4 Feb 2023 =
 * Fix PHP 8 notices
