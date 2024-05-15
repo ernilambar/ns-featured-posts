@@ -11,8 +11,8 @@
   "scripts": {
     "version": "easy-replace-in-files",
     "format": "prettier --write \"assets/**/*.css\"",
-    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js",
-    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js",
+    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\"",
+    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\"",
     "pot": "composer run pot",
     "prewpdeploy": "pnpm run deploy",
     "wpdeploy": "wp-deployer",
@@ -37,7 +37,6 @@
   "browserslist": "> 1%, not dead",
   "devDependencies": {
     "@wordpress/eslint-plugin": "^18.0.0",
-    "dotenv": "^16.4.5",
     "easy-replace-in-files": "^1.0.3",
     "eslint": "^8.57.0",
     "packtor": "^1.0.2",
