@@ -2,11 +2,11 @@
 
 Contributors: rabmalin
 Donate link: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
-Tags: post, custom post type, custom, posts, meta, plugin, featured, featured-post, page, ClassicPress
+Tags: post, custom, meta, featured, featured-post
 Requires at least: 4.9
 Requires PHP: 5.6
-Tested up to: 6.2
-Stable tag: 2.0.10
+Tested up to: 6.5
+Stable tag: 2.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Yes. It supports custom post types also. From Settings page( Settings -> NS Feat
 2. Example of featured in Post listing
 
 == Changelog ==
+
+= 2.0.11 - 15 May 2024 =
+* Fix URLs
 
 = 2.0.10 - 23 May 2023 =
 * Update packages

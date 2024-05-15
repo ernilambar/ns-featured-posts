@@ -1,20 +1,16 @@
-// Env.
 require( 'dotenv' ).config();
 
-// Config.
-var rootPath = './';
+const rootPath = './';
 
-// Gulp.
-var gulp = require( 'gulp' );
+const gulp = require( 'gulp' );
 
-// Browser sync.
-var browserSync = require( 'browser-sync' ).create();
+const browserSync = require( 'browser-sync' ).create();
 
 // Watch.
 gulp.task( 'watch', function() {
 	browserSync.init( {
 		proxy: process.env.DEV_SERVER_URL,
-		open: true,
+		open: false,
 	} );
 
 	gulp.watch( rootPath + 'assets/**/*.css' ).on( 'change', browserSync.reload );

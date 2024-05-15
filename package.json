@@ -1,7 +1,7 @@
 {
   "name": "ns-featured-posts",
   "title": "NS Featured Posts",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "license": "GPL-2.0+",
   "main_file": "ns-featured-posts.php",
   "repository": {
@@ -13,7 +13,6 @@
     "format": "prettier --write \"assets/**/*.css\"",
     "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js",
     "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js",
-    "preinstall": "npx only-allow pnpm",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
     "prewpdeploy": "pnpm run deploy",
