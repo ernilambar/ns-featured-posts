@@ -110,6 +110,7 @@ class NS_Featured_Posts_Admin {
 		$this->optioner->set_page(
 			array(
 				'page_title'    => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
+				/* translators: %s: version */
 				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'ns-featured-posts' ), NS_FEATURED_POSTS_VERSION ),
 				'menu_title'    => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
 				'capability'    => 'manage_options',
@@ -803,16 +804,8 @@ class NS_Featured_Posts_Admin {
 
 		$object->render_sidebar_box(
 			array(
-				'title'   => 'Recommended Plugins',
-				'content' => $this->get_recommended_plugins_content(),
-			),
-			$object
-		);
-
-		$object->render_sidebar_box(
-			array(
 				'title'   => 'Recent Blog Posts',
-				'content' => '<div class = "ns-blog-list"></div>',
+				'content' => '<div class="ns-blog-list"></div>',
 			),
 			$object
 		);
@@ -936,17 +929,4 @@ class NS_Featured_Posts_Admin {
 
 		return $output;
 	}
-
-	public function get_recommended_plugins_content() {
-		return '<ol>
-		<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
-		<li><a href="https://wpconcern.com/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
-		<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
-		<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
-		<li><a href="https://wpconcern.com/plugins/majestic-before-after-image/" target="_blank">Majestic Before After Image</a></li>
-		<li><a href="https://wpconcern.com/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-		<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
-	</ol>';
-	}
-
-} // End class.
+}

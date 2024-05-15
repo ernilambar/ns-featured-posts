@@ -13,8 +13,7 @@
     "format": "prettier --write \"assets/**/*.css\"",
     "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\" gulpfile.js",
     "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\" gulpfile.js",
-    "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
-    "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
+    "pot": "composer run pot",
     "prewpdeploy": "pnpm run deploy",
     "wpdeploy": "wp-deployer",
     "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
@@ -35,7 +34,6 @@
     "dotenv": "^16.0.3",
     "easy-replace-in-files": "^1.0.3",
     "eslint": "^8.41.0",
-    "node-wp-i18n": "^1.2.7",
     "prettier": "^2.8.8",
     "shx": "^0.3.4",
     "wp-deployer": "^1.0.3"

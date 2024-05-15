@@ -29,9 +29,6 @@ importers:
       eslint:
         specifier: ^8.41.0
         version: 8.41.0
-      node-wp-i18n:
-        specifier: ^1.2.7
-        version: 1.2.7
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -1183,9 +1180,6 @@ packages:
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
 
-  bluebird@3.7.2:
-    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
-
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
@@ -1420,9 +1414,6 @@ packages:
 
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
-
-  encoding@0.1.13:
-    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
 
   end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -1690,9 +1681,6 @@ packages:
     resolution: {integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==}
     engines: {node: '>= 0.4'}
 
-  gettext-parser@3.1.1:
-    resolution: {integrity: sha512-vNhWcqXEtZPs5Ft1ReA34g7ByWotpcOIeJvXVy2jF3/G2U9v6W0wG4Z4hXzcU8R//jArqkgHcVCGgGqa4vxVlQ==}
-
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -1780,10 +1768,6 @@ packages:
   hosted-git-info@4.1.0:
     resolution: {integrity: sha512-kyCuEOWjJqZuDbRHzL8V93NzQhwIB71oFWSyzVo+KPZI+pnQPPxucdkrOZvkLRnrf5URsQM+IJ09Dw29cRALIA==}
     engines: {node: '>=10'}
-
-  iconv-lite@0.6.3:
-    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
-    engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -2094,11 +2078,6 @@ packages:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
 
-  mkdirp@1.0.4:
-    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   mkdirp@3.0.1:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
@@ -2124,10 +2103,6 @@ packages:
 
   node-releases@2.0.11:
     resolution: {integrity: sha512-+M0PwXeU80kRohZ3aT4J/OnR+l9/KD2nVLNNoRgFtnf+umQVFdGBAO2N8+nCnEi0xlh/Wk3zOGC+vNNx+uM79Q==}
-
-  node-wp-i18n@1.2.7:
-    resolution: {integrity: sha512-4X+890+Irj8sY+6WKkFx+4wk/GGu9mGLDY1PVPF9AWF1zTKWClLA83QikcQKX55rjjKpN1jSZEQoEANNVSSBYw==}
-    hasBin: true
 
   normalize-package-data@3.0.3:
     resolution: {integrity: sha512-p2W1sgqij3zMMyRC067Dg16bfzVH+w7hyegmpIvZ4JNjqtGOVAIvLmjBx3yP7YTe9vKJgkoNOPjwQGogDoMXFA==}
@@ -2419,9 +2394,6 @@ packages:
   safe-regex-test@1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
 
-  safer-buffer@2.1.2:
-    resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-
   scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
 
@@ -2573,10 +2545,6 @@ packages:
 
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
-
-  tmp@0.2.1:
-    resolution: {integrity: sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==}
-    engines: {node: '>=8.17.0'}
 
   to-fast-properties@1.0.3:
     resolution: {integrity: sha512-lxrWP8ejsq+7E3nNjwYmUBMAgjMTZoTI+sdBOpvNyijeDLa29LUn9QaoXAHv4+Z578hbmHHJKZknzxVtvo77og==}
@@ -3642,7 +3610,7 @@ snapshots:
 
   '@types/semver@7.5.0': {}
 
-  '@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.4)':
+  '@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4)':
     dependencies:
       '@eslint-community/regexpp': 4.5.1
       '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
@@ -3656,6 +3624,7 @@ snapshots:
       natural-compare-lite: 1.4.0
       semver: 7.5.1
       tsutils: 3.21.0(typescript@5.0.4)
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -3667,6 +3636,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.59.7(typescript@5.0.4)
       debug: 4.3.4
       eslint: 8.41.0
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -3683,6 +3653,7 @@ snapshots:
       debug: 4.3.4
       eslint: 8.41.0
       tsutils: 3.21.0(typescript@5.0.4)
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -3698,6 +3669,7 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.5.1
       tsutils: 3.21.0(typescript@5.0.4)
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -3764,23 +3736,24 @@ snapshots:
     dependencies:
       '@babel/core': 7.21.8
       '@babel/eslint-parser': 7.21.8(@babel/core@7.21.8)(eslint@8.41.0)
-      '@typescript-eslint/eslint-plugin': 5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/eslint-plugin': 5.59.7(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4)
       '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
       '@wordpress/babel-preset-default': 7.17.0
       '@wordpress/prettier-config': 2.16.0(prettier@2.8.8)
       cosmiconfig: 7.1.0
       eslint: 8.41.0
       eslint-config-prettier: 8.8.0(eslint@8.41.0)
-      eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)
-      eslint-plugin-jest: 27.2.1(@typescript-eslint/eslint-plugin@5.59.7)(eslint@8.41.0)(typescript@5.0.4)
+      eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)
+      eslint-plugin-jest: 27.2.1(@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4)
       eslint-plugin-jsdoc: 39.9.1(eslint@8.41.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.41.0)
-      eslint-plugin-prettier: 3.4.1(eslint-config-prettier@8.8.0)(eslint@8.41.0)(prettier@2.8.8)
+      eslint-plugin-prettier: 3.4.1(eslint-config-prettier@8.8.0(eslint@8.41.0))(eslint@8.41.0)(prettier@2.8.8)
       eslint-plugin-react: 7.32.2(eslint@8.41.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.41.0)
       globals: 13.20.0
-      prettier: 2.8.8
       requireindex: 1.2.0
+    optionalDependencies:
+      prettier: 2.8.8
       typescript: 5.0.4
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -4472,8 +4445,6 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  bluebird@3.7.2: {}
-
   brace-expansion@1.1.11:
     dependencies:
       balanced-match: 1.0.2
@@ -4768,10 +4739,6 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
-  encoding@0.1.13:
-    dependencies:
-      iconv-lite: 0.6.3
-
   end-of-stream@1.4.4:
     dependencies:
       once: 1.4.0
@@ -4863,18 +4830,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.0(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-node@0.3.7)(eslint@8.41.0):
+  eslint-module-utils@2.8.0(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.7)(eslint@8.41.0):
     dependencies:
-      '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
       debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
       eslint: 8.41.0
       eslint-import-resolver-node: 0.3.7
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.59.7)(eslint@8.41.0):
+  eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0):
     dependencies:
-      '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       array.prototype.flatmap: 1.3.1
@@ -4882,7 +4849,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.41.0
       eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-node@0.3.7)(eslint@8.41.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.7)(eslint@8.41.0)
       has: 1.0.3
       is-core-module: 2.12.1
       is-glob: 4.0.3
@@ -4891,16 +4858,19 @@ snapshots:
       resolve: 1.22.2
       semver: 6.3.0
       tsconfig-paths: 3.14.2
+    optionalDependencies:
+      '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jest@27.2.1(@typescript-eslint/eslint-plugin@5.59.7)(eslint@8.41.0)(typescript@5.0.4):
+  eslint-plugin-jest@27.2.1(@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.4)
       '@typescript-eslint/utils': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
       eslint: 8.41.0
+    optionalDependencies:
+      '@typescript-eslint/eslint-plugin': 5.59.7(@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4))(eslint@8.41.0)(typescript@5.0.4)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4938,12 +4908,13 @@ snapshots:
       object.fromentries: 2.0.6
       semver: 6.3.0
 
-  eslint-plugin-prettier@3.4.1(eslint-config-prettier@8.8.0)(eslint@8.41.0)(prettier@2.8.8):
+  eslint-plugin-prettier@3.4.1(eslint-config-prettier@8.8.0(eslint@8.41.0))(eslint@8.41.0)(prettier@2.8.8):
     dependencies:
       eslint: 8.41.0
-      eslint-config-prettier: 8.8.0(eslint@8.41.0)
       prettier: 2.8.8
       prettier-linter-helpers: 1.0.0
+    optionalDependencies:
+      eslint-config-prettier: 8.8.0(eslint@8.41.0)
 
   eslint-plugin-react-hooks@4.6.0(eslint@8.41.0):
     dependencies:
@@ -5142,12 +5113,6 @@ snapshots:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
 
-  gettext-parser@3.1.1:
-    dependencies:
-      encoding: 0.1.13
-      readable-stream: 3.6.2
-      safe-buffer: 5.2.1
-
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -5235,10 +5200,6 @@ snapshots:
   hosted-git-info@4.1.0:
     dependencies:
       lru-cache: 6.0.0
-
-  iconv-lite@0.6.3:
-    dependencies:
-      safer-buffer: 2.1.2
 
   ieee754@1.2.1: {}
 
@@ -5518,8 +5479,6 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
-  mkdirp@1.0.4: {}
-
   mkdirp@3.0.1: {}
 
   ms@2.0.0: {}
@@ -5538,16 +5497,6 @@ snapshots:
       tslib: 2.5.2
 
   node-releases@2.0.11: {}
-
-  node-wp-i18n@1.2.7:
-    dependencies:
-      bluebird: 3.7.2
-      gettext-parser: 3.1.1
-      glob: 7.2.3
-      lodash: 4.17.21
-      minimist: 1.2.8
-      mkdirp: 1.0.4
-      tmp: 0.2.1
 
   normalize-package-data@3.0.3:
     dependencies:
@@ -5858,8 +5807,6 @@ snapshots:
       get-intrinsic: 1.2.1
       is-regex: 1.1.4
 
-  safer-buffer@2.1.2: {}
-
   scheduler@0.23.0:
     dependencies:
       loose-envify: 1.4.0
@@ -6028,10 +5975,6 @@ snapshots:
       source-map-support: 0.5.21
 
   text-table@0.2.0: {}
-
-  tmp@0.2.1:
-    dependencies:
-      rimraf: 3.0.2
 
   to-fast-properties@1.0.3: {}
 
