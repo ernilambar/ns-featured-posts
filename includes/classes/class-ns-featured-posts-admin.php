@@ -24,6 +24,24 @@ class NS_Featured_Posts_Admin {
 	protected static $instance = null;
 
 	/**
+	 * Plugin slug.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	protected $plugin_slug = 'ns-featured-posts';
+
+	/**
+	 * Plugin version.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	protected $version = '';
+
+	/**
 	 * Plugin options.
 	 *
 	 * @since 1.0.0
