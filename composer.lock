@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f360affc9789ca69b656cc473ae55b4",
+    "content-hash": "d6a8a60310ce7bcf4d27b3637b160ece",
     "packages": [
         {
             "name": "ernilambar/optioner",
@@ -50,16 +50,16 @@
         },
         {
             "name": "ernilambar/wp-admin-notice",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/wp-admin-notice.git",
-                "reference": "99d73f74a17357a60abff104be06e5c07ec72f7f"
+                "reference": "626e4685775bdd06085e7af76f9ae9380c68c9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/99d73f74a17357a60abff104be06e5c07ec72f7f",
-                "reference": "99d73f74a17357a60abff104be06e5c07ec72f7f",
+                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/626e4685775bdd06085e7af76f9ae9380c68c9f0",
+                "reference": "626e4685775bdd06085e7af76f9ae9380c68c9f0",
                 "shasum": ""
             },
             "require": {
@@ -91,9 +91,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/wp-admin-notice/issues/",
-                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.1"
+                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.2"
             },
-            "time": "2023-05-23T10:16:06+00:00"
+            "time": "2023-05-29T05:53:39+00:00"
         }
     ],
     "packages-dev": [
@@ -728,9 +728,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6"
