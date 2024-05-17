@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: NS Featured Posts 2.0.11\n"
+"Project-Id-Version: NS Featured Posts 2.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ns-featured-posts\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,9 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: ns-featured-posts.php
-#: includes/classes/class-ns-featured-posts-admin.php:97
-#: includes/classes/class-ns-featured-posts-admin.php:112
 #: includes/classes/class-ns-featured-posts-admin.php:115
+#: includes/classes/class-ns-featured-posts-admin.php:130
+#: includes/classes/class-ns-featured-posts-admin.php:133
 #: includes/widgets/nsfp-featured-post-widget.php:28
 msgid "NS Featured Posts"
 msgstr ""
@@ -44,78 +44,78 @@ msgid "https://www.nilambar.net"
 msgstr ""
 
 #. translators: %s: version
-#: includes/classes/class-ns-featured-posts-admin.php:114
+#: includes/classes/class-ns-featured-posts-admin.php:132
 msgid "Version: %s"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:141
-#: includes/classes/class-ns-featured-posts-admin.php:259
+#: includes/classes/class-ns-featured-posts-admin.php:159
+#: includes/classes/class-ns-featured-posts-admin.php:277
 msgid "Settings"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:151
+#: includes/classes/class-ns-featured-posts-admin.php:169
 msgid "Enable Featured for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:162
+#: includes/classes/class-ns-featured-posts-admin.php:180
 msgid "Enable Radio Mode for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:163
+#: includes/classes/class-ns-featured-posts-admin.php:181
 msgid "If checked, only one post can be made featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:174
+#: includes/classes/class-ns-featured-posts-admin.php:192
 msgid "Max Posts Number"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:175
+#: includes/classes/class-ns-featured-posts-admin.php:193
 msgid "Maximum posts for the post type."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:187
+#: includes/classes/class-ns-featured-posts-admin.php:205
 msgid "Enable Max Posts for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:229
+#: includes/classes/class-ns-featured-posts-admin.php:247
 #: includes/widgets/nsfp-featured-post-widget.php:155
 msgid "Post"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:230
+#: includes/classes/class-ns-featured-posts-admin.php:248
 #: includes/widgets/nsfp-featured-post-widget.php:156
 msgid "Page"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:289
-#: includes/classes/class-ns-featured-posts-admin.php:529
-#: includes/classes/class-ns-featured-posts-admin.php:652
-#: includes/classes/class-ns-featured-posts-admin.php:748
+#: includes/classes/class-ns-featured-posts-admin.php:307
+#: includes/classes/class-ns-featured-posts-admin.php:547
+#: includes/classes/class-ns-featured-posts-admin.php:670
+#: includes/classes/class-ns-featured-posts-admin.php:766
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:354
+#: includes/classes/class-ns-featured-posts-admin.php:372
 msgid "Nonce verification failed."
 msgstr ""
 
 #. translators: %s: max posts number
-#: includes/classes/class-ns-featured-posts-admin.php:392
+#: includes/classes/class-ns-featured-posts-admin.php:410
 msgid "Maximum %s posts can be set as featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:549
+#: includes/classes/class-ns-featured-posts-admin.php:567
 msgid "Check this to make featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:619
+#: includes/classes/class-ns-featured-posts-admin.php:637
 msgid "Post could not be set as featured. Maximum posts limit reached."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:651
+#: includes/classes/class-ns-featured-posts-admin.php:669
 msgid "Show All"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:653
+#: includes/classes/class-ns-featured-posts-admin.php:671
 msgid "Not Featured"
 msgstr ""
 

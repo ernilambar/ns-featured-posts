@@ -1,8 +1,8 @@
 {
   "name": "ernilambar/ns-featured-posts",
-  "title": "NS Featured Posts",
+  "description": "NS Featured Posts",
   "license": "GPL-2.0-or-later",
-  "minimum-stability" : "stable",
+  "type": "wordpress-plugin",
   "authors": [
     {
       "name": "Nilambar Sharma",
@@ -12,17 +12,20 @@
     }
   ],
   "require": {
-		"php": ">=5.6",
+    "php": ">=5.6",
     "ernilambar/optioner": "^2.0",
     "ernilambar/wp-admin-notice": "^1.0"
   },
   "require-dev": {
     "wp-cli/i18n-command": "^2.6"
   },
-	"config": {
-		"sort-packages": true
-	},
-	"scripts": {
-		"pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
-	}
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "scripts": {
+    "pot": "wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+  }
 }
