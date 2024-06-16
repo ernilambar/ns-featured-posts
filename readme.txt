@@ -10,14 +10,14 @@ Stable tag: 2.0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin for making posts, pages or custom post types featured. User can enable/disable Featured for selected post types.
+A plugin for making posts, pages, or custom post types featured. Users can enable/disable Featured flags for selected post types.
 
 == Description ==
 
-<h3>NS Featured Posts</h3>This plugin adds checkboxes for each list item. You can easily check /  uncheck the Featured. Checking the Featured will set the meta value **yes** for meta key **_is_ns_featured_post**. From plugin settings, you can choose to which post types you want Featured functionality.
+<h3>NS Featured Posts</h3>This plugin adds checkboxes for each list item. You can easily check/uncheck the Featured flag. Checking the Featured will set the meta value **yes** for meta key **_is_ns_featured_post**. You can choose which post types you want Featured functionality from plugin settings.
 
 = Using in theme =
-This plugin only set / unset the meta key for asigned post. You need to implement it in your theme to get Featured functionality.
+This plugin only sets/unsets the meta key for assigned posts. You need to implement it in your theme to get Featured functionality.
 
 Example:
 
@@ -25,10 +25,10 @@ Example:
 `$query = new WP_Query( array( 'meta_key' => '_is_ns_featured_post', 'meta_value' => 'yes' ) );`
 
 
-This will fetch the list of post which are checked as Featured.
+This will fetch the list of posts that are checked as Featured.
 
 **Want to see how this can be used in a Page Template?**
-[Click this link to see example](https://gist.github.com/ernilambar/ad31b89b459e954fc950)
+[Click this link to see an example](https://gist.github.com/ernilambar/ad31b89b459e954fc950)
 
 
 == Installation ==
@@ -52,7 +52,7 @@ This will fetch the list of post which are checked as Featured.
 
 = Does this support custom post types? =
 
-Yes. It supports custom post types also. From Settings page( Settings -> NS Featured Posts), you can enable/disable custom post types for featured.
+Yes. It supports custom post types also. From the Settings page( Settings -> NS Featured Posts), you can enable/disable custom post types for featured.
 
 == Screenshots ==
 
@@ -77,7 +77,7 @@ Yes. It supports custom post types also. From Settings page( Settings -> NS Feat
 * Fix PHP 8 notices
 
 = 2.0.8 - 17 Oct 2022 =
-* Fix PHP notice in plugins page
+* Fix PHP notice on the plugins page
 
 = 2.0.7 - 11 Oct 2022 =
 * Minor bug fixes
