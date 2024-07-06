@@ -16,16 +16,28 @@
     "ernilambar/optioner": "^2.0",
     "ernilambar/wp-admin-notice": "^1.0"
   },
-  "require-dev": {
-    "wp-cli/i18n-command": "^2.6"
-  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
     "optimize-autoloader": true,
+    "process-timeout": 7200,
     "sort-packages": true
   },
   "scripts": {
-    "pot": "wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
-  }
+		"phpcbf": [
+			"composer --working-dir=devtools update --no-interaction",
+			"devtools/vendor/bin/phpcbf --standard=.phpcs.xml.dist"
+		],
+		"phpcs": [
+			"composer --working-dir=devtools update --no-interaction",
+			"devtools/vendor/bin/phpcs --standard=.phpcs.xml.dist"
+		],
+		"pot": [
+			"composer --working-dir=devtools update --no-interaction",
+			"devtools/vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+		]
+	}
 }

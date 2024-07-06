@@ -1,8 +1,8 @@
-( function( $ ) {
+( function ( $ ) {
 	'use strict';
 
-	$( document ).ready( function() {
-		$( '.ns_featured_posts_icon' ).on( 'click', function() {
+	$( document ).ready( function () {
+		$( '.ns_featured_posts_icon' ).on( 'click', function () {
 			var $this = $( this );
 			var $table = $( '#posts-filter' );
 
@@ -10,9 +10,10 @@
 			var $postType = $this.data( 'post_type' );
 			var $maxPosts = $this.data( 'max_posts' );
 
-			var $targetStatus = ( $this.hasClass( 'selected' ) ) ? 'no' : 'yes';
-			var $unoStatus = ( typeof $this.data( 'uno' ) !== 'undefined' ) ? 1 : 0;
-			var $maxStatus = ( typeof $this.data( 'max_status' ) !== 'undefined' ) ? 1 : 0;
+			var $targetStatus = $this.hasClass( 'selected' ) ? 'no' : 'yes';
+			var $unoStatus = typeof $this.data( 'uno' ) !== 'undefined' ? 1 : 0;
+			var $maxStatus =
+				typeof $this.data( 'max_status' ) !== 'undefined' ? 1 : 0;
 
 			$.post(
 				NSFP_OBJ.ajaxurl,
@@ -26,15 +27,16 @@
 					max_status: $maxStatus,
 					nonce: NSFP_OBJ.nonce,
 				},
-				function( data, status ) {
+				function ( data, status ) {
 					if ( 'success' === status ) {
 						if ( true === data.status ) {
 							$this.toggleClass( 'selected' );
 
 							if ( true === data.uno ) {
-								$table.find( '.ns_featured_posts_icon.selected' )
+								$table
+									.find( '.ns_featured_posts_icon.selected' )
 									.not( '[data-post_id="' + $postId + '"]' )
-									.each( function( i, el ) {
+									.each( function ( i, el ) {
 										$( el ).removeClass( 'selected' );
 									} );
 							}
@@ -42,7 +44,8 @@
 							alert( data.message );
 						}
 					}
-				} );
+				}
+			);
 		} );
 	} );
-}( jQuery ) );
+} )( jQuery );

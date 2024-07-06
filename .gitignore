@@ -50,4 +50,8 @@ build/
 deploy/
 docs/
 node_modules/
+
+# Vendor
 vendor/
+devtools/vendor/
+devtools/composer.lock
