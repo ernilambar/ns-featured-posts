@@ -1,23 +1,21 @@
 {
   "name": "ns-featured-posts",
-  "title": "NS Featured Posts",
   "version": "2.0.13",
-  "license": "GPL-2.0+",
+  "description": "NS Featured Posts",
+  "author": "Nilambar Sharma",
+  "license": "GPL-2.0-or-later",
   "main_file": "ns-featured-posts.php",
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin"
+  ],
+  "homepage": "https://github.com/ernilambar/ns-featured-posts",
   "repository": {
     "type": "git",
     "url": "https://github.com/ernilambar/ns-featured-posts"
   },
-  "scripts": {
-    "version": "easy-replace-in-files",
-    "format": "prettier --write \"assets/**/*.css\"",
-    "eslint": "eslint --quiet \"assets/js/**/*.{js,jsx}\"",
-    "eslint:fix": "eslint --quiet --fix \"assets/js/**/*.{js,jsx}\"",
-    "pot": "composer run pot",
-    "prewpdeploy": "pnpm run deploy",
-    "wpdeploy": "wp-deployer",
-    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
-    "deploy": "packtor"
+  "bugs": {
+    "url": "https://github.com/ernilambar/ns-featured-posts/issues"
   },
   "packtor": {
     "files": [
@@ -25,7 +23,8 @@
       "!*.js",
       "!*.json",
       "!*.lock",
-      "!*.yaml"
+      "!*.yaml",
+      "!devtools/**/*"
     ]
   },
   "wpDeployer": {
@@ -35,13 +34,27 @@
     "deployAssets": false
   },
   "browserslist": "> 1%, not dead",
+  "npmpackagejsonlint": {
+    "extends": "@wordpress/npm-package-json-lint-config"
+  },
   "devDependencies": {
-    "@wordpress/eslint-plugin": "^18.0.0",
+    "@wordpress/npm-package-json-lint-config": "^5.2.0",
+    "@wordpress/prettier-config": "^4.2.0",
     "easy-replace-in-files": "^1.0.3",
-    "eslint": "^8.57.0",
+    "npm-package-json-lint": "^8.0.0",
     "packtor": "^1.0.2",
-    "prettier": "^3.2.5",
+    "prettier": "npm:wp-prettier@^3.0.3",
     "shx": "^0.3.4",
     "wp-deployer": "^1.0.3"
+  },
+  "scripts": {
+    "version": "easy-replace-in-files",
+    "format": "prettier \"**/*.{cjs,css,js,json}\" --write",
+    "pot": "composer run-script pot",
+    "lint-pkg-json": "npmPkgJsonLint .",
+    "prewpdeploy": "pnpm run deploy",
+    "wpdeploy": "wp-deployer",
+    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+    "deploy": "packtor"
   }
 }
