@@ -122,14 +122,12 @@ class NS_Featured_Posts {
 	public static function activate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
 			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_activate();
 				}
@@ -153,14 +151,12 @@ class NS_Featured_Posts {
 	public static function deactivate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
 			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_deactivate();
 				}
@@ -285,7 +281,6 @@ class NS_Featured_Posts {
 
 		if ( $opt ) {
 			if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
-
 				$values = array_keys( $opt['nsfp_posttypes'] );
 
 				$values = array_filter( $values );

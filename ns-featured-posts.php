@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'NS_FEATURED_POSTS_VERSION', '2.0.13' );
-define( 'NS_FEATURED_POSTS_BASENAME', basename( dirname( __FILE__ ) ) );
+define( 'NS_FEATURED_POSTS_BASENAME', basename( __DIR__ ) );
 define( 'NS_FEATURED_POSTS_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_FEATURED_POSTS_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
 

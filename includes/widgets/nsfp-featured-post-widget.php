@@ -47,10 +47,10 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 				$number = 5;
 			}
 
-			$post_type = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'post';
-			$post_orderby  = isset( $instance['post_orderby'] ) ? esc_attr( $instance['post_orderby'] ) : 'date';
-			$post_order     = isset( $instance['post_order'] ) ? esc_attr( $instance['post_order'] ) : 'desc';
-			$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+			$post_type    = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'post';
+			$post_orderby = isset( $instance['post_orderby'] ) ? esc_attr( $instance['post_orderby'] ) : 'date';
+			$post_order   = isset( $instance['post_order'] ) ? esc_attr( $instance['post_order'] ) : 'desc';
+			$show_date    = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
 			$nsfp_query = new WP_Query(
 				apply_filters(
@@ -182,7 +182,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 					'comment_count' => esc_html__( 'Comment Count', 'ns-featured-posts' ),
 					'menu_order'    => esc_html__( 'Menu Order', 'ns-featured-posts' ),
 				);
-				$orderby_args = array(
+				$orderby_args    = array(
 					'name'     => $this->get_field_name( 'post_orderby' ),
 					'id'       => $this->get_field_id( 'post_orderby' ),
 					'selected' => $instance['post_orderby'],
@@ -197,7 +197,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 					'desc' => esc_html__( 'Descending', 'ns-featured-posts' ),
 					'asc'  => esc_html__( 'Ascending', 'ns-featured-posts' ),
 				);
-				$order_args = array(
+				$order_args    = array(
 					'name'     => $this->get_field_name( 'post_order' ),
 					'id'       => $this->get_field_id( 'post_order' ),
 					'selected' => $instance['post_order'],
@@ -226,13 +226,12 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 				return;
 			}
 
-
 			$defaults = array(
 				'id'       => '',
 				'name'     => '',
 				'selected' => 0,
 				'echo'     => true,
-				);
+			);
 
 			$r = wp_parse_args( $main_args, $defaults );
 

@@ -73,8 +73,6 @@ class NS_Featured_Posts_Admin {
 
 		$this->options = $plugin->get_options();
 
-
-
 		// Add an action link pointing to the options page.
 		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
 		add_filter( 'plugin_action_links_' . $base_file, array( $this, 'add_plugin_action_links' ) );
@@ -524,7 +522,6 @@ class NS_Featured_Posts_Admin {
 		);
 
 		wp_localize_script( 'nspf-admin', 'NSFP_OBJ', $localize_args );
-
 	}
 
 	/**
@@ -685,13 +682,11 @@ class NS_Featured_Posts_Admin {
 		$qv = &$query->query_vars;
 
 		if ( is_admin() && 'edit.php' === $pagenow ) {
-
 			if ( ! isset( $qv['meta_query'] ) ) {
 				$qv['meta_query'] = array();
 			}
 
 			if ( ! empty( $_GET['filter-ns-featured-posts'] ) ) {
-
 				if ( 'yes' === $_GET['filter-ns-featured-posts'] ) {
 					$qv['meta_query'][] = array(
 						'key'     => '_is_ns_featured_post',
@@ -880,7 +875,6 @@ class NS_Featured_Posts_Admin {
 		$html = '';
 
 		foreach ( $attributes as $name => $value ) {
-
 			$esc_value = '';
 
 			if ( 'class' === $name && is_array( $value ) ) {
@@ -889,7 +883,6 @@ class NS_Featured_Posts_Admin {
 
 			if ( false !== $value && 'href' === $name ) {
 				$esc_value = esc_url( $value );
-
 			} elseif ( false !== $value ) {
 				$esc_value = esc_attr( $value );
 			}
