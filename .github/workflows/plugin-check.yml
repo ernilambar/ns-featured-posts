@@ -1,0 +1,38 @@
+name: 'Plugin Check'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  pcp:
+    name: PCP
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Build plugin
+      run: pnpm run deploy
+
+    - name: Run plugin check
+      uses: wordpress/plugin-check-action@v1
+      with:
+        build-dir: './deploy/ns-featured-posts'
