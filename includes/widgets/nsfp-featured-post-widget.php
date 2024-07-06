@@ -47,10 +47,10 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 				$number = 5;
 			}
 
-			$post_type = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'post';
-			$post_orderby  = isset( $instance['post_orderby'] ) ? esc_attr( $instance['post_orderby'] ) : 'date';
-			$post_order     = isset( $instance['post_order'] ) ? esc_attr( $instance['post_order'] ) : 'desc';
-			$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+			$post_type    = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'post';
+			$post_orderby = isset( $instance['post_orderby'] ) ? esc_attr( $instance['post_orderby'] ) : 'date';
+			$post_order   = isset( $instance['post_order'] ) ? esc_attr( $instance['post_order'] ) : 'desc';
+			$show_date    = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
 			$nsfp_query = new WP_Query(
 				apply_filters(
@@ -60,8 +60,8 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 						'no_found_rows'       => true,
 						'post_status'         => 'publish',
 						'ignore_sticky_posts' => true,
-						'meta_key'            => '_is_ns_featured_post',
-						'meta_value'          => 'yes',
+						'meta_key'            => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+						'meta_value'          => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 						'post_type'           => $post_type,
 						'orderby'             => $post_orderby,
 						'order'               => $post_order,
@@ -182,7 +182,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 					'comment_count' => esc_html__( 'Comment Count', 'ns-featured-posts' ),
 					'menu_order'    => esc_html__( 'Menu Order', 'ns-featured-posts' ),
 				);
-				$orderby_args = array(
+				$orderby_args    = array(
 					'name'     => $this->get_field_name( 'post_orderby' ),
 					'id'       => $this->get_field_id( 'post_orderby' ),
 					'selected' => $instance['post_orderby'],
@@ -197,7 +197,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 					'desc' => esc_html__( 'Descending', 'ns-featured-posts' ),
 					'asc'  => esc_html__( 'Ascending', 'ns-featured-posts' ),
 				);
-				$order_args = array(
+				$order_args    = array(
 					'name'     => $this->get_field_name( 'post_order' ),
 					'id'       => $this->get_field_id( 'post_order' ),
 					'selected' => $instance['post_order'],
@@ -226,13 +226,12 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 				return;
 			}
 
-
 			$defaults = array(
 				'id'       => '',
 				'name'     => '',
 				'selected' => 0,
 				'echo'     => true,
-				);
+			);
 
 			$r = wp_parse_args( $main_args, $defaults );
 
@@ -252,7 +251,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 			}
 
 			if ( $r['echo'] ) {
-				echo $output;
+				echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			return $output;

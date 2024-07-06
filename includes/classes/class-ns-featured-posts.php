@@ -122,14 +122,12 @@ class NS_Featured_Posts {
 	public static function activate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
 			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_activate();
 				}
@@ -153,14 +151,12 @@ class NS_Featured_Posts {
 	public static function deactivate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
 			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_deactivate();
 				}
@@ -203,7 +199,7 @@ class NS_Featured_Posts {
 
 		$ids = array();
 
-		$output = $wpdb->get_results( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'", ARRAY_A );
+		$output = $wpdb->get_results( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'", ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		if ( $output ) {
 			$ids = wp_list_pluck( $output, 'blog_id' );
@@ -285,7 +281,6 @@ class NS_Featured_Posts {
 
 		if ( $opt ) {
 			if ( isset( $opt['nsfp_posttypes'] ) && ! empty( $opt['nsfp_posttypes'] ) ) {
-
 				$values = array_keys( $opt['nsfp_posttypes'] );
 
 				$values = array_filter( $values );

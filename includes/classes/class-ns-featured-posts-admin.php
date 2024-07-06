@@ -5,6 +5,7 @@
  * @package NS_Featured_Posts
  */
 
+use Nilambar\AdminNotice\Notice;
 use Nilambar\Optioner\Optioner;
 
 /**
@@ -73,8 +74,6 @@ class NS_Featured_Posts_Admin {
 
 		$this->options = $plugin->get_options();
 
-
-
 		// Add an action link pointing to the options page.
 		$base_file = $this->plugin_slug . '/' . $this->plugin_slug . '.php';
 		add_filter( 'plugin_action_links_' . $base_file, array( $this, 'add_plugin_action_links' ) );
@@ -107,9 +106,13 @@ class NS_Featured_Posts_Admin {
 		add_action( 'wp_ajax_nsfp_nsbl_get_posts', array( $this, 'get_posts_ajax_callback' ) );
 	}
 
+	/**
+	 * Setup admin notice.
+	 *
+	 * @since 2.0.10
+	 */
 	public function setup_custom_notice() {
-		// Setup notice.
-		\Nilambar\AdminNotice\Notice::init(
+		Notice::init(
 			array(
 				'slug' => $this->plugin_slug,
 				'name' => esc_html__( 'NS Featured Posts', 'ns-featured-posts' ),
@@ -366,7 +369,7 @@ class NS_Featured_Posts_Admin {
 		);
 
 		// Nonce check.
-		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : null; // phpcs:ignore WordPress.Security.NonceVerification
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification
 
 		if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
 			$output['message'] = esc_html__( 'Nonce verification failed.', 'ns-featured-posts' );
@@ -374,23 +377,23 @@ class NS_Featured_Posts_Admin {
 			wp_send_json( $output );
 		}
 
-		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( $_POST['uno'] ) : false;
+		$uno = isset( $_POST['uno'] ) ? rest_sanitize_boolean( sanitize_text_field( wp_unslash( $_POST['uno'] ) ) ) : false;
 
-		$max_posts  = isset( $_POST['max_posts'] ) ? absint( $_POST['max_posts'] ) : 0;
-		$max_status = isset( $_POST['max_status'] ) ? rest_sanitize_boolean( $_POST['max_status'] ) : false;
+		$max_posts  = isset( $_POST['max_posts'] ) ? absint( sanitize_text_field( wp_unslash( $_POST['max_posts'] ) ) ) : 0;
+		$max_status = isset( $_POST['max_status'] ) ? rest_sanitize_boolean( sanitize_text_field( wp_unslash( $_POST['max_status'] ) ) ) : false;
 
-		$ns_featured = isset( $_POST['ns_featured'] ) ? $_POST['ns_featured'] : null;
+		$ns_featured = isset( $_POST['ns_featured'] ) ? sanitize_text_field( wp_unslash( $_POST['ns_featured'] ) ) : null;
 
 		$post_id = 0;
 
 		if ( isset( $_POST['post_id'] ) ) {
-			$post_id = (int) $_POST['post_id'];
+			$post_id = (int) sanitize_text_field( wp_unslash( $_POST['post_id'] ) );
 		}
 
 		$post_type = null;
 
 		if ( isset( $_POST['post_type'] ) ) {
-			$post_type = (string) $_POST['post_type'];
+			$post_type = (string) sanitize_text_field( wp_unslash( $_POST['post_type'] ) );
 		}
 
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
@@ -476,8 +479,8 @@ class NS_Featured_Posts_Admin {
 		$qargs = array(
 			'posts_per_page' => -1,
 			'post__not_in'   => array( $post_id ),
-			'meta_key'       => '_is_ns_featured_post',
-			'meta_value'     => 'yes',
+			'meta_key'       => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'meta_value'     => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 			'post_type'      => $post_type,
 			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
 		);
@@ -491,6 +494,13 @@ class NS_Featured_Posts_Admin {
 		return $output;
 	}
 
+	/**
+	 * Load settings assets.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $hook Hook name.
+	 */
 	public function load_settings_assets( $hook ) {
 		if ( 'settings_page_ns-featured-posts' !== $hook ) {
 			return;
@@ -524,7 +534,6 @@ class NS_Featured_Posts_Admin {
 		);
 
 		wp_localize_script( 'nspf-admin', 'NSFP_OBJ', $localize_args );
-
 	}
 
 	/**
@@ -592,7 +601,7 @@ class NS_Featured_Posts_Admin {
 		}
 
 		// If our nonce isn't there, or we can't verify it, bail.
-		if ( ! isset( $_POST['nsfp_featured_metabox_nonce'] ) || ! wp_verify_nonce( $_POST['nsfp_featured_metabox_nonce'], plugin_basename( __FILE__ ) ) ) {
+		if ( ! isset( $_POST['nsfp_featured_metabox_nonce'] ) || ! wp_verify_nonce( $_POST['nsfp_featured_metabox_nonce'], plugin_basename( __FILE__ ) ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return $post_id;
 		}
 
@@ -662,7 +671,7 @@ class NS_Featured_Posts_Admin {
 		$selected_now = '';
 
 		if ( isset( $_GET['filter-ns-featured-posts'] ) ) {
-			$selected_now = esc_attr( $_GET['filter-ns-featured-posts'] );
+			$selected_now = sanitize_text_field( wp_unslash( $_GET['filter-ns-featured-posts'] ) );
 		}
 
 		echo '<select name="filter-ns-featured-posts" id="filter-ns-featured-posts">';
@@ -685,13 +694,11 @@ class NS_Featured_Posts_Admin {
 		$qv = &$query->query_vars;
 
 		if ( is_admin() && 'edit.php' === $pagenow ) {
-
 			if ( ! isset( $qv['meta_query'] ) ) {
-				$qv['meta_query'] = array();
+				$qv['meta_query'] = array(); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			}
 
 			if ( ! empty( $_GET['filter-ns-featured-posts'] ) ) {
-
 				if ( 'yes' === $_GET['filter-ns-featured-posts'] ) {
 					$qv['meta_query'][] = array(
 						'key'     => '_is_ns_featured_post',
@@ -726,10 +733,8 @@ class NS_Featured_Posts_Admin {
 	 * Adding filtering link.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_Query $wp_query Instance of WP_Query object.
 	 */
-	public function custom_filtering_query_for_listing( $wp_query ) {
+	public function custom_filtering_query_for_listing() {
 		if ( is_admin() ) {
 			$allowed = $this->get_allowed_post_types();
 
@@ -749,7 +754,7 @@ class NS_Featured_Posts_Admin {
 	 * @param array $views Views.
 	 */
 	public function add_views_link( $views ) {
-		$post_type = ( ( isset( $_GET['post_type'] ) && '' !== $_GET['post_type'] ) ? $_GET['post_type'] : 'post' );
+		$post_type = ( ( isset( $_GET['post_type'] ) && '' !== $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : 'post' );
 
 		$count = $this->get_total_featured_count( $post_type );
 		$class = ( isset( $_GET['featured'] ) && 'yes' === $_GET['featured'] ) ? 'current' : '';
@@ -783,8 +788,8 @@ class NS_Featured_Posts_Admin {
 		$args = array(
 			'post_type'      => $post_type,
 			'posts_per_page' => -1,
-			'meta_key'       => '_is_ns_featured_post',
-			'meta_value'     => 'yes',
+			'meta_key'       => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'meta_value'     => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
 		);
 
@@ -806,9 +811,11 @@ class NS_Featured_Posts_Admin {
 	 * Render sidebar.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param Optioner $optioner_object Instance of Optioner.
 	 */
-	public function render_sidebar( $object ) {
-		$object->render_sidebar_box(
+	public function render_sidebar( $optioner_object ) {
+		$optioner_object->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
 				'icon'    => 'dashicons-editor-help',
@@ -817,15 +824,15 @@ class NS_Featured_Posts_Admin {
 				<h4>Wanna help make this plugin better?</h4>
 				<p><a href="https://wordpress.org/support/plugin/ns-featured-posts/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>',
 			),
-			$object
+			$optioner_object
 		);
 
-		$object->render_sidebar_box(
+		$optioner_object->render_sidebar_box(
 			array(
 				'title'   => 'Recent Blog Posts',
 				'content' => '<div class="ns-blog-list"></div>',
 			),
-			$object
+			$optioner_object
 		);
 	}
 
@@ -870,9 +877,9 @@ class NS_Featured_Posts_Admin {
 	 * @since 2.0.0
 	 *
 	 * @param array $attributes Attributes.
-	 * @param bool  $echo Whether to echo or not.
+	 * @param bool  $display    Whether to echo or not.
 	 */
-	public function render_attr( $attributes, $echo = true ) {
+	public function render_attr( $attributes, $display = true ) {
 		if ( empty( $attributes ) ) {
 			return;
 		}
@@ -880,7 +887,6 @@ class NS_Featured_Posts_Admin {
 		$html = '';
 
 		foreach ( $attributes as $name => $value ) {
-
 			$esc_value = '';
 
 			if ( 'class' === $name && is_array( $value ) ) {
@@ -889,7 +895,6 @@ class NS_Featured_Posts_Admin {
 
 			if ( false !== $value && 'href' === $name ) {
 				$esc_value = esc_url( $value );
-
 			} elseif ( false !== $value ) {
 				$esc_value = esc_attr( $value );
 			}
@@ -897,13 +902,18 @@ class NS_Featured_Posts_Admin {
 			$html .= false !== $value ? sprintf( ' %s="%s"', esc_html( $name ), $esc_value ) : esc_html( " {$name}" );
 		}
 
-		if ( ! empty( $html ) && true === $echo ) {
+		if ( ! empty( $html ) && true === $display ) {
 			echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} else {
 			return $html;
 		}
 	}
 
+	/**
+	 * AJAX callback for feed items.
+	 *
+	 * @since 2.0.0
+	 */
 	public function get_posts_ajax_callback() {
 		$output = array();
 
@@ -920,6 +930,11 @@ class NS_Featured_Posts_Admin {
 		}
 	}
 
+	/**
+	 * Returns blog feed items.
+	 *
+	 * @since 2.0.0
+	 */
 	public function get_blog_feed_items() {
 		$output = array();
 
