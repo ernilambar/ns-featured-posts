@@ -199,7 +199,7 @@ class NS_Featured_Posts {
 
 		$ids = array();
 
-		$output = $wpdb->get_results( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'", ARRAY_A );
+		$output = $wpdb->get_results( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'", ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		if ( $output ) {
 			$ids = wp_list_pluck( $output, 'blog_id' );

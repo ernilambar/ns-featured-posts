@@ -60,8 +60,8 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 						'no_found_rows'       => true,
 						'post_status'         => 'publish',
 						'ignore_sticky_posts' => true,
-						'meta_key'            => '_is_ns_featured_post',
-						'meta_value'          => 'yes',
+						'meta_key'            => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+						'meta_value'          => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 						'post_type'           => $post_type,
 						'orderby'             => $post_orderby,
 						'order'               => $post_order,
@@ -251,7 +251,7 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 			}
 
 			if ( $r['echo'] ) {
-				echo $output;
+				echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			return $output;
