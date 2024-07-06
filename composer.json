@@ -16,9 +16,6 @@
     "ernilambar/optioner": "^2.0",
     "ernilambar/wp-admin-notice": "^1.0"
   },
-  "require-dev": {
-    "wp-cli/i18n-command": "^2.6"
-  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
@@ -40,7 +37,7 @@
 		],
 		"pot": [
 			"composer --working-dir=devtools update --no-interaction",
-			"wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+			"devtools/vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
 		]
 	}
 }
