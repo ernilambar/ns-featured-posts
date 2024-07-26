@@ -27,5 +27,5 @@ jobs:
         with:
           composer-options: '--prefer-dist --no-progress --no-interaction'
 
-      - name: Run tests
-        run: composer run-script phpcs
+      - name: Run lint
+        run: composer run-script lint
