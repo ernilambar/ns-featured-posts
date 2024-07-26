@@ -25,8 +25,7 @@
 			"!*.json",
 			"!*.lock",
 			"!*.md",
-			"!*.yaml",
-			"!devtools/**/*"
+			"!*.yaml"
 		]
 	},
 	"wpDeployer": {
