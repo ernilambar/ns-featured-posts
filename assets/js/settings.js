@@ -25,11 +25,7 @@
 
 			data.forEach( function ( item ) {
 				output +=
-					'<li><a href="' +
-					item.url +
-					'" target="_blank">' +
-					item.title +
-					'</a></li>';
+					'<li><a href="' + item.url + '" target="_blank">' + item.title + '</a></li>';
 			} );
 			return $( '<' + settings.list_type + '/>' ).append( output );
 		}
