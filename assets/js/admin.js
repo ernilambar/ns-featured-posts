@@ -12,8 +12,7 @@
 
 			var $targetStatus = $this.hasClass( 'selected' ) ? 'no' : 'yes';
 			var $unoStatus = typeof $this.data( 'uno' ) !== 'undefined' ? 1 : 0;
-			var $maxStatus =
-				typeof $this.data( 'max_status' ) !== 'undefined' ? 1 : 0;
+			var $maxStatus = typeof $this.data( 'max_status' ) !== 'undefined' ? 1 : 0;
 
 			$.post(
 				NSFP_OBJ.ajaxurl,

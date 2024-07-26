@@ -1,6 +1,6 @@
 {
 	"name": "ns-featured-posts",
-	"version": "2.0.13",
+	"version": "3.0.0",
 	"description": "NS Featured Posts",
 	"author": "Nilambar Sharma",
 	"license": "GPL-2.0-or-later",
@@ -17,12 +17,14 @@
 	"bugs": {
 		"url": "https://github.com/ernilambar/ns-featured-posts/issues"
 	},
+	"browserslist": "> 1%, not dead",
 	"packtor": {
 		"files": [
 			"**/*",
 			"!*.js",
 			"!*.json",
 			"!*.lock",
+			"!*.md",
 			"!*.yaml",
 			"!devtools/**/*"
 		]
@@ -33,7 +35,6 @@
 		"buildDir": "deploy/ns-featured-posts",
 		"deployAssets": false
 	},
-	"browserslist": "> 1%, not dead",
 	"npmpackagejsonlint": {
 		"extends": "@wordpress/npm-package-json-lint-config"
 	},
@@ -44,7 +45,7 @@
 		"npm-package-json-lint": "^8.0.0",
 		"packtor": "^1.0.2",
 		"prettier": "npm:wp-prettier@^3.0.3",
-		"shx": "^0.3.4",
+		"rimraf": "^6.0.1",
 		"wp-deployer": "^1.0.3"
 	},
 	"scripts": {
@@ -54,7 +55,7 @@
 		"lint-pkg-json": "npmPkgJsonLint .",
 		"prewpdeploy": "pnpm run deploy",
 		"wpdeploy": "wp-deployer",
-		"predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+		"predeploy": "rimraf deploy vendor && composer install --no-dev --no-scripts -o",
 		"deploy": "packtor"
 	}
 }
