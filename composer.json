@@ -13,7 +13,7 @@
   ],
   "require": {
     "php": ">=7.2.24",
-    "ernilambar/optioner": "^2.0",
+    "ernilambar/optioner": "^3.0",
     "ernilambar/wp-admin-notice": "^2.0"
   },
   "require-dev": {

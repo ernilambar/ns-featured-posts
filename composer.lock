@@ -4,24 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a2541665f22bf59ab8cd46effd9d97b",
+    "content-hash": "831539761eecc9ad78beb193343c9079",
     "packages": [
         {
             "name": "ernilambar/optioner",
-            "version": "2.0.10",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/optioner.git",
-                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d"
+                "reference": "858361d4a6fcd77764b8abfa7b17d43b39bd9a24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/8b4158a570ef193c522e2fcbcbe307a35ca4503d",
-                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d",
+                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/858361d4a6fcd77764b8abfa7b17d43b39bd9a24",
+                "reference": "858361d4a6fcd77764b8abfa7b17d43b39bd9a24",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.2.24"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3",
+                "phpcompatibility/phpcompatibility-wp": "^2.1",
+                "wp-coding-standards/wpcs": "^3.1"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -44,9 +50,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/optioner/issues",
-                "source": "https://github.com/ernilambar/optioner/tree/2.0.10"
+                "source": "https://github.com/ernilambar/optioner/tree/3.0.0"
             },
-            "time": "2024-06-18T09:46:28+00:00"
+            "time": "2024-07-25T10:21:37+00:00"
         },
         {
             "name": "ernilambar/wp-admin-notice",
