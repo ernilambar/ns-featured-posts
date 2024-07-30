@@ -38,8 +38,8 @@
 		"extends": "@wordpress/npm-package-json-lint-config"
 	},
 	"devDependencies": {
-		"@wordpress/npm-package-json-lint-config": "^5.2.0",
-		"@wordpress/prettier-config": "^4.2.0",
+		"@wordpress/npm-package-json-lint-config": "^5.4.0",
+		"@wordpress/prettier-config": "^4.4.0",
 		"easy-replace-in-files": "^1.0.3",
 		"npm-package-json-lint": "^8.0.0",
 		"packtor": "^1.0.2",

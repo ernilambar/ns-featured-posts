@@ -59,7 +59,7 @@ Yes. It supports custom post types also. From the Settings page( Settings -> NS 
 
 == Changelog ==
 
-= 3.0.0 - 29 Jul 2024 =
+= 3.0.0 - 30 Jul 2024 =
 * Requirement: PHP 7.2; WP 6.0
 * Major code refactoring
 * Update dependencies
