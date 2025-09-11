@@ -1,10 +1,10 @@
 === NS Featured Posts ===
 
-Contributors: rabmalin
+Contributors: nilambar
 Donate link: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
 Tags: post, custom, meta, featured, featured-post
-Tested up to: 6.6
-Stable tag: 3.0.0
+Tested up to: 6.8
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,7 @@ A plugin for making posts, pages, or custom post types featured. Users can enabl
 <h3>NS Featured Posts</h3>This plugin adds checkboxes for each list item. You can easily check/uncheck the Featured flag. Checking the Featured will set the meta value **yes** for meta key **_is_ns_featured_post**. You can choose which post types you want Featured functionality from plugin settings.
 
 = Using in theme =
+
 This plugin only sets/unsets the meta key for assigned posts. You need to implement it in your theme to get Featured functionality.
 
 Example:
@@ -58,6 +59,9 @@ Yes. It supports custom post types also. From the Settings page( Settings -> NS 
 2. Example of featured in Post listing
 
 == Changelog ==
+
+= 3.0.1 - 10 Sep 2025 =
+* WP compatibility
 
 = 3.0.0 - 30 Jul 2024 =
 * Requirement: PHP 7.2; WP 6.0
