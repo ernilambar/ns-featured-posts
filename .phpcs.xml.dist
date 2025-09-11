@@ -77,7 +77,9 @@
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="ns-featured-posts" />
+			<property name="text_domain" type="array">
+				<element value="ns-featured-posts" />
+			</property>
 		</properties>
 	</rule>
 
@@ -107,17 +109,22 @@
 	<!-- All references to functions, classes and constants should import using a use statement. -->
 	<rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
 		<properties>
-		<property name="allowFullyQualifiedGlobalFunctions" value="true" />
-		<property name="allowFullyQualifiedGlobalClasses" value="true" />
-		<property name="allowFullyQualifiedGlobalConstants" value="true" />
-		<property name="allowFallbackGlobalFunctions" value="true" />
-		<property name="allowFallbackGlobalConstants" value="true" />
-		<property name="allowFullyQualifiedNameForCollidingClasses" value="true" />
-	</properties>
+			<property name="allowFallbackGlobalConstants" value="true" />
+			<property name="allowFallbackGlobalFunctions" value="true" />
+			<property name="allowFullyQualifiedExceptions" value="false" />
+			<property name="allowFullyQualifiedGlobalClasses" value="false" />
+			<property name="allowFullyQualifiedGlobalConstants" value="true" />
+			<property name="allowFullyQualifiedGlobalFunctions" value="true" />
+			<property name="allowFullyQualifiedNameForCollidingClasses" value="true" />
+		</properties>
 	</rule>
 
 	<!-- Loads the PHP Compatibility ruleset. -->
-	<rule ref="PHPCompatibilityWP" />
+	<rule ref="PHPCompatibility" >
+		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_containsFound"/>
+		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_starts_withFound"/>
+		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_ends_withFound"/>
+	</rule>
 
 	<!-- PHP version check. -->
 	<config name="testVersion" value="7.2-"/>

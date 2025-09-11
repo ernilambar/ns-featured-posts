@@ -63,9 +63,6 @@ class NS_Featured_Posts {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
-		// Load plugin text domain.
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-
 		// Activate plugin when new blog is added.
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
@@ -224,15 +221,6 @@ class NS_Featured_Posts {
 	 * @since 1.0.0
 	 */
 	private static function single_deactivate() {
-	}
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since 1.0.0
-	 */
-	public function load_plugin_textdomain() {
-		load_plugin_textdomain( $this->plugin_slug );
 	}
 
 	/**
