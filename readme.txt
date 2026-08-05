@@ -4,7 +4,7 @@ Contributors: nilambar
 Donate link: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
 Tags: post, custom, meta, featured, featured-post
 Tested up to: 6.8
-Stable tag: 3.0.1
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

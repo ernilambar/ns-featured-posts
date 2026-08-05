@@ -3,7 +3,7 @@
  * Plugin Name: NS Featured Posts
  * Plugin URI: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
  * Description: Plugin to make your posts, pages and custom post types Featured
- * Version: 3.0.1
+ * Version: 4.0.0
  * Requires at least: 6.0
  * Requires PHP: 7.2
  * Author: Nilambar Sharma
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'NS_FEATURED_POSTS_VERSION', '3.0.1' );
+define( 'NS_FEATURED_POSTS_VERSION', '4.0.0' );
 define( 'NS_FEATURED_POSTS_BASENAME', basename( __DIR__ ) );
 define( 'NS_FEATURED_POSTS_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_FEATURED_POSTS_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
