@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0893e0633aa67c9906931799102a0ab6",
+    "content-hash": "5b861ec86433ec82541a1314208406ba",
     "packages": [
         {
             "name": "ernilambar/optioner",
@@ -264,6 +264,58 @@
                 "source": "https://github.com/EFTEC/BladeOne/tree/3.52"
             },
             "time": "2021-04-17T13:49:01+00:00"
+        },
+        {
+            "name": "ernilambar/coding-standard",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ernilambar/coding-standard.git",
+                "reference": "7bf0a28036cc4015d2d50d9f15e6f0513914e273"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ernilambar/coding-standard/zipball/7bf0a28036cc4015d2d50d9f15e6f0513914e273",
+                "reference": "7bf0a28036cc4015d2d50d9f15e6f0513914e273",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlreader": "*",
+                "php": ">=7.4",
+                "squizlabs/php_codesniffer": "^3.13 || ^4.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcompatibility/php-compatibility": "^10",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+                "slevomat/coding-standard": "^8"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nilambar Sharma",
+                    "email": "nilambar@outlook.com",
+                    "homepage": "https://nilambar.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP_CodeSniffer standard for PHP projects.",
+            "keywords": [
+                "phpcs",
+                "standard"
+            ],
+            "support": {
+                "issues": "https://github.com/ernilambar/coding-standard/issues",
+                "source": "https://github.com/ernilambar/coding-standard/tree/2.0.0"
+            },
+            "time": "2026-07-13T07:06:54+00:00"
         },
         {
             "name": "gettext/gettext",

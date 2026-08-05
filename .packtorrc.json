@@ -1,0 +1,11 @@
+{
+	"files": [
+		"assets/**/*",
+		"includes/**/*",
+		"languages/**/*",
+		"vendor/**/*",
+		"composer.json",
+		"ns-featured-posts.php",
+		"readme.txt"
+	]
+}

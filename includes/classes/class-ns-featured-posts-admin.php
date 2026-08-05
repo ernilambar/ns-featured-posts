@@ -5,6 +5,10 @@
  * @package NS_Featured_Posts
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\AdminNotice\Notice;
 use Nilambar\Optioner\Optioner;
 
@@ -467,7 +471,7 @@ class NS_Featured_Posts_Admin {
 	/**
 	 * Get other posts IDs.
 	 *
-	 * @since 2.0.0.
+	 * @since 2.0.0
 	 *
 	 * @param  int    $post_id   Post ID.
 	 * @param  string $post_type Post type.

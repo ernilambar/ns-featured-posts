@@ -5,7 +5,7 @@
  * Description: Plugin to make your posts, pages and custom post types Featured
  * Version: 4.0.0
  * Requires at least: 6.0
- * Requires PHP: 7.2
+ * Requires PHP: 7.4
  * Author: Nilambar Sharma
  * Author URI: https://www.nilambar.net
  * Text Domain: ns-featured-posts
@@ -16,9 +16,8 @@
  * @package NS_Featured_Posts
  */
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 define( 'NS_FEATURED_POSTS_VERSION', '4.0.0' );
