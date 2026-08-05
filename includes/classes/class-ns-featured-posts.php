@@ -5,6 +5,10 @@
  * @package NS_Featured_Posts
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * NS Featured Posts Plugin class.
  *

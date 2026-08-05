@@ -32,6 +32,8 @@
 	<!-- Minimum support WP Version. -->
 	<config name="minimum_wp_version" value="6.0"/>
 
+	<rule ref="NilambarCodingStandard"/>
+
 	<!-- Don't worry about files that don't contain any code -->
 	<rule ref="Internal.NoCodeFound">
 		<severity>0</severity>
@@ -127,5 +129,5 @@
 	</rule>
 
 	<!-- PHP version check. -->
-	<config name="testVersion" value="7.2-"/>
+	<config name="testVersion" value="7.4-"/>
 </ruleset>

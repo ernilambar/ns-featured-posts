@@ -5,6 +5,10 @@
  * @package NS_Featured_Posts
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 	/**
 	 * Widget class.
@@ -258,4 +262,3 @@ if ( ! class_exists( 'NSFP_Featured_Post_Widget' ) ) {
 		}
 	}
 }
-

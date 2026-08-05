@@ -3,8 +3,10 @@
 Contributors: nilambar
 Donate link: https://www.nilambar.net/2014/07/ns-featured-posts-wordpress-plugin.html
 Tags: post, custom, meta, featured, featured-post
-Tested up to: 6.8
-Stable tag: 3.0.1
+Requires at least: 6.0
+Tested up to: 7.1
+Stable tag: 4.0.0
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +61,10 @@ Yes. It supports custom post types also. From the Settings page( Settings -> NS 
 2. Example of featured in Post listing
 
 == Changelog ==
+
+= 4.0.0 - 06 Aug 2026 =
+* Requirement: PHP 7.4
+* WP 7.1 compatibility
 
 = 3.0.1 - 10 Sep 2025 =
 * WP compatibility

@@ -1,55 +1,50 @@
 {
 	"name": "ns-featured-posts",
-	"version": "3.0.1",
+	"version": "4.0.0",
 	"description": "NS Featured Posts",
-	"author": "Nilambar Sharma",
-	"license": "GPL-2.0-or-later",
-	"main_file": "ns-featured-posts.php",
 	"keywords": [
 		"wordpress",
 		"wordpress-plugin"
 	],
 	"homepage": "https://github.com/ernilambar/ns-featured-posts",
+	"bugs": {
+		"url": "https://github.com/ernilambar/ns-featured-posts/issues"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ernilambar/ns-featured-posts"
 	},
-	"bugs": {
-		"url": "https://github.com/ernilambar/ns-featured-posts/issues"
+	"license": "GPL-2.0-or-later",
+	"author": "Nilambar Sharma",
+	"main": "ns-featured-posts.php",
+	"scripts": {
+		"predeploy": "rimraf deploy vendor && pnpm run vendor",
+		"deploy": "packtor",
+		"format": "prettier \"**/*.{cjs,css,js,json,mjs}\" --write --log-level warn",
+		"pot": "composer run-script pot",
+		"vendor": "composer install --no-dev --no-scripts -o",
+		"version": "easy-replace-in-files",
+		"wpassets": "wp-deployer --assets",
+		"prewpdeploy": "pnpm run deploy",
+		"wpdeploy": "wp-deployer"
 	},
 	"browserslist": "> 1%, not dead",
-	"packtor": {
-		"files": [
-			"**/*",
-			"!*.js",
-			"!*.lock",
-			"!*.md",
-			"!*.yaml",
-			"!easy-replace-in-files.json",
-			"!package.json"
-		]
+	"devDependencies": {
+		"@wordpress/prettier-config": "^4.52.0",
+		"easy-replace-in-files": "^2.0.0",
+		"packtor": "^2.0.0",
+		"prettier": "npm:wp-prettier@^3.0.3",
+		"rimraf": "^6.1.3",
+		"wp-deployer": "^2.0.1"
+	},
+	"packageManager": "pnpm@11.10.0",
+	"engines": {
+		"pnpm": ">=11"
 	},
 	"wpDeployer": {
 		"repoType": "plugin",
 		"username": "nilambar",
 		"buildDir": "deploy/ns-featured-posts",
 		"deployAssets": false
-	},
-	"devDependencies": {
-		"@wordpress/prettier-config": "^4.4.0",
-		"easy-replace-in-files": "^1.0.3",
-		"packtor": "^1.0.2",
-		"prettier": "npm:wp-prettier@^3.0.3",
-		"rimraf": "^6.0.1",
-		"wp-deployer": "^1.0.3"
-	},
-	"scripts": {
-		"version": "easy-replace-in-files",
-		"format": "prettier \"**/*.{cjs,css,js,json}\" --write",
-		"pot": "composer run-script pot",
-		"prewpdeploy": "pnpm run deploy",
-		"wpdeploy": "wp-deployer",
-		"predeploy": "rimraf deploy vendor && composer install --no-dev --no-scripts -o",
-		"deploy": "packtor"
 	}
 }
