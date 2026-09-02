@@ -400,6 +400,26 @@ class NS_Featured_Posts_Admin {
 			$post_type = (string) sanitize_text_field( wp_unslash( $_POST['post_type'] ) );
 		}
 
+		$post = get_post( $post_id );
+
+		if ( ! $post || $post->post_type !== $post_type ) {
+			$output['message'] = esc_html__( 'Invalid post.', 'ns-featured-posts' );
+
+			wp_send_json( $output );
+		}
+
+		if ( ! in_array( $post_type, $this->get_allowed_post_types(), true ) ) {
+			$output['message'] = esc_html__( 'Post type not allowed.', 'ns-featured-posts' );
+
+			wp_send_json( $output );
+		}
+
+		if ( ! $this->can_toggle_featured( $post_id ) ) {
+			$output['message'] = esc_html__( 'Permission denied.', 'ns-featured-posts' );
+
+			wp_send_json( $output );
+		}
+
 		if ( ! empty( $post_id ) && ! empty( $post_type ) && null !== $ns_featured ) {
 			// Good.
 			if ( true === $max_status && 'yes' === $ns_featured ) {
@@ -429,6 +449,10 @@ class NS_Featured_Posts_Admin {
 
 				if ( ! empty( $all_ids ) ) {
 					foreach ( $all_ids as $item ) {
+						if ( ! $this->can_toggle_featured( $item ) ) {
+							continue;
+						}
+
 						delete_post_meta( $item, '_is_ns_featured_post' );
 					}
 				}
@@ -450,6 +474,29 @@ class NS_Featured_Posts_Admin {
 		do_action( 'ns_featured_post_status_changed', $post_id, $ns_featured );
 
 		wp_send_json( $output );
+	}
+
+	/**
+	 * Check whether the current user can toggle the featured status of a post.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @param  int $post_id Post ID.
+	 * @return bool True if allowed.
+	 */
+	private function can_toggle_featured( $post_id ) {
+		if ( current_user_can( 'edit_post', $post_id ) ) {
+			return true;
+		}
+
+		// The edit_post meta capability is unusable for post types registered without meta capability mapping.
+		$post_type_object = get_post_type_object( get_post_type( $post_id ) );
+
+		if ( $post_type_object && ! $post_type_object->map_meta_cap ) {
+			return current_user_can( $post_type_object->cap->edit_posts );
+		}
+
+		return false;
 	}
 
 	/**
