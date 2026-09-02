@@ -16,10 +16,10 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: ns-featured-posts.php:3
-#: includes/classes/class-ns-featured-posts-admin.php:118
-#: includes/classes/class-ns-featured-posts-admin.php:133
-#: includes/classes/class-ns-featured-posts-admin.php:136
-#: includes/widgets/nsfp-featured-post-widget.php:28
+#: includes/classes/class-ns-featured-posts-admin.php:122
+#: includes/classes/class-ns-featured-posts-admin.php:137
+#: includes/classes/class-ns-featured-posts-admin.php:140
+#: includes/widgets/nsfp-featured-post-widget.php:32
 msgid "NS Featured Posts"
 msgstr ""
 
@@ -44,148 +44,148 @@ msgid "https://www.nilambar.net"
 msgstr ""
 
 #. translators: %s: version
-#: includes/classes/class-ns-featured-posts-admin.php:135
+#: includes/classes/class-ns-featured-posts-admin.php:139
 #, php-format
 msgid "Version: %s"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:162
-#: includes/classes/class-ns-featured-posts-admin.php:280
+#: includes/classes/class-ns-featured-posts-admin.php:166
+#: includes/classes/class-ns-featured-posts-admin.php:284
 msgid "Settings"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:172
+#: includes/classes/class-ns-featured-posts-admin.php:176
 msgid "Enable Featured for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:183
+#: includes/classes/class-ns-featured-posts-admin.php:187
 msgid "Enable Radio Mode for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:184
+#: includes/classes/class-ns-featured-posts-admin.php:188
 msgid "If checked, only one post can be made featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:195
+#: includes/classes/class-ns-featured-posts-admin.php:199
 msgid "Max Posts Number"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:196
+#: includes/classes/class-ns-featured-posts-admin.php:200
 msgid "Maximum posts for the post type."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:208
+#: includes/classes/class-ns-featured-posts-admin.php:212
 msgid "Enable Max Posts for"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:250
-#: includes/widgets/nsfp-featured-post-widget.php:155
+#: includes/classes/class-ns-featured-posts-admin.php:254
+#: includes/widgets/nsfp-featured-post-widget.php:159
 msgid "Post"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:251
-#: includes/widgets/nsfp-featured-post-widget.php:156
+#: includes/classes/class-ns-featured-posts-admin.php:255
+#: includes/widgets/nsfp-featured-post-widget.php:160
 msgid "Page"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:310
-#: includes/classes/class-ns-featured-posts-admin.php:556
-#: includes/classes/class-ns-featured-posts-admin.php:679
-#: includes/classes/class-ns-featured-posts-admin.php:771
+#: includes/classes/class-ns-featured-posts-admin.php:314
+#: includes/classes/class-ns-featured-posts-admin.php:560
+#: includes/classes/class-ns-featured-posts-admin.php:683
+#: includes/classes/class-ns-featured-posts-admin.php:775
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:375
+#: includes/classes/class-ns-featured-posts-admin.php:379
 msgid "Nonce verification failed."
 msgstr ""
 
 #. translators: %s: max posts number
-#: includes/classes/class-ns-featured-posts-admin.php:413
+#: includes/classes/class-ns-featured-posts-admin.php:417
 #, php-format
 msgid "Maximum %s posts can be set as featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:576
+#: includes/classes/class-ns-featured-posts-admin.php:580
 msgid "Check this to make featured."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:646
+#: includes/classes/class-ns-featured-posts-admin.php:650
 msgid "Post could not be set as featured. Maximum posts limit reached."
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:678
+#: includes/classes/class-ns-featured-posts-admin.php:682
 msgid "Show All"
 msgstr ""
 
-#: includes/classes/class-ns-featured-posts-admin.php:680
+#: includes/classes/class-ns-featured-posts-admin.php:684
 msgid "Not Featured"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:24
+#: includes/widgets/nsfp-featured-post-widget.php:28
 msgid "NS Featured Posts Widget"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:40
-#: includes/widgets/nsfp-featured-post-widget.php:134
+#: includes/widgets/nsfp-featured-post-widget.php:44
+#: includes/widgets/nsfp-featured-post-widget.php:138
 msgid "Featured Posts"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:145
+#: includes/widgets/nsfp-featured-post-widget.php:149
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:149
+#: includes/widgets/nsfp-featured-post-widget.php:153
 msgid "Number of posts to show:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:153
+#: includes/widgets/nsfp-featured-post-widget.php:157
 msgid "Post Type:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:174
+#: includes/widgets/nsfp-featured-post-widget.php:178
 msgid "Order By:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:177
+#: includes/widgets/nsfp-featured-post-widget.php:181
 msgid "Published Date"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:178
+#: includes/widgets/nsfp-featured-post-widget.php:182
 msgid "Modified Date"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:179
+#: includes/widgets/nsfp-featured-post-widget.php:183
 msgid "Post Title"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:180
+#: includes/widgets/nsfp-featured-post-widget.php:184
 msgid "Post Slug"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:181
+#: includes/widgets/nsfp-featured-post-widget.php:185
 msgid "Random"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:182
+#: includes/widgets/nsfp-featured-post-widget.php:186
 msgid "Comment Count"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:183
+#: includes/widgets/nsfp-featured-post-widget.php:187
 msgid "Menu Order"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:194
+#: includes/widgets/nsfp-featured-post-widget.php:198
 msgid "Order:"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:197
+#: includes/widgets/nsfp-featured-post-widget.php:201
 msgid "Descending"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:198
+#: includes/widgets/nsfp-featured-post-widget.php:202
 msgid "Ascending"
 msgstr ""
 
-#: includes/widgets/nsfp-featured-post-widget.php:210
+#: includes/widgets/nsfp-featured-post-widget.php:214
 msgid "Display post date?"
 msgstr ""
