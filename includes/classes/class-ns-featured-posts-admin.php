@@ -657,7 +657,7 @@ class NS_Featured_Posts_Admin {
 		}
 
 		// If our current user can't edit this post, bail.
-		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		if ( ! $this->can_toggle_featured( $post_id ) ) {
 			return $post_id;
 		}
 
@@ -683,6 +683,10 @@ class NS_Featured_Posts_Admin {
 
 				if ( ! empty( $other_posts ) ) {
 					foreach ( $other_posts as $opid ) {
+						if ( ! $this->can_toggle_featured( $opid ) ) {
+							continue;
+						}
+
 						delete_post_meta( $opid, '_is_ns_featured_post' );
 					}
 				}
