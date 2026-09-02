@@ -683,10 +683,6 @@ class NS_Featured_Posts_Admin {
 
 				if ( ! empty( $other_posts ) ) {
 					foreach ( $other_posts as $opid ) {
-						if ( ! $this->can_toggle_featured( $opid ) ) {
-							continue;
-						}
-
 						delete_post_meta( $opid, '_is_ns_featured_post' );
 					}
 				}
