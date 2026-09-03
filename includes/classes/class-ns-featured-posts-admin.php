@@ -297,6 +297,10 @@ class NS_Featured_Posts_Admin {
 
 		if ( ! empty( $allowed ) ) {
 			foreach ( $allowed as $post_type ) {
+				if ( ! $this->can_toggle_featured_post_type( $post_type ) ) {
+					continue;
+				}
+
 				add_filter( 'manage_edit-' . $post_type . '_columns', array( $this, 'add_featured_column_heading' ), 2 );
 				add_action( 'manage_' . $post_type . '_posts_custom_column', array( $this, 'add_featured_column_content' ), 10, 2 );
 			}
@@ -326,11 +330,15 @@ class NS_Featured_Posts_Admin {
 	 */
 	public function add_featured_column_content( $column, $id ) {
 		if ( 'ns_featured_posts_col' === $column ) {
+			if ( ! $this->can_toggle_featured( $id ) ) {
+				return;
+			}
+
+			$ns_featured = get_post_meta( $id, '_is_ns_featured_post', true );
+
 			$class = '';
 
 			$classes = array( 'ns_featured_posts_icon' );
-
-			$ns_featured = get_post_meta( $id, '_is_ns_featured_post', true );
 
 			if ( 'yes' === $ns_featured ) {
 				$classes[] = 'selected';
@@ -485,18 +493,52 @@ class NS_Featured_Posts_Admin {
 	 * @return bool True if allowed.
 	 */
 	private function can_toggle_featured( $post_id ) {
-		if ( current_user_can( 'edit_post', $post_id ) ) {
-			return true;
+		$post_type = get_post_type( $post_id );
+
+		if ( ! $post_type ) {
+			return false;
 		}
 
-		// The edit_post meta capability is unusable for post types registered without meta capability mapping.
-		$post_type_object = get_post_type_object( get_post_type( $post_id ) );
+		$post_type_object = get_post_type_object( $post_type );
 
-		if ( $post_type_object && ! $post_type_object->map_meta_cap ) {
+		if ( ! $post_type_object ) {
+			return false;
+		}
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return false;
+		}
+
+		// Featured is an editorial decision. Require capability to edit others' posts
+		// so Authors (who can only edit their own posts) cannot toggle it.
+		// The edit_post meta capability is unusable for post types registered without meta capability mapping.
+		if ( ! $post_type_object->map_meta_cap ) {
 			return current_user_can( $post_type_object->cap->edit_posts );
 		}
 
-		return false;
+		return current_user_can( $post_type_object->cap->edit_others_posts );
+	}
+
+	/**
+	 * Check whether the current user can toggle featured status for a post type.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @param  string $post_type Post type.
+	 * @return bool True if allowed.
+	 */
+	private function can_toggle_featured_post_type( $post_type ) {
+		$post_type_object = get_post_type_object( $post_type );
+
+		if ( ! $post_type_object ) {
+			return false;
+		}
+
+		if ( ! $post_type_object->map_meta_cap ) {
+			return current_user_can( $post_type_object->cap->edit_posts );
+		}
+
+		return current_user_can( $post_type_object->cap->edit_others_posts );
 	}
 
 	/**
@@ -572,7 +614,16 @@ class NS_Featured_Posts_Admin {
 			return;
 		}
 
-		if ( ! current_user_can( 'unfiltered_html' ) ) {
+		$can_toggle_any = false;
+
+		foreach ( $this->get_allowed_post_types() as $post_type ) {
+			if ( $this->can_toggle_featured_post_type( $post_type ) ) {
+				$can_toggle_any = true;
+				break;
+			}
+		}
+
+		if ( ! $can_toggle_any ) {
 			return;
 		}
 
@@ -604,6 +655,10 @@ class NS_Featured_Posts_Admin {
 		$screens = $allowed;
 
 		foreach ( $screens as $screen ) {
+			if ( ! $this->can_toggle_featured_post_type( $screen ) ) {
+				continue;
+			}
+
 			add_meta_box( 'nsfp_meta_box_featured', esc_html__( 'Featured', 'ns-featured-posts' ), array( $this, 'featured_metabox_callback' ), $screen, 'side' );
 		}
 	}
