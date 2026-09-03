@@ -533,7 +533,7 @@ class NS_Featured_Posts_Admin {
 			'meta_key'       => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 			'meta_value'     => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 			'post_type'      => $post_type,
-			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
+			'post_status'    => array( 'publish', 'pending', 'draft', 'future', 'private' ),
 		);
 
 		$all_posts = get_posts( $qargs );
@@ -841,7 +841,7 @@ class NS_Featured_Posts_Admin {
 			'posts_per_page' => -1,
 			'meta_key'       => '_is_ns_featured_post', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 			'meta_value'     => 'yes', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
+			'post_status'    => array( 'publish', 'pending', 'draft', 'future', 'private' ),
 		);
 
 		$postlist = get_posts( $args );
